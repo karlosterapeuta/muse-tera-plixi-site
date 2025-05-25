@@ -102,7 +102,10 @@ const Benefits = () => {
               >
                 Acessar Sistema
               </button>
-              <button className="flex items-center justify-center gap-2 border-2 border-green-500 hover:border-green-600 hover:bg-green-50 text-green-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300">
+              <button 
+                className="flex items-center justify-center gap-2 border-2 border-green-500 hover:border-green-600 hover:bg-green-50 text-green-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
+                onClick={() => window.open('https://api.whatsapp.com/send?phone=5581986953506&text=Oi%2C%20tenho%20interesse%20em%20adquirir%20o%20sistema%20para%20Musicoterapeutas.', '_blank')}
+              >
                 <MessageCircle className="h-5 w-5" />
                 WhatsApp
               </button>
