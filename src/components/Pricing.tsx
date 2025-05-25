@@ -116,6 +116,11 @@ const Pricing = () => {
                       ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white'
                       : 'border-2 border-gray-300 hover:border-blue-500 text-gray-700 hover:text-blue-600 bg-white'
                   } transition-all duration-300`}
+                  onClick={() => {
+                    if (plan.name === '12 Meses') {
+                      window.open('https://www.asaas.com/c/6kdt8aus266vtz3h', '_blank');
+                    }
+                  }}
                 >
                   {plan.cta}
                 </Button>
