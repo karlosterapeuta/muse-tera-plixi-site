@@ -78,24 +78,31 @@ const Hero = () => {
               {/* Mockup of the app interface */}
               <div className="bg-white rounded-lg p-6 space-y-4">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-gray-800">Sessões de Hoje</h3>
+                  <h3 className="font-semibold text-gray-800">Dashboard</h3>
                   <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
                 </div>
                 
-                <div className="space-y-3">
-                  {[
-                    { time: '09:00', patient: 'Maria Silva', type: 'Individual' },
-                    { time: '10:30', patient: 'João Santos', type: 'Grupo' },
-                    { time: '14:00', patient: 'Ana Costa', type: 'Individual' }
-                  ].map((session, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                      <div>
-                        <div className="font-medium text-gray-800">{session.patient}</div>
-                        <div className="text-sm text-gray-500">{session.type}</div>
-                      </div>
-                      <div className="text-sm font-medium text-blue-600">{session.time}</div>
-                    </div>
-                  ))}
+                {/* Dashboard stats */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-xl text-white">
+                    <div className="text-2xl font-bold">24</div>
+                    <div className="text-xs opacity-90">Pacientes</div>
+                  </div>
+                  <div className="bg-gradient-to-r from-purple-500 to-purple-600 p-4 rounded-xl text-white">
+                    <div className="text-2xl font-bold">12</div>
+                    <div className="text-xs opacity-90">Hoje</div>
+                  </div>
+                </div>
+
+                {/* Progress indicator */}
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-gray-600">Progresso Geral</span>
+                    <span className="text-sm font-bold text-green-600">85%</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="bg-gradient-to-r from-green-400 to-green-500 h-2 rounded-full" style={{width: '85%'}}></div>
+                  </div>
                 </div>
               </div>
               
