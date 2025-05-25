@@ -1,5 +1,5 @@
 
-import { CheckCircle, Clock, TrendingUp, Users } from 'lucide-react';
+import { CheckCircle, Clock, TrendingUp, Users, MessageCircle } from 'lucide-react';
 
 const Benefits = () => {
   const benefits = [
@@ -99,8 +99,9 @@ const Benefits = () => {
               <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg">
                 Acessar Sistema
               </button>
-              <button className="border-2 border-gray-300 hover:border-blue-500 text-gray-700 hover:text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300">
-                Agendar demonstração
+              <button className="flex items-center justify-center gap-2 border-2 border-green-500 hover:border-green-600 hover:bg-green-50 text-green-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300">
+                <MessageCircle className="h-5 w-5" />
+                WhatsApp
               </button>
             </div>
           </div>
