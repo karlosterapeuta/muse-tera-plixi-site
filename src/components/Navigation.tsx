@@ -46,7 +46,7 @@ const Navigation = () => {
               Entrar
             </Button>
             <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
-              Teste Grátis
+              Assinar Agora
             </Button>
           </div>
 
@@ -82,7 +82,7 @@ const Navigation = () => {
                 Entrar
               </Button>
               <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white justify-start">
-                Teste Grátis
+                Assinar Agora
               </Button>
             </div>
           </div>

@@ -17,7 +17,7 @@ const Pricing = () => {
         'Suporte por email',
         '5GB de armazenamento'
       ],
-      cta: 'Começar teste grátis',
+      cta: 'Assinar Plano',
       popular: false
     },
     {
@@ -35,7 +35,7 @@ const Pricing = () => {
         'Integração com WhatsApp',
         'Backup automático'
       ],
-      cta: 'Começar teste grátis',
+      cta: 'Assinar Plano',
       popular: true
     },
     {
@@ -66,8 +66,8 @@ const Pricing = () => {
             Planos que <span className="gradient-text">crescem</span> com você
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Escolha o plano ideal para sua prática. Todos incluem 14 dias de teste grátis, 
-            sem compromisso e cancelamento a qualquer momento.
+            Escolha o plano ideal para sua prática. Todos os planos incluem 
+            suporte completo e cancelamento a qualquer momento.
           </p>
         </div>
 
