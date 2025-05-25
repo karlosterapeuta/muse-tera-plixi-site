@@ -1,5 +1,4 @@
-
-import { Play, Users, TrendingUp, Calendar } from 'lucide-react';
+import { Play, Users, TrendingUp, Calendar, MessageCircle } from 'lucide-react';
 
 const SystemDemo = () => {
   const notifications = [
@@ -77,8 +76,12 @@ const SystemDemo = () => {
                 <Play className="h-5 w-5" />
                 Acessar sistema
               </button>
-              <button className="bg-white text-gray-800 px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300 border border-gray-200 shadow-lg">
-                Começar gratuitamente
+              <button 
+                className="flex items-center justify-center gap-2 border-2 border-green-500 hover:border-green-600 hover:bg-green-50 text-green-600 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg"
+                onClick={() => window.open('https://api.whatsapp.com/send?phone=5581986953506&text=Oi%2C%20tenho%20interesse%20em%20adquirir%20o%20sistema%20para%20Musicoterapeutas.', '_blank')}
+              >
+                <MessageCircle className="h-5 w-5" />
+                WhatsApp
               </button>
             </div>
           </div>
