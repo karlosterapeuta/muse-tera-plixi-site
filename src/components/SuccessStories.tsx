@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 
@@ -149,7 +148,10 @@ const SuccessStories = () => {
           <p className="text-gray-600 mb-6">
             Junte-se a centenas de profissionais que já transformaram suas práticas
           </p>
-          <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+          <button 
+            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+            onClick={() => window.open('https://portal-musetera.netlify.app/login', '_blank')}
+          >
             Começar agora
           </button>
         </div>
