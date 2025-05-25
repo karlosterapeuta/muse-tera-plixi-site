@@ -101,36 +101,51 @@ const SystemDemo = () => {
                       </div>
                     </div>
 
-                    {/* Notifications area */}
-                    <div className="p-4 space-y-3 max-h-[500px] overflow-hidden">
-                      <h4 className="text-sm font-medium text-gray-600 mb-4">Últimas 24 Horas</h4>
-                      
-                      <div className="space-y-3 animate-fade-in">
-                        {notifications.map((notification, index) => (
-                          <div 
-                            key={index}
-                            className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
-                            style={{
-                              animationDelay: `${index * 0.2}s`,
-                              animationFillMode: 'both'
-                            }}
-                          >
-                            <div className="flex items-center space-x-3">
-                              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                                <span className="text-xs font-medium">📱</span>
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <div className="flex items-center space-x-2 mb-1">
-                                  <span className="text-xs bg-white/20 px-2 py-1 rounded-full">
-                                    {notification.platform}
-                                  </span>
-                                  <span className="text-xs opacity-80">{notification.time}</span>
-                                </div>
-                                <p className="text-sm font-medium truncate">{notification.user}</p>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
+                    {/* Main content area */}
+                    <div className="p-6 space-y-6">
+                      {/* Dashboard cards */}
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 rounded-xl text-white">
+                          <div className="text-2xl font-bold">24</div>
+                          <div className="text-xs opacity-90">Pacientes</div>
+                        </div>
+                        <div className="bg-gradient-to-r from-purple-500 to-purple-600 p-4 rounded-xl text-white">
+                          <div className="text-2xl font-bold">12</div>
+                          <div className="text-xs opacity-90">Hoje</div>
+                        </div>
+                      </div>
+
+                      {/* Progress indicators */}
+                      <div className="bg-white rounded-xl p-4 shadow-sm">
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="text-sm font-medium text-gray-600">Progresso Geral</span>
+                          <span className="text-sm font-bold text-green-600">85%</span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-2">
+                          <div className="bg-gradient-to-r from-green-400 to-green-500 h-2 rounded-full" style={{width: '85%'}}></div>
+                        </div>
+                      </div>
+
+                      {/* Quick actions */}
+                      <div className="grid grid-cols-2 gap-3">
+                        <button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-3 rounded-lg text-sm font-medium">
+                          Nova Sessão
+                        </button>
+                        <button className="bg-white border border-gray-200 text-gray-700 p-3 rounded-lg text-sm font-medium">
+                          Relatórios
+                        </button>
+                      </div>
+
+                      {/* Activity feed */}
+                      <div className="space-y-2">
+                        <div className="bg-white rounded-lg p-3 shadow-sm border-l-4 border-blue-500">
+                          <div className="text-xs text-gray-500">10:30</div>
+                          <div className="text-sm font-medium text-gray-800">Sessão concluída</div>
+                        </div>
+                        <div className="bg-white rounded-lg p-3 shadow-sm border-l-4 border-green-500">
+                          <div className="text-xs text-gray-500">14:00</div>
+                          <div className="text-sm font-medium text-gray-800">Progresso atualizado</div>
+                        </div>
                       </div>
                     </div>
                   </div>
