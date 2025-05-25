@@ -1,6 +1,7 @@
 
 import { Button } from '@/components/ui/button';
-import { Play, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 
 const Hero = () => {
   return (
@@ -44,15 +45,15 @@ const Hero = () => {
                 size="lg" 
                 className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg"
               >
-                Assinar Agora
+                Acessar Sistema
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-2 border-gray-300 hover:border-blue-500 px-8 py-4 text-lg"
+                className="border-2 border-green-500 hover:border-green-600 hover:bg-green-50 text-green-600 px-8 py-4 text-lg"
               >
-                <Play className="h-5 w-5 mr-2" />
-                Ver demonstração
+                <MessageCircle className="h-5 w-5 mr-2" />
+                WhatsApp
               </Button>
             </div>
 
