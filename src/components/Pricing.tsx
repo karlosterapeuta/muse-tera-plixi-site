@@ -6,25 +6,26 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 const Pricing = () => {
   const plans = [
     {
-      name: 'Starter',
-      price: 'R$ 49',
+      name: 'Sem Fidelidade',
+      price: 'R$ 69,90',
       period: '/mês',
-      description: 'Perfeito para musicoterapeutas iniciantes',
+      description: 'Flexibilidade máxima para seu negócio',
       features: [
         'Até 30 pacientes',
         'Agendamento básico',
         'Relatórios simples',
         'Suporte por email',
-        '5GB de armazenamento'
+        '5GB de armazenamento',
+        'Cancele quando quiser'
       ],
       cta: 'Assinar Plano',
       popular: false
     },
     {
-      name: 'Professional',
-      price: 'R$ 99',
+      name: '6 Meses',
+      price: 'R$ 49,90',
       period: '/mês',
-      description: 'Para profissionais estabelecidos',
+      description: 'Economia de 29% com compromisso semestral',
       features: [
         'Pacientes ilimitados',
         'Agendamento avançado',
@@ -39,10 +40,10 @@ const Pricing = () => {
       popular: true
     },
     {
-      name: 'Clinic',
-      price: 'R$ 199',
+      name: '12 Meses',
+      price: 'R$ 39,90',
       period: '/mês',
-      description: 'Para clínicas e equipes',
+      description: 'Melhor custo-benefício com plano anual',
       features: [
         'Múltiplos terapeutas',
         'Gestão de equipe',
@@ -53,7 +54,7 @@ const Pricing = () => {
         'Treinamento personalizado',
         'Compliance LGPD'
       ],
-      cta: 'Falar com vendas',
+      cta: 'Assinar Plano',
       popular: false
     }
   ];
