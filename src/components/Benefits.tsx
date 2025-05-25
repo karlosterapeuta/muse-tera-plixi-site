@@ -96,7 +96,10 @@ const Benefits = () => {
               o MuseTera pode revolucionar sua forma de trabalhar.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg">
+              <button 
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg"
+                onClick={() => window.open('https://portal-musetera.netlify.app/login', '_blank')}
+              >
                 Acessar Sistema
               </button>
               <button className="flex items-center justify-center gap-2 border-2 border-green-500 hover:border-green-600 hover:bg-green-50 text-green-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300">

@@ -45,7 +45,10 @@ const Navigation = () => {
             <Button variant="ghost" className="text-gray-600 hover:text-blue-600">
               Entrar
             </Button>
-            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+            <Button 
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
+              onClick={() => window.open('https://portal-musetera.netlify.app/login', '_blank')}
+            >
               Acessar Sistema
             </Button>
           </div>
@@ -81,7 +84,10 @@ const Navigation = () => {
               <Button variant="ghost" className="justify-start">
                 Entrar
               </Button>
-              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white justify-start">
+              <Button 
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white justify-start"
+                onClick={() => window.open('https://portal-musetera.netlify.app/login', '_blank')}
+              >
                 Acessar Sistema
               </Button>
             </div>
