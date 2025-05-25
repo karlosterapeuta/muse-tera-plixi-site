@@ -50,7 +50,12 @@ const Footer = () => {
               <a href="#" className="p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors">
+              <a 
+                href="https://www.instagram.com/sistema_musetera/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors"
+              >
                 <Instagram className="h-5 w-5" />
               </a>
               <a href="#" className="p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors">
