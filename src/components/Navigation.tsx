@@ -47,7 +47,15 @@ const Navigation = () => {
             </Button>
             <Button 
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
-              onClick={() => window.open('https://portal-musetera.netlify.app/login', '_blank')}
+              onClick={() => {
+                const link = document.createElement('a');
+                link.href = 'https://portal-musetera.netlify.app/';
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
             >
               Acessar Sistema
             </Button>
@@ -86,7 +94,15 @@ const Navigation = () => {
               </Button>
               <Button 
                 className="bg-gradient-to-r from-blue-600 to-purple-600 text-white justify-start"
-                onClick={() => window.open('https://portal-musetera.netlify.app/login', '_blank')}
+                onClick={() => {
+                  const link = document.createElement('a');
+                  link.href = 'https://portal-musetera.netlify.app/';
+                  link.target = '_blank';
+                  link.rel = 'noopener noreferrer';
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
               >
                 Acessar Sistema
               </Button>
