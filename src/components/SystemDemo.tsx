@@ -1,3 +1,4 @@
+
 import { Play, Users, TrendingUp, Calendar, MessageCircle } from 'lucide-react';
 
 const SystemDemo = () => {
@@ -71,7 +72,7 @@ const SystemDemo = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <button 
                 className="flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
-                onClick={() => window.open('https://portal-musetera.netlify.app/login', '_blank')}
+                onClick={() => window.open('https://portal-musetera.netlify.app/', '_blank')}
               >
                 <Play className="h-5 w-5" />
                 Acessar sistema
