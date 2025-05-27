@@ -1,4 +1,3 @@
-
 import { Play, Users, TrendingUp, Calendar, MessageCircle } from 'lucide-react';
 
 const SystemDemo = () => {
