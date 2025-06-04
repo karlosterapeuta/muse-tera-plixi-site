@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { MessageCircle, X, Send } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 interface Message {
   id: number;
@@ -22,8 +23,10 @@ const ChatSupport = () => {
     }
   ]);
   const [inputMessage, setInputMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (inputMessage.trim() === '') return;
 
     const newUserMessage: Message = {
@@ -34,9 +37,45 @@ const ChatSupport = () => {
     };
 
     setMessages(prev => [...prev, newUserMessage]);
+    const messageText = inputMessage;
     setInputMessage('');
+    setIsLoading(true);
 
-    // Simular resposta automática
+    try {
+      // Enviar mensagem para o backend (Supabase)
+      const response = await fetch('/api/send-chat-message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: messageText,
+          timestamp: new Date().toISOString(),
+          userAgent: navigator.userAgent,
+          page: window.location.href
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Mensagem enviada",
+          description: "Sua mensagem foi enviada com sucesso! Responderemos em breve.",
+        });
+      } else {
+        throw new Error('Falha ao enviar mensagem');
+      }
+    } catch (error) {
+      console.error('Erro ao enviar mensagem:', error);
+      toast({
+        title: "Erro",
+        description: "Não foi possível enviar sua mensagem. Tente novamente.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+
+    // Resposta automática
     setTimeout(() => {
       const autoResponse: Message = {
         id: messages.length + 2,
@@ -104,6 +143,13 @@ const ChatSupport = () => {
                 </div>
               </div>
             ))}
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="bg-gray-100 text-gray-800 p-3 rounded-lg text-sm animate-pulse">
+                  Enviando mensagem...
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Input */}
@@ -112,12 +158,18 @@ const ChatSupport = () => {
               placeholder="Digite sua dúvida..."
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
-              onKeyPress={handleKeyPress}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  handleSendMessage();
+                }
+              }}
               className="flex-1 min-h-[40px] max-h-20 resize-none"
+              disabled={isLoading}
             />
             <Button
               onClick={handleSendMessage}
-              disabled={inputMessage.trim() === ''}
+              disabled={inputMessage.trim() === '' || isLoading}
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
             >
               <Send className="h-4 w-4" />
