@@ -3,88 +3,18 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { MessageCircle, X, Send } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
-
-interface Message {
-  id: number;
-  text: string;
-  isUser: boolean;
-  timestamp: Date;
-}
+import { useChatSupport } from '@/hooks/useChatSupport';
 
 const ChatSupport = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 1,
-      text: "Olá! Sou o assistente do MuseTera. Como posso ajudá-lo hoje?",
-      isUser: false,
-      timestamp: new Date()
-    }
-  ]);
   const [inputMessage, setInputMessage] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
+  const { messages, isLoading, sendMessage } = useChatSupport();
 
   const handleSendMessage = async () => {
     if (inputMessage.trim() === '') return;
 
-    const newUserMessage: Message = {
-      id: messages.length + 1,
-      text: inputMessage,
-      isUser: true,
-      timestamp: new Date()
-    };
-
-    setMessages(prev => [...prev, newUserMessage]);
-    const messageText = inputMessage;
+    await sendMessage(inputMessage);
     setInputMessage('');
-    setIsLoading(true);
-
-    try {
-      // Enviar mensagem para o backend (Supabase)
-      const response = await fetch('/api/send-chat-message', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: messageText,
-          timestamp: new Date().toISOString(),
-          userAgent: navigator.userAgent,
-          page: window.location.href
-        }),
-      });
-
-      if (response.ok) {
-        toast({
-          title: "Mensagem enviada",
-          description: "Sua mensagem foi enviada com sucesso! Responderemos em breve.",
-        });
-      } else {
-        throw new Error('Falha ao enviar mensagem');
-      }
-    } catch (error) {
-      console.error('Erro ao enviar mensagem:', error);
-      toast({
-        title: "Erro",
-        description: "Não foi possível enviar sua mensagem. Tente novamente.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
-    }
-
-    // Resposta automática
-    setTimeout(() => {
-      const autoResponse: Message = {
-        id: messages.length + 2,
-        text: "Obrigado pela sua mensagem! Nossa equipe entrará em contato em breve. Para suporte imediato, você também pode nos contatar pelo WhatsApp.",
-        isUser: false,
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, autoResponse]);
-    }, 1000);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -158,12 +88,7 @@ const ChatSupport = () => {
               placeholder="Digite sua dúvida..."
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
-              onKeyPress={(e) => {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                  e.preventDefault();
-                  handleSendMessage();
-                }
-              }}
+              onKeyPress={handleKeyPress}
               className="flex-1 min-h-[40px] max-h-20 resize-none"
               disabled={isLoading}
             />

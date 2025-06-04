@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 interface Message {
   id: number;
@@ -36,31 +37,35 @@ export const useChatSupport = () => {
 
     try {
       // Tentar enviar para Supabase Edge Function
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-chat-to-whatsapp`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
-        },
-        body: JSON.stringify({
+      const { data, error } = await supabase.functions.invoke('send-chat-to-whatsapp', {
+        body: {
           message: messageText,
           timestamp: new Date().toISOString(),
           userAgent: navigator.userAgent,
           page: window.location.href
-        }),
+        }
       });
 
-      if (response.ok) {
+      if (error) {
+        console.log('Edge Function não encontrada, salvando mensagem localmente:', messageText);
+        // Fallback: salvar localmente
+        const savedMessages = JSON.parse(localStorage.getItem('chat_messages') || '[]');
+        savedMessages.push({
+          message: messageText,
+          timestamp: new Date().toISOString(),
+          userAgent: navigator.userAgent,
+          page: window.location.href
+        });
+        localStorage.setItem('chat_messages', JSON.stringify(savedMessages));
+        
+        toast({
+          title: "Mensagem salva",
+          description: "Sua mensagem foi registrada. Para configurar o envio automático para WhatsApp, siga as instruções no arquivo supabaseSetup.md",
+        });
+      } else {
         toast({
           title: "Mensagem enviada",
           description: "Sua mensagem foi enviada! Responderemos em breve.",
-        });
-      } else {
-        // Fallback: salvar localmente se Supabase não estiver configurado
-        console.log('Supabase não configurado, salvando mensagem localmente:', messageText);
-        toast({
-          title: "Mensagem recebida",
-          description: "Sua mensagem foi registrada. Configure o Supabase para envio automático.",
         });
       }
     } catch (error) {
@@ -77,7 +82,7 @@ export const useChatSupport = () => {
       
       toast({
         title: "Mensagem salva",
-        description: "Sua mensagem foi salva localmente. Configure o Supabase para envio automático.",
+        description: "Sua mensagem foi salva localmente. Para configurar o envio automático para WhatsApp, siga as instruções no arquivo supabaseSetup.md",
       });
     } finally {
       setIsLoading(false);
