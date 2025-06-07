@@ -1,4 +1,3 @@
-
 import { Play, Users, TrendingUp, Calendar, MessageCircle } from 'lucide-react';
 
 const SystemDemo = () => {
@@ -74,7 +73,7 @@ const SystemDemo = () => {
                 className="flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
                 onClick={() => {
                   const link = document.createElement('a');
-                  link.href = 'https://portal-musetera.netlify.app/';
+                  link.href = 'https://portal-musetera.netlify.app/login';
                   link.target = '_blank';
                   link.rel = 'noopener noreferrer';
                   document.body.appendChild(link);

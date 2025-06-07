@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { CheckCircle } from 'lucide-react';
 import { MessageCircle } from 'lucide-react';
@@ -46,7 +45,7 @@ const Hero = () => {
                 className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg"
                 onClick={() => {
                   const link = document.createElement('a');
-                  link.href = 'https://portal-musetera.netlify.app/';
+                  link.href = 'https://portal-musetera.netlify.app/login';
                   link.target = '_blank';
                   link.rel = 'noopener noreferrer';
                   document.body.appendChild(link);

@@ -49,7 +49,7 @@ const Navigation = () => {
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
               onClick={() => {
                 const link = document.createElement('a');
-                link.href = 'https://portal-musetera.netlify.app/';
+                link.href = 'https://portal-musetera.netlify.app/login';
                 link.target = '_blank';
                 link.rel = 'noopener noreferrer';
                 document.body.appendChild(link);
@@ -96,7 +96,7 @@ const Navigation = () => {
                 className="bg-gradient-to-r from-blue-600 to-purple-600 text-white justify-start"
                 onClick={() => {
                   const link = document.createElement('a');
-                  link.href = 'https://portal-musetera.netlify.app/';
+                  link.href = 'https://portal-musetera.netlify.app/login';
                   link.target = '_blank';
                   link.rel = 'noopener noreferrer';
                   document.body.appendChild(link);
