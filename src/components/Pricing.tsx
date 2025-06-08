@@ -122,7 +122,7 @@ const Pricing = () => {
                     } else if (plan.name === '6 Meses') {
                       window.open('https://www.asaas.com/c/0kvjf7y8j14o7tqg', '_blank');
                     } else if (plan.name === '12 Meses') {
-                      window.open('https://www.asaas.com/c/6kdt8aus266vtz3h', '_blank');
+                      window.open('https://www.asaas.com/c/gtcimltw64g0odx1', '_blank');
                     }
                   }}
                 >
