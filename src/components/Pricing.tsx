@@ -120,7 +120,7 @@ const Pricing = () => {
                     if (plan.name === 'Sem Fidelidade') {
                       window.open('https://api.whatsapp.com/send?phone=5581986953506&text=Oi%2C%20tenho%20interesse%20em%20adquirir%20o%20sistema%20para%20Musicoterapeutas.', '_blank');
                     } else if (plan.name === '6 Meses') {
-                      window.open('https://www.asaas.com/c/0kvjf7y8j14o7tqg', '_blank');
+                      window.open('https://www.asaas.com/c/6vaoui3drgmdpcex', '_blank');
                     } else if (plan.name === '12 Meses') {
                       window.open('https://www.asaas.com/c/gtcimltw64g0odx1', '_blank');
                     }
