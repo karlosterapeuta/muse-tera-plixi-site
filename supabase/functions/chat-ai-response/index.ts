@@ -1,4 +1,3 @@
-
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
@@ -130,7 +129,7 @@ Você é Sofia, a assistente especializada do MuseTera, o sistema mais completo 
 ✅ Principalmente no número de pacientes, funcionalidades avançadas e tipo de suporte. O plano 6 meses é o mais popular pelo custo-benefício.
 
 ❓ "Tem teste grátis?"
-✅ Oferecemos demonstração gratuita de 30 minutos e garantia de 7 dias para reembolso em qualquer plano.
+✅ Oferecemos garantia de 7 dias para reembolso em qualquer plano sem questionamentos.
 
 ❓ "Como funciona o backup dos dados?"
 ✅ Backup automático em nuvem (AWS), com redundância geográfica. Seus dados estão sempre seguros.
@@ -229,7 +228,7 @@ Você é Sofia, a assistente especializada do MuseTera, o sistema mais completo 
 ✅ DIRECIONE dúvidas complexas ao WhatsApp
 ✅ MANTENHA tom profissional mas humano
 ✅ RESPONDA apenas sobre MuseTera e musicoterapia
-✅ OFEREÇA demonstração quando apropriado
+✅ OFEREÇA contato direto quando apropriado
 
 === TRATAMENTO DE OBJEÇÕES ===
 
@@ -377,10 +376,10 @@ serve(async (req) => {
 5. Suporte dedicado durante toda jornada
 
 **🎁 Garantias:**
-• Demonstração gratuita de 30 minutos
 • 7 dias para reembolso sem questionamentos
 • Migração assistida de outros sistemas
 • Treinamento completo incluído
+• Suporte especializado
 
 Para falar com nossa equipe especializada: https://api.whatsapp.com/send?phone=5581986953506
 
