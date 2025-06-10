@@ -1,14 +1,23 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { MessageCircle, X, Send } from 'lucide-react';
+import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
 import { useChatSupport } from '@/hooks/useChatSupport';
 
 const ChatSupport = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [inputMessage, setInputMessage] = useState('');
   const { messages, isLoading, sendMessage } = useChatSupport();
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const handleSendMessage = async () => {
     if (inputMessage.trim() === '') return;
@@ -41,9 +50,12 @@ const ChatSupport = () => {
         <div className="fixed bottom-6 right-6 w-80 h-96 bg-white rounded-lg shadow-2xl border z-50 flex flex-col">
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 rounded-t-lg flex justify-between items-center">
-            <div>
-              <h3 className="font-semibold">Suporte MuseTera</h3>
-              <p className="text-xs opacity-90">Estamos aqui para ajudar!</p>
+            <div className="flex items-center space-x-2">
+              <Bot className="h-5 w-5" />
+              <div>
+                <h3 className="font-semibold">IA MuseTera</h3>
+                <p className="text-xs opacity-90">Assistente Inteligente</p>
+              </div>
             </div>
             <Button
               variant="ghost"
@@ -56,36 +68,43 @@ const ChatSupport = () => {
           </div>
 
           {/* Messages */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-3">
+          <div className="flex-1 p-4 overflow-y-auto space-y-3 bg-gray-50">
             {messages.map((message) => (
               <div
                 key={message.id}
                 className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
               >
-                <div
-                  className={`max-w-xs p-3 rounded-lg text-sm ${
-                    message.isUser
-                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
-                      : 'bg-gray-100 text-gray-800'
-                  }`}
-                >
-                  {message.text}
+                <div className={`flex items-start space-x-2 max-w-xs ${message.isUser ? 'flex-row-reverse space-x-reverse' : ''}`}>
+                  <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${
+                    message.isUser 
+                      ? 'bg-blue-600 text-white' 
+                      : 'bg-white border border-gray-200'
+                  }`}>
+                    {message.isUser ? (
+                      <User className="h-3 w-3" />
+                    ) : (
+                      <Bot className="h-3 w-3 text-blue-600" />
+                    )}
+                  </div>
+                  <div
+                    className={`p-3 rounded-lg text-sm ${
+                      message.isUser
+                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
+                        : 'bg-white text-gray-800 border border-gray-200'
+                    } ${message.isTyping ? 'animate-pulse' : ''}`}
+                  >
+                    {message.text}
+                  </div>
                 </div>
               </div>
             ))}
-            {isLoading && (
-              <div className="flex justify-start">
-                <div className="bg-gray-100 text-gray-800 p-3 rounded-lg text-sm animate-pulse">
-                  Enviando mensagem...
-                </div>
-              </div>
-            )}
+            <div ref={messagesEndRef} />
           </div>
 
           {/* Input */}
-          <div className="p-4 border-t flex gap-2">
+          <div className="p-4 border-t bg-white flex gap-2">
             <Textarea
-              placeholder="Digite sua dúvida..."
+              placeholder="Digite sua dúvida sobre o MuseTera..."
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyPress={handleKeyPress}
@@ -102,31 +121,33 @@ const ChatSupport = () => {
           </div>
 
           {/* Quick Actions */}
-          <div className="px-4 pb-4">
+          <div className="px-4 pb-4 bg-white">
             <div className="flex gap-2 text-xs">
               <Button
                 variant="outline"
                 size="sm"
                 className="text-xs h-7"
-                onClick={() => window.open('https://api.whatsapp.com/send?phone=5581986953506&text=Oi%2C%20tenho%20interesse%20em%20adquirir%20o%20sistema%20para%20Musicoterapeutas.', '_blank')}
+                onClick={() => sendMessage('Quais são os planos e preços?')}
+                disabled={isLoading}
               >
-                WhatsApp
+                Ver Planos
               </Button>
               <Button
                 variant="outline"
                 size="sm"
                 className="text-xs h-7"
-                onClick={() => {
-                  const link = document.createElement('a');
-                  link.href = 'https://portal-musetera.netlify.app/';
-                  link.target = '_blank';
-                  link.rel = 'noopener noreferrer';
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                }}
+                onClick={() => sendMessage('Como funciona o sistema?')}
+                disabled={isLoading}
               >
-                Acessar Sistema
+                Como Funciona
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="text-xs h-7"
+                onClick={() => window.open('https://api.whatsapp.com/send?phone=5581986953506', '_blank')}
+              >
+                WhatsApp
               </Button>
             </div>
           </div>
