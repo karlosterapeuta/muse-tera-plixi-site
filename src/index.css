@@ -105,4 +105,99 @@
   .container-padding {
     @apply px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto;
   }
+
+  /* Chat Button Animations */
+  .chat-button {
+    @apply relative overflow-hidden;
+    animation: gentle-bounce 4s ease-in-out infinite;
+  }
+
+  .chat-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, rgba(168, 85, 247, 0.4), transparent 30%);
+    animation: rotate 4s linear infinite;
+    border-radius: 50%;
+  }
+
+  .chat-button::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    border-radius: 50%;
+    z-index: -1;
+  }
+
+  .chat-button-content {
+    @apply relative z-10 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 rounded-full w-full h-full flex items-center justify-center;
+    box-shadow: 
+      0 0 20px rgba(139, 92, 246, 0.3),
+      0 0 40px rgba(139, 92, 246, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .chat-button:hover .chat-button-content {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+    box-shadow: 
+      0 0 30px rgba(139, 92, 246, 0.5),
+      0 0 60px rgba(139, 92, 246, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+  }
+
+  .chat-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(139, 92, 246, 0.3);
+    animation: ripple 3s infinite;
+  }
+
+  .chat-ripple:nth-child(2) {
+    animation-delay: 1s;
+  }
+
+  .chat-ripple:nth-child(3) {
+    animation-delay: 2s;
+  }
+
+  .chat-text-appear {
+    animation: slide-in-left 0.5s ease-out;
+  }
+
+  @keyframes gentle-bounce {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: scale(0.8);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2.5);
+      opacity: 0;
+    }
+  }
+
+  @keyframes slide-in-left {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
 }
