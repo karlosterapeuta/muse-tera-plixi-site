@@ -132,36 +132,6 @@ const Pricing = () => {
             </Card>
           ))}
         </div>
-
-        {/* FAQ Section */}
-        <div className="mt-16 text-center">
-          <h3 className="text-2xl font-bold font-playfair mb-8">Perguntas Frequentes</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {[
-              {
-                question: 'Posso cancelar a qualquer momento?',
-                answer: 'Sim! Não há fidelidade. Você pode cancelar sua assinatura a qualquer momento.'
-              },
-              {
-                question: 'Os dados são seguros?',
-                answer: 'Absolutamente. Utilizamos criptografia de ponta e somos 100% compatíveis com a LGPD.'
-              },
-              {
-                question: 'Há suporte em português?',
-                answer: 'Sim! Nosso suporte é 100% em português e especializado em musicoterapia.'
-              },
-              {
-                question: 'Posso migrar de plano?',
-                answer: 'Sim! Você pode fazer upgrade ou downgrade do seu plano a qualquer momento.'
-              }
-            ].map((faq, index) => (
-              <div key={index} className="text-left">
-                <h4 className="font-semibold text-gray-800 mb-2">{faq.question}</h4>
-                <p className="text-gray-600">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
