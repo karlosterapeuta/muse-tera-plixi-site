@@ -72,11 +72,11 @@ const Hero = () => {
                     document.body.removeChild(link);
                   }}
                 >
-                  <span className="relative z-10">🚀 Começar Agora GRÁTIS</span>
+                  <span className="relative z-10">🚀 Acessar o Sistema</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </Button>
                 <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold animate-pulse">
-                  Teste 30 dias
+                  Bem vindos!
                 </div>
               </div>
               <Button 
