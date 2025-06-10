@@ -64,7 +64,7 @@ const Navigation = () => {
                 document.body.removeChild(link);
               }}
             >
-              🚀 Teste Grátis
+              🚀 Acessar Sistema
             </Button>
           </div>
 
@@ -120,7 +120,7 @@ const Navigation = () => {
                   setIsMenuOpen(false);
                 }}
               >
-                🚀 Teste Grátis
+                🚀 Acessar Sistema
               </Button>
             </div>
           </div>
