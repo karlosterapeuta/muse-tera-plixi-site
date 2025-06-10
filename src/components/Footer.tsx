@@ -1,4 +1,3 @@
-
 import { Music, Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 
 const Footer = () => {
@@ -31,6 +30,16 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 text-white">
+      {/* Inspirational Quote Section */}
+      <div className="bg-gradient-to-r from-blue-600 to-purple-600 py-8">
+        <div className="container-padding text-center">
+          <p className="text-lg lg:text-xl font-medium text-white italic max-w-4xl mx-auto">
+            "Portanto, quer comais quer bebais, ou façais qualquer outra coisa, fazei tudo para glória de Deus."
+          </p>
+          <span className="text-sm text-blue-100 mt-2 block">1 Coríntios 10:31</span>
+        </div>
+      </div>
+
       {/* Main footer content */}
       <div className="container-padding py-16">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
