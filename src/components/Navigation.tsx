@@ -1,36 +1,25 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
-import { removeBackground, loadImage } from '@/utils/backgroundRemoval';
+import { Menu, X, Music } from 'lucide-react';
+import { processLogoImage } from '@/utils/processLogo';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [processedLogoUrl, setProcessedLogoUrl] = useState<string>('');
+  const [logoUrl, setLogoUrl] = useState<string>('');
 
   useEffect(() => {
-    const processLogo = async () => {
+    const loadLogo = async () => {
       try {
-        // Load the new logo image
-        const response = await fetch('/lovable-uploads/55b35340-b7ae-4ec0-b3be-a957eb101e03.png');
-        const blob = await response.blob();
-        
-        // Convert to HTMLImageElement
-        const imageElement = await loadImage(blob);
-        
-        // Remove background
-        const processedBlob = await removeBackground(imageElement);
-        
-        // Create object URL for the processed image
-        const processedUrl = URL.createObjectURL(processedBlob);
-        setProcessedLogoUrl(processedUrl);
+        const processedLogoUrl = await processLogoImage();
+        setLogoUrl(processedLogoUrl);
       } catch (error) {
-        console.error('Error processing logo:', error);
+        console.error('Failed to process logo:', error);
         // Fallback to original image
-        setProcessedLogoUrl('/lovable-uploads/55b35340-b7ae-4ec0-b3be-a957eb101e03.png');
+        setLogoUrl('/lovable-uploads/e5c74d3f-6536-4807-a17c-69707a8d36e8.png');
       }
     };
-    processLogo();
+    loadLogo();
   }, []);
 
   const navItems = [
@@ -48,11 +37,9 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <img 
-              src={processedLogoUrl || '/lovable-uploads/55b35340-b7ae-4ec0-b3be-a957eb101e03.png'} 
-              alt="MuseTera Logo" 
-              className="h-12 w-12 object-contain"
-            />
+            <div className="p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-lg">
+              <Music className="h-6 w-6 text-white" />
+            </div>
             <span className="text-2xl font-bold font-playfair gradient-text">
               MuseTera
             </span>
