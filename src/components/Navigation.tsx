@@ -37,19 +37,9 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            {logoUrl ? (
-              <div className="flex items-center justify-center w-12 h-12 bg-white rounded-xl shadow-lg p-2">
-                <img 
-                  src={logoUrl} 
-                  alt="MuseTera Logo" 
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            ) : (
-              <div className="p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-lg">
-                <Music className="h-6 w-6 text-white" />
-              </div>
-            )}
+            <div className="p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-lg">
+              <Music className="h-6 w-6 text-white" />
+            </div>
             <span className="text-2xl font-bold font-playfair gradient-text">
               MuseTera
             </span>
