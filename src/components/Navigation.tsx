@@ -1,10 +1,26 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Music } from 'lucide-react';
+import { processLogoImage } from '@/utils/processLogo';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [logoUrl, setLogoUrl] = useState<string>('');
+
+  useEffect(() => {
+    const loadLogo = async () => {
+      try {
+        const processedLogoUrl = await processLogoImage();
+        setLogoUrl(processedLogoUrl);
+      } catch (error) {
+        console.error('Failed to process logo:', error);
+        // Fallback to original image
+        setLogoUrl('/lovable-uploads/e5c74d3f-6536-4807-a17c-69707a8d36e8.png');
+      }
+    };
+    loadLogo();
+  }, []);
 
   const navItems = [
     { name: 'Sobre', href: '#sobre' },
@@ -21,9 +37,17 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg shadow-lg">
-              <Music className="h-6 w-6 text-white" />
-            </div>
+            {logoUrl ? (
+              <img 
+                src={logoUrl} 
+                alt="MuseTera Logo" 
+                className="h-10 w-10 object-contain"
+              />
+            ) : (
+              <div className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg shadow-lg">
+                <Music className="h-6 w-6 text-white" />
+              </div>
+            )}
             <span className="text-xl font-bold font-playfair gradient-text">
               MuseTera
             </span>
