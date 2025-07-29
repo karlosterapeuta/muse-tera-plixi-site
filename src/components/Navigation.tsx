@@ -1,10 +1,37 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import { removeBackground, loadImage } from '@/utils/backgroundRemoval';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [processedLogoUrl, setProcessedLogoUrl] = useState<string>('');
+
+  useEffect(() => {
+    const processLogo = async () => {
+      try {
+        // Load the new logo image
+        const response = await fetch('/lovable-uploads/55b35340-b7ae-4ec0-b3be-a957eb101e03.png');
+        const blob = await response.blob();
+        
+        // Convert to HTMLImageElement
+        const imageElement = await loadImage(blob);
+        
+        // Remove background
+        const processedBlob = await removeBackground(imageElement);
+        
+        // Create object URL for the processed image
+        const processedUrl = URL.createObjectURL(processedBlob);
+        setProcessedLogoUrl(processedUrl);
+      } catch (error) {
+        console.error('Error processing logo:', error);
+        // Fallback to original image
+        setProcessedLogoUrl('/lovable-uploads/55b35340-b7ae-4ec0-b3be-a957eb101e03.png');
+      }
+    };
+    processLogo();
+  }, []);
 
   const navItems = [
     { name: 'Sobre', href: '#sobre' },
@@ -22,7 +49,7 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <img 
-              src="/lovable-uploads/55b35340-b7ae-4ec0-b3be-a957eb101e03.png" 
+              src={processedLogoUrl || '/lovable-uploads/55b35340-b7ae-4ec0-b3be-a957eb101e03.png'} 
               alt="MuseTera Logo" 
               className="h-12 w-12 object-contain"
             />
