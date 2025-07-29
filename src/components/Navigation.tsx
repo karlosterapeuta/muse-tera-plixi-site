@@ -36,19 +36,21 @@ const Navigation = () => {
       <div className="container-padding">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3">
             {logoUrl ? (
-              <img 
-                src={logoUrl} 
-                alt="MuseTera Logo" 
-                className="h-10 w-10 object-contain"
-              />
+              <div className="flex items-center justify-center w-12 h-12 bg-white rounded-xl shadow-lg p-2">
+                <img 
+                  src={logoUrl} 
+                  alt="MuseTera Logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
             ) : (
-              <div className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg shadow-lg">
+              <div className="p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-lg">
                 <Music className="h-6 w-6 text-white" />
               </div>
             )}
-            <span className="text-xl font-bold font-playfair gradient-text">
+            <span className="text-2xl font-bold font-playfair gradient-text">
               MuseTera
             </span>
           </div>
