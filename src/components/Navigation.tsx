@@ -36,10 +36,7 @@ const Navigation = () => {
       <div className="container-padding">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-lg">
-              <Music className="h-6 w-6 text-white" />
-            </div>
+          <div className="flex items-center">
             <span className="text-2xl font-bold font-playfair gradient-text">
               MuseTera
             </span>
