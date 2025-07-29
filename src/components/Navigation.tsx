@@ -1,26 +1,10 @@
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Music } from 'lucide-react';
-import { processLogoImage } from '@/utils/processLogo';
+import { Menu, X } from 'lucide-react';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [logoUrl, setLogoUrl] = useState<string>('');
-
-  useEffect(() => {
-    const loadLogo = async () => {
-      try {
-        const processedLogoUrl = await processLogoImage();
-        setLogoUrl(processedLogoUrl);
-      } catch (error) {
-        console.error('Failed to process logo:', error);
-        // Fallback to original image
-        setLogoUrl('/lovable-uploads/e5c74d3f-6536-4807-a17c-69707a8d36e8.png');
-      }
-    };
-    loadLogo();
-  }, []);
 
   const navItems = [
     { name: 'Sobre', href: '#sobre' },
@@ -36,7 +20,12 @@ const Navigation = () => {
       <div className="container-padding">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center space-x-3">
+            <img 
+              src="/lovable-uploads/55b35340-b7ae-4ec0-b3be-a957eb101e03.png" 
+              alt="MuseTera Logo" 
+              className="h-12 w-12 object-contain"
+            />
             <span className="text-2xl font-bold font-playfair gradient-text">
               MuseTera
             </span>
