@@ -18,8 +18,11 @@ const Hero = () => {
           {/* Content */}
           <div className="space-y-8 animate-fade-in">
             <div className="space-y-4">
-              <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-100 to-blue-100 text-blue-700 rounded-full text-sm font-medium border border-blue-200">
-                🏆 #1 Sistema para Musicoterapeutas no Brasil
+              <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-amber-100 via-yellow-100 to-orange-100 text-orange-700 rounded-full text-lg lg:text-xl font-bold border-2 border-amber-300 shadow-lg animate-pulse">
+                <span className="text-2xl mr-2">🏆</span>
+                <span className="font-extrabold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+                  #1 Sistema para Musicoterapeutas no Brasil
+                </span>
               </div>
               <h1 className="text-4xl lg:text-6xl font-bold font-playfair leading-tight">
                 Gerencie sua prática de{' '}
