@@ -42,9 +42,14 @@ const Navigation = () => {
               alt="MuseTera Logo" 
               className="h-10 w-10"
             />
-            <span className="text-2xl font-bold font-playfair gradient-text">
-              MuseTera
-            </span>
+            <div className="flex flex-col">
+              <span className="text-2xl font-bold font-playfair gradient-text">
+                MuseTera
+              </span>
+              <span className="text-sm text-gray-600 hidden sm:block">
+                Sistema de Gestão para Musicoterapeutas
+              </span>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
