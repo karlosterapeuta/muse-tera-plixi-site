@@ -12,7 +12,7 @@ const WhatsAppFloat = () => {
   return (
     <Button
       onClick={handleWhatsAppClick}
-      className="fixed bottom-24 right-6 z-50 h-14 w-14 rounded-full bg-[#25D366] hover:bg-[#128C7E] shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse"
+      className="fixed bottom-32 right-6 z-50 h-14 w-14 rounded-full bg-[#25D366] hover:bg-[#128C7E] shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse"
       size="icon"
       title="Fale conosco no WhatsApp"
     >
