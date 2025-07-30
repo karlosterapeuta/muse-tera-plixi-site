@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 
 const WhatsAppFloat = () => {
   const handleWhatsAppClick = () => {
-    const phoneNumber = "5511999999999"; // Replace with actual WhatsApp number
+    const phoneNumber = "5581986953506"; // WhatsApp number
     const message = "Olá! Gostaria de saber mais sobre o MuseTera.";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
