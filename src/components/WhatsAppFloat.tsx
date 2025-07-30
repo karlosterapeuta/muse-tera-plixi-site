@@ -23,7 +23,7 @@ const WhatsAppFloat = () => {
       >
         {/* Ícone do WhatsApp */}
         <img 
-          src="/lovable-uploads/540c0a53-2b15-49b2-9386-e73abe15dda4.png" 
+          src="/lovable-uploads/9a828bf4-9e27-4b6c-968b-ddaff3f9b71e.png" 
           alt="WhatsApp" 
           className="w-8 h-8 group-hover:scale-110 transition-transform duration-200"
         />
