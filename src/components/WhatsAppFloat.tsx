@@ -18,7 +18,12 @@ const WhatsAppFloat = () => {
         size="icon"
         title="💬 Fale conosco no WhatsApp"
       >
-        {/* Botão sem ícone */}
+        {/* Ícone do WhatsApp */}
+        <img 
+          src="/lovable-uploads/9cb6c893-2993-4234-8332-9e47d8c83eed.png" 
+          alt="WhatsApp" 
+          className="w-8 h-8 group-hover:scale-110 transition-transform duration-200"
+        />
         
         {/* Badge de notificação */}
         <div className="absolute -top-1 -right-1 h-4 w-4 bg-red-500 rounded-full border-2 border-white animate-bounce">
