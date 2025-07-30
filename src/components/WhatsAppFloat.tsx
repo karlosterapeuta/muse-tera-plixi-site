@@ -1,4 +1,4 @@
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const WhatsAppFloat = () => {
@@ -10,14 +10,31 @@ const WhatsAppFloat = () => {
   };
 
   return (
-    <Button
-      onClick={handleWhatsAppClick}
-      className="fixed bottom-32 right-6 z-50 h-14 w-14 rounded-full bg-[#25D366] hover:bg-[#128C7E] shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse"
-      size="icon"
-      title="Fale conosco no WhatsApp"
-    >
-      <MessageCircle className="h-6 w-6 text-white" />
-    </Button>
+    <div className="fixed bottom-32 right-6 z-50">
+      {/* Pulso de fundo */}
+      <div className="absolute inset-0 bg-[#25D366] rounded-full animate-ping opacity-75"></div>
+      
+      {/* Botão principal */}
+      <Button
+        onClick={handleWhatsAppClick}
+        className="relative h-16 w-16 rounded-full bg-gradient-to-br from-[#25D366] to-[#128C7E] hover:from-[#128C7E] hover:to-[#0D5D56] shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 group border-2 border-white/20"
+        size="icon"
+        title="💬 Fale conosco no WhatsApp"
+      >
+        {/* Emoji do WhatsApp */}
+        <span className="text-2xl group-hover:scale-110 transition-transform duration-200">💬</span>
+        
+        {/* Badge de notificação */}
+        <div className="absolute -top-1 -right-1 h-4 w-4 bg-red-500 rounded-full border-2 border-white animate-bounce">
+          <div className="h-full w-full bg-red-400 rounded-full animate-pulse"></div>
+        </div>
+      </Button>
+      
+      {/* Texto flutuante */}
+      <div className="absolute -left-32 top-1/2 transform -translate-y-1/2 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        <span className="text-sm font-medium text-gray-800 whitespace-nowrap">Converse conosco!</span>
+      </div>
+    </div>
   );
 };
 
