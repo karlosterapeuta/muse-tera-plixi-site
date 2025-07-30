@@ -11,6 +11,7 @@ import FAQ from '@/components/FAQ';
 import Pricing from '@/components/Pricing';
 import Footer from '@/components/Footer';
 import ChatSupport from '@/components/ChatSupport';
+import WhatsAppFloat from '@/components/WhatsAppFloat';
 
 const Index = () => {
   return (
@@ -27,6 +28,7 @@ const Index = () => {
       <Pricing />
       <Footer />
       <ChatSupport />
+      <WhatsAppFloat />
     </div>
   );
 };
