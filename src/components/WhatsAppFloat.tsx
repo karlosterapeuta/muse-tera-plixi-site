@@ -12,10 +12,9 @@ const WhatsAppFloat = () => {
   return (
     <div className="fixed bottom-32 right-6 z-50">
       {/* Botão principal */}
-      <Button
+      <div
         onClick={handleWhatsAppClick}
-        className="relative h-20 w-20 rounded-full bg-transparent hover:bg-transparent shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 group border-0 p-0 animate-bounce"
-        size="icon"
+        className="relative h-20 w-20 rounded-full cursor-pointer shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 group animate-bounce"
         title="💬 Fale conosco no WhatsApp"
       >
         {/* Ícone do WhatsApp */}
@@ -29,7 +28,7 @@ const WhatsAppFloat = () => {
         <div className="absolute -top-1 -right-1 h-4 w-4 bg-red-500 rounded-full border-2 border-white animate-bounce">
           <div className="h-full w-full bg-red-400 rounded-full animate-pulse"></div>
         </div>
-      </Button>
+      </div>
       
       {/* Texto flutuante */}
       <div className="absolute -left-32 top-1/2 transform -translate-y-1/2 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
