@@ -36,7 +36,12 @@ const Navigation = () => {
       <div className="container-padding">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center space-x-2">
+            <img 
+              src="/lovable-uploads/8dd8c680-bdcd-488a-837d-634c9bbe6a5d.png" 
+              alt="MuseTera Logo" 
+              className="h-10 w-10"
+            />
             <span className="text-2xl font-bold font-playfair gradient-text">
               MuseTera
             </span>
