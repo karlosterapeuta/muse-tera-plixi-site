@@ -14,15 +14,15 @@ const WhatsAppFloat = () => {
       {/* Botão principal */}
       <Button
         onClick={handleWhatsAppClick}
-        className="relative h-16 w-16 rounded-full bg-transparent hover:bg-gray-100 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 group border-2 border-gray-300"
+        className="relative h-16 w-16 rounded-full bg-transparent hover:bg-transparent shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 group border-0 p-0"
         size="icon"
         title="💬 Fale conosco no WhatsApp"
       >
         {/* Ícone do WhatsApp */}
         <img 
-          src="/lovable-uploads/9cb6c893-2993-4234-8332-9e47d8c83eed.png" 
+          src="/lovable-uploads/b120cbdf-87e8-4764-95d5-9ce1d865b19b.png" 
           alt="WhatsApp" 
-          className="w-8 h-8 group-hover:scale-110 transition-transform duration-200"
+          className="w-full h-full group-hover:scale-110 transition-transform duration-200 rounded-full"
         />
         
         {/* Badge de notificação */}
