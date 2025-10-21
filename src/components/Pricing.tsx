@@ -11,18 +11,18 @@ const Pricing = () => {
       period: '/mês',
       description: 'Flexibilidade máxima para seu negócio',
       features: [
-        'Até 30 pacientes',
-        'Agendamento básico',
-        'Relatórios simples',
-        'Suporte por email',
-        '5GB de armazenamento',
-        'Cancele quando quiser'
+        'Pacientes ilimitados',
+        'Agendamento avançado',
+        'Relatórios detalhados',
+        'Planos de tratamento',
+        'Suporte prioritário',
+        '50GB de armazenamento'
       ],
       cta: 'Assinar Plano',
       popular: false
     },
     {
-      name: '6 Meses',
+      name: 'FIDELIDADE 6 Meses',
       price: 'R$ 49,90',
       period: '/mês',
       description: 'Economia de 29% com compromisso semestral',
@@ -32,27 +32,23 @@ const Pricing = () => {
         'Relatórios detalhados',
         'Planos de tratamento',
         'Suporte prioritário',
-        '50GB de armazenamento',
-        'Integração com WhatsApp',
-        'Backup automático'
+        '50GB de armazenamento'
       ],
       cta: 'Assinar Plano',
       popular: true
     },
     {
-      name: '12 Meses',
+      name: 'FIDELIDADE 12 Meses',
       price: 'R$ 39,90',
       period: '/mês',
       description: 'Melhor custo-benefício com plano anual',
       features: [
-        'Múltiplos terapeutas',
-        'Gestão de equipe',
-        'Dashboard executivo',
-        'API personalizada',
-        'Suporte dedicado',
-        'Armazenamento ilimitado',
-        'Treinamento personalizado',
-        'Compliance LGPD'
+        'Pacientes ilimitados',
+        'Agendamento avançado',
+        'Relatórios detalhados',
+        'Planos de tratamento',
+        'Suporte prioritário',
+        '50GB de armazenamento'
       ],
       cta: 'Assinar Plano',
       popular: false
@@ -119,9 +115,9 @@ const Pricing = () => {
                   onClick={() => {
                     if (plan.name === 'Sem Fidelidade') {
                       window.open('https://api.whatsapp.com/send?phone=5581986953506&text=Oi%2C%20tenho%20interesse%20em%20adquirir%20o%20sistema%20para%20Musicoterapeutas.', '_blank');
-                    } else if (plan.name === '6 Meses') {
+                    } else if (plan.name === 'FIDELIDADE 6 Meses') {
                       window.open('https://www.asaas.com/c/6vaoui3drgmdpcex', '_blank');
-                    } else if (plan.name === '12 Meses') {
+                    } else if (plan.name === 'FIDELIDADE 12 Meses') {
                       window.open('https://www.asaas.com/c/gtcimltw64g0odx1', '_blank');
                     }
                   }}
