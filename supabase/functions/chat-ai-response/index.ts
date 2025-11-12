@@ -268,18 +268,17 @@ serve(async (req) => {
     const { message } = await req.json();
     console.log('Mensagem recebida:', message);
 
-    // Tentar obter a API key com fallbacks melhorados
-    let GEMINI_API_KEY = Deno.env.get('GOOGLE_GEMINI_API_KEY') ||
-                         Deno.env.get('GEMINI_API_KEY') || 
-                         Deno.env.get('GOOGLE_AI_API_KEY') ||
-                         'AIzaSyA-zUuf0yd0kJsrKfPjq4HijO6DBe0n38Y';
-
-    console.log('API Key encontrada:', GEMINI_API_KEY ? 'Sim' : 'Não');
+    // Get API key from environment - fail if not configured (security requirement)
+    const GEMINI_API_KEY = Deno.env.get('GOOGLE_AI_API_KEY') ||
+                           Deno.env.get('GOOGLE_GEMINI_API_KEY') ||
+                           Deno.env.get('GEMINI_API_KEY');
 
     if (!GEMINI_API_KEY) {
-      console.error('Nenhuma API key do Google Gemini foi encontrada');
-      throw new Error('API key não configurada');
+      console.error('CRITICAL: Google Gemini API key not configured in environment');
+      throw new Error('API key not configured. Please configure GOOGLE_AI_API_KEY in Supabase secrets.');
     }
+
+    console.log('API Key configured:', 'Yes');
 
     console.log('Enviando requisição para Gemini API...');
 
