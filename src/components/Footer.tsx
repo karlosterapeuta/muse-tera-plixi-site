@@ -46,9 +46,11 @@ const Footer = () => {
           {/* Brand section */}
           <div className="lg:col-span-1 space-y-6">
             <div className="flex items-center space-x-2">
-              <div className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg">
-                <Music className="h-6 w-6 text-white" />
-              </div>
+              <img 
+                src="/lovable-uploads/musetera-logo.jpeg" 
+                alt="MuseTera Logo" 
+                className="h-12 w-12 rounded-full object-cover"
+              />
               <span className="text-xl font-bold font-playfair">MuseTera</span>
             </div>
             <p className="text-gray-400 leading-relaxed">

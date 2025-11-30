@@ -38,9 +38,9 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <img 
-              src="/lovable-uploads/8dd8c680-bdcd-488a-837d-634c9bbe6a5d.png" 
+              src="/lovable-uploads/musetera-logo.jpeg" 
               alt="MuseTera Logo" 
-              className="h-10 w-10"
+              className="h-12 w-12 rounded-full object-cover"
             />
             <div className="flex flex-col">
               <span className="text-2xl font-bold font-playfair gradient-text">
