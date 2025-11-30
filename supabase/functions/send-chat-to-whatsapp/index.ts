@@ -1,6 +1,4 @@
-
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -13,33 +11,20 @@ serve(async (req) => {
   }
 
   try {
-    const { message, timestamp, userAgent, page } = await req.json()
+    const { message, userMessage, aiResponse } = await req.json()
     
-    console.log('Recebida mensagem do chat:', message)
+    console.log('📨 Recebida mensagem do chat')
+    console.log('👤 Usuário:', userMessage?.substring(0, 100))
+    console.log('🤖 Sofia:', aiResponse?.substring(0, 100))
 
-    // Inicializar cliente Supabase
-    const supabaseUrl = Deno.env.get('SUPABASE_URL')!
-    const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
-    const supabase = createClient(supabaseUrl, supabaseKey)
-
-    // Salvar mensagem no banco de dados
-    const { data, error } = await supabase
-      .from('chat_messages')
-      .insert([
-        { 
-          message, 
-          timestamp, 
-          user_agent: userAgent, 
-          page_url: page 
-        }
-      ])
-
-    if (error) {
-      console.error('Erro ao salvar no banco:', error)
-      throw error
+    // Validar que temos conteúdo válido
+    if (!message || !userMessage || !aiResponse || aiResponse.trim() === '') {
+      console.log('⚠️ Mensagem inválida ou vazia, ignorando envio para WhatsApp')
+      return new Response(
+        JSON.stringify({ success: true, message: 'Mensagem ignorada (vazia)' }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      )
     }
-
-    console.log('Mensagem salva no banco:', data)
 
     // Enviar para WhatsApp via Twilio (se configurado)
     const twilioSid = Deno.env.get('TWILIO_ACCOUNT_SID')
@@ -48,7 +33,7 @@ serve(async (req) => {
     const yourWhatsappNumber = Deno.env.get('YOUR_WHATSAPP_NUMBER')
 
     if (twilioSid && twilioToken && twilioWhatsappFrom && yourWhatsappNumber) {
-      console.log('Enviando para WhatsApp via Twilio...')
+      console.log('📞 Enviando para WhatsApp via Twilio...')
       
       const twilioResponse = await fetch(
         `https://api.twilio.com/2010-04-01/Accounts/${twilioSid}/Messages.json`,
@@ -61,30 +46,37 @@ serve(async (req) => {
           body: new URLSearchParams({
             From: `whatsapp:${twilioWhatsappFrom}`,
             To: `whatsapp:${yourWhatsappNumber}`,
-            Body: `Nova mensagem do chat MuseTera:\n\n${message}\n\nEnviada em: ${timestamp}\nPágina: ${page}`
+            Body: `🎵 Nova conversa MuseTera:\n\n👤 Usuário: ${userMessage}\n\n🤖 Sofia: ${aiResponse}\n\n⏰ ${new Date().toLocaleString('pt-BR')}`
           })
         }
       )
 
       if (twilioResponse.ok) {
-        console.log('Mensagem enviada para WhatsApp com sucesso!')
+        console.log('✅ Mensagem enviada para WhatsApp com sucesso!')
       } else {
-        const error = await twilioResponse.text()
-        console.error('Erro ao enviar para WhatsApp:', error)
+        const errorText = await twilioResponse.text()
+        console.error('❌ Erro ao enviar para WhatsApp:', errorText)
       }
     } else {
-      console.log('Credenciais do Twilio não configuradas, mensagem apenas salva no banco')
+      console.log('ℹ️ Credenciais do Twilio não configuradas. Mensagem apenas logada.')
     }
 
     return new Response(
-      JSON.stringify({ success: true, message: 'Mensagem processada com sucesso' }),
+      JSON.stringify({ 
+        success: true, 
+        message: 'Mensagem processada com sucesso',
+        logged: true 
+      }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     )
 
   } catch (error) {
-    console.error('Erro na função:', error)
+    console.error('❌ Erro na função:', error)
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ 
+        success: false,
+        error: error.message || 'Erro desconhecido' 
+      }),
       { 
         status: 500, 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
