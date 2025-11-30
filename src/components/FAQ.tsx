@@ -33,7 +33,7 @@ const FAQ = () => {
     {
       category: 'Preços',
       question: 'Posso cancelar a qualquer momento?',
-      answer: 'Sim! Não há fidelidade obrigatória em nenhum plano. Você pode cancelar sua assinatura a qualquer momento através do painel do usuário. Mesmo após o cancelamento, você mantém acesso aos seus dados por 90 dias para fazer backup. Oferecemos também planos com desconto para compromissos de 6 ou 12 meses.'
+      answer: 'Sim, você pode solicitar o cancelamento a qualquer momento.\n\nA lei garante 7 dias para arrependimento e reembolso integral em compras online.\n\nApós esse prazo, não existe obrigação de reembolso em nenhum plano.\n\nEm planos com fidelidade, o cliente recebe desconto por permanência mínima e, por isso, não há devolução de valores se cancelar antes do prazo.'
     },
     {
       category: 'Suporte',
