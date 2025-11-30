@@ -13,7 +13,7 @@ const Pricing = () => {
   const [showPixQRCode, setShowPixQRCode] = useState<'6meses' | '12meses' | null>(null);
   const { toast } = useToast();
 
-  const pixKey = 'pixmusetera@gmail.com';
+  const pixKey = 'portal.musetera@gmail.com';
   const planValue = 'R$ 69,90';
   const planValue6Meses = 'R$ 299,00';
   const planValue12Meses = 'R$ 478,80';
