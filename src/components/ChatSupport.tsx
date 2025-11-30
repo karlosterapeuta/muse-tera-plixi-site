@@ -2,8 +2,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { MessageCircle, X, Send, Bot, User, Sparkles } from 'lucide-react';
+import { MessageCircle, X, Send, Bot, User, Sparkles, Zap, Phone } from 'lucide-react';
 import { useChatSupport } from '@/hooks/useChatSupport';
+import ReactMarkdown from 'react-markdown';
 
 const ChatSupport = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -135,7 +136,23 @@ const ChatSupport = () => {
                         : 'bg-white text-gray-800 border border-gray-200'
                     } ${message.isTyping ? 'animate-pulse' : ''}`}
                   >
-                    {message.text}
+                    {message.isUser ? (
+                      message.text
+                    ) : (
+                      <div className="prose prose-sm max-w-none prose-p:my-1 prose-headings:my-2">
+                        <ReactMarkdown
+                          components={{
+                            p: ({node, ...props}) => <p className="whitespace-pre-wrap" {...props} />,
+                            a: ({node, ...props}) => <a className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer" {...props} />,
+                            strong: ({node, ...props}) => <strong className="font-semibold" {...props} />,
+                            ul: ({node, ...props}) => <ul className="list-disc pl-4 my-1" {...props} />,
+                            ol: ({node, ...props}) => <ol className="list-decimal pl-4 my-1" {...props} />,
+                          }}
+                        >
+                          {message.text}
+                        </ReactMarkdown>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -163,32 +180,46 @@ const ChatSupport = () => {
           </div>
 
           {/* Quick Actions */}
-          <div className="px-4 pb-4 bg-white">
-            <div className="flex gap-2 text-xs">
+          <div className="px-4 pb-4 bg-white border-t">
+            <p className="text-xs text-gray-500 mb-2 mt-2">Perguntas rápidas:</p>
+            <div className="flex flex-wrap gap-2">
               <Button
                 variant="outline"
                 size="sm"
-                className="text-xs h-7"
+                className="text-xs h-8 flex items-center gap-1"
                 onClick={() => sendMessage('Quais são os planos e preços?')}
                 disabled={isLoading}
               >
+                <Zap className="h-3 w-3" />
                 Ver Planos
               </Button>
               <Button
                 variant="outline"
                 size="sm"
-                className="text-xs h-7"
+                className="text-xs h-8 flex items-center gap-1"
                 onClick={() => sendMessage('Como funciona o sistema?')}
                 disabled={isLoading}
               >
+                <Sparkles className="h-3 w-3" />
                 Como Funciona
               </Button>
               <Button
                 variant="outline"
                 size="sm"
-                className="text-xs h-7"
+                className="text-xs h-8 flex items-center gap-1"
+                onClick={() => sendMessage('Funciona para TEA?')}
+                disabled={isLoading}
+              >
+                🎵
+                Para TEA
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="text-xs h-8 flex items-center gap-1 bg-green-50 hover:bg-green-100 border-green-200"
                 onClick={() => window.open('https://api.whatsapp.com/send?phone=5581986953506', '_blank')}
               >
+                <Phone className="h-3 w-3" />
                 WhatsApp
               </Button>
             </div>
