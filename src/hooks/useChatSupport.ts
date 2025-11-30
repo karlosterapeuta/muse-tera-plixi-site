@@ -161,27 +161,32 @@ export const useChatSupport = () => {
         }
       }
 
-      // Tentar enviar para WhatsApp (assíncrono, não bloqueia)
-      try {
-        const whatsappMessage = `Conversa MuseTera:\nUsuário: ${messageText}\nSofia: ${aiResponseText}`;
-        supabase.functions.invoke('send-chat-to-whatsapp', {
-          body: { 
-            message: whatsappMessage,
-            userMessage: messageText,
-            aiResponse: aiResponseText
-          }
-        }).catch(() => {
-          const chatLog = {
-            timestamp: new Date().toISOString(),
-            userMessage: messageText,
-            aiResponse: aiResponseText
-          };
-          const existingLogs = localStorage.getItem('musetera_chat_logs');
-          const logs = existingLogs ? JSON.parse(existingLogs) : [];
-          logs.push(chatLog);
-          localStorage.setItem('musetera_chat_logs', JSON.stringify(logs));
-        });
-      } catch {}
+      // IMPORTANTE: Enviar para WhatsApp SOMENTE após streaming completo
+      if (aiResponseText.trim()) {
+        try {
+          const whatsappMessage = `Conversa MuseTera:\nUsuário: ${messageText}\nSofia: ${aiResponseText}`;
+          supabase.functions.invoke('send-chat-to-whatsapp', {
+            body: { 
+              message: whatsappMessage,
+              userMessage: messageText,
+              aiResponse: aiResponseText
+            }
+          }).catch(() => {
+            // Fallback: salvar localmente se WhatsApp falhar
+            const chatLog = {
+              timestamp: new Date().toISOString(),
+              userMessage: messageText,
+              aiResponse: aiResponseText
+            };
+            const existingLogs = localStorage.getItem('musetera_chat_logs');
+            const logs = existingLogs ? JSON.parse(existingLogs) : [];
+            logs.push(chatLog);
+            localStorage.setItem('musetera_chat_logs', JSON.stringify(logs));
+          });
+        } catch (whatsappError) {
+          console.log('Erro ao enviar para WhatsApp:', whatsappError);
+        }
+      }
 
     } catch (error) {
       console.error('Erro ao enviar mensagem:', error);
