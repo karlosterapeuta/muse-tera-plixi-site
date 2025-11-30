@@ -3,7 +3,7 @@ import { removeBackground, loadImage } from './backgroundRemoval';
 export const processLogoImage = async (): Promise<string> => {
   try {
     // Load the uploaded logo image
-    const response = await fetch('/lovable-uploads/e5c74d3f-6536-4807-a17c-69707a8d36e8.png');
+    const response = await fetch('/lovable-uploads/musetera-logo.jpeg');
     const blob = await response.blob();
     
     // Convert to HTMLImageElement
@@ -17,6 +17,6 @@ export const processLogoImage = async (): Promise<string> => {
   } catch (error) {
     console.error('Error processing logo:', error);
     // Fallback to original image
-    return '/lovable-uploads/e5c74d3f-6536-4807-a17c-69707a8d36e8.png';
+    return '/lovable-uploads/musetera-logo.jpeg';
   }
 };

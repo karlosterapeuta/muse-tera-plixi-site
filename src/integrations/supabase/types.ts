@@ -7,6 +7,11 @@ export type Json =
   | Json[]
 
 export type Database = {
+  // Allows to automatically instantiate createClient with right options
+  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
+  __InternalSupabase: {
+    PostgrestVersion: "12.2.3 (519615d)"
+  }
   public: {
     Tables: {
       _prisma_migrations: {
@@ -112,6 +117,7 @@ export type Database = {
           brazilian_popular: boolean | null
           broad_motor_dev: boolean | null
           cervical_control: boolean | null
+          childhood_sound_environment: string | null
           children_repertoire: boolean | null
           choral_activities: boolean | null
           chronic_encephalopathy: boolean | null
@@ -125,6 +131,7 @@ export type Database = {
           emotional_ability: boolean | null
           equine_therapy: boolean | null
           extracurricular_activities: string | null
+          family_musical_history: string | null
           family_relationship: string | null
           fine_motor_dev: boolean | null
           first_words: boolean | null
@@ -139,17 +146,22 @@ export type Database = {
           legal_guardian: string | null
           low_frustration_tolerance: boolean | null
           main_clinical_demand: string | null
+          mother_movements_songs: string | null
           musical_education: boolean | null
+          night_body_sounds: string | null
           no_musical_experience: boolean | null
           nominal_call_response: boolean | null
           nonverbal_communication: boolean | null
           occupational_therapy: boolean | null
           other_diagnoses: boolean | null
           other_musical_genres: boolean | null
+          parents_sound_reactions: string | null
           patient_id: string | null
+          patient_musical_history: string | null
           peer_interaction: boolean | null
           physiotherapy: boolean | null
           positive_musical_response: boolean | null
+          pregnancy_sound_experiences: string | null
           professional_id: string | null
           psychological_support: boolean | null
           psychopedagogical: boolean | null
@@ -170,6 +182,7 @@ export type Database = {
           stereotyped_behavior: boolean | null
           therapeutic_goals: string | null
           treatment_approach: string | null
+          typical_house_sounds: string | null
           updated_at: string | null
           verbal_language_absence: boolean | null
           visual_contact: boolean | null
@@ -191,6 +204,7 @@ export type Database = {
           brazilian_popular?: boolean | null
           broad_motor_dev?: boolean | null
           cervical_control?: boolean | null
+          childhood_sound_environment?: string | null
           children_repertoire?: boolean | null
           choral_activities?: boolean | null
           chronic_encephalopathy?: boolean | null
@@ -204,6 +218,7 @@ export type Database = {
           emotional_ability?: boolean | null
           equine_therapy?: boolean | null
           extracurricular_activities?: string | null
+          family_musical_history?: string | null
           family_relationship?: string | null
           fine_motor_dev?: boolean | null
           first_words?: boolean | null
@@ -218,17 +233,22 @@ export type Database = {
           legal_guardian?: string | null
           low_frustration_tolerance?: boolean | null
           main_clinical_demand?: string | null
+          mother_movements_songs?: string | null
           musical_education?: boolean | null
+          night_body_sounds?: string | null
           no_musical_experience?: boolean | null
           nominal_call_response?: boolean | null
           nonverbal_communication?: boolean | null
           occupational_therapy?: boolean | null
           other_diagnoses?: boolean | null
           other_musical_genres?: boolean | null
+          parents_sound_reactions?: string | null
           patient_id?: string | null
+          patient_musical_history?: string | null
           peer_interaction?: boolean | null
           physiotherapy?: boolean | null
           positive_musical_response?: boolean | null
+          pregnancy_sound_experiences?: string | null
           professional_id?: string | null
           psychological_support?: boolean | null
           psychopedagogical?: boolean | null
@@ -249,6 +269,7 @@ export type Database = {
           stereotyped_behavior?: boolean | null
           therapeutic_goals?: string | null
           treatment_approach?: string | null
+          typical_house_sounds?: string | null
           updated_at?: string | null
           verbal_language_absence?: boolean | null
           visual_contact?: boolean | null
@@ -270,6 +291,7 @@ export type Database = {
           brazilian_popular?: boolean | null
           broad_motor_dev?: boolean | null
           cervical_control?: boolean | null
+          childhood_sound_environment?: string | null
           children_repertoire?: boolean | null
           choral_activities?: boolean | null
           chronic_encephalopathy?: boolean | null
@@ -283,6 +305,7 @@ export type Database = {
           emotional_ability?: boolean | null
           equine_therapy?: boolean | null
           extracurricular_activities?: string | null
+          family_musical_history?: string | null
           family_relationship?: string | null
           fine_motor_dev?: boolean | null
           first_words?: boolean | null
@@ -297,17 +320,22 @@ export type Database = {
           legal_guardian?: string | null
           low_frustration_tolerance?: boolean | null
           main_clinical_demand?: string | null
+          mother_movements_songs?: string | null
           musical_education?: boolean | null
+          night_body_sounds?: string | null
           no_musical_experience?: boolean | null
           nominal_call_response?: boolean | null
           nonverbal_communication?: boolean | null
           occupational_therapy?: boolean | null
           other_diagnoses?: boolean | null
           other_musical_genres?: boolean | null
+          parents_sound_reactions?: string | null
           patient_id?: string | null
+          patient_musical_history?: string | null
           peer_interaction?: boolean | null
           physiotherapy?: boolean | null
           positive_musical_response?: boolean | null
+          pregnancy_sound_experiences?: string | null
           professional_id?: string | null
           psychological_support?: boolean | null
           psychopedagogical?: boolean | null
@@ -328,6 +356,7 @@ export type Database = {
           stereotyped_behavior?: boolean | null
           therapeutic_goals?: string | null
           treatment_approach?: string | null
+          typical_house_sounds?: string | null
           updated_at?: string | null
           verbal_language_absence?: boolean | null
           visual_contact?: boolean | null
@@ -414,6 +443,127 @@ export type Database = {
         }
         Relationships: []
       }
+      course_lessons: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          duration_minutes: number | null
+          id: string
+          is_free_preview: boolean | null
+          module_id: string
+          order_index: number | null
+          title: string
+          updated_at: string | null
+          youtube_url: string
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          duration_minutes?: number | null
+          id?: string
+          is_free_preview?: boolean | null
+          module_id: string
+          order_index?: number | null
+          title: string
+          updated_at?: string | null
+          youtube_url: string
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          duration_minutes?: number | null
+          id?: string
+          is_free_preview?: boolean | null
+          module_id?: string
+          order_index?: number | null
+          title?: string
+          updated_at?: string | null
+          youtube_url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "course_lessons_module_id_fkey"
+            columns: ["module_id"]
+            isOneToOne: false
+            referencedRelation: "course_modules"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      course_modules: {
+        Row: {
+          course_id: string
+          created_at: string | null
+          description: string | null
+          id: string
+          order_index: number | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          course_id: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          order_index?: number | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          course_id?: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          order_index?: number | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "course_modules_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      courses: {
+        Row: {
+          created_at: string | null
+          created_by: string | null
+          description: string | null
+          id: string
+          instructor_name: string | null
+          is_published: boolean | null
+          thumbnail_url: string | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          instructor_name?: string | null
+          is_published?: boolean | null
+          thumbnail_url?: string | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          instructor_name?: string | null
+          is_published?: boolean | null
+          thumbnail_url?: string | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       financial_records: {
         Row: {
           amount: number
@@ -421,9 +571,15 @@ export type Database = {
           created_at: string | null
           description: string | null
           id: string
+          is_recurring: boolean | null
+          parent_record_id: string | null
           patient_id: string | null
           professional_id: string
+          recurrence_end_date: string | null
+          recurrence_pattern: Json | null
+          recurrence_type: string | null
           session_date: string
+          session_status: Database["public"]["Enums"]["session_status"] | null
           updated_at: string | null
         }
         Insert: {
@@ -432,9 +588,15 @@ export type Database = {
           created_at?: string | null
           description?: string | null
           id?: string
+          is_recurring?: boolean | null
+          parent_record_id?: string | null
           patient_id?: string | null
           professional_id: string
+          recurrence_end_date?: string | null
+          recurrence_pattern?: Json | null
+          recurrence_type?: string | null
           session_date: string
+          session_status?: Database["public"]["Enums"]["session_status"] | null
           updated_at?: string | null
         }
         Update: {
@@ -443,9 +605,15 @@ export type Database = {
           created_at?: string | null
           description?: string | null
           id?: string
+          is_recurring?: boolean | null
+          parent_record_id?: string | null
           patient_id?: string | null
           professional_id?: string
+          recurrence_end_date?: string | null
+          recurrence_pattern?: Json | null
+          recurrence_type?: string | null
           session_date?: string
+          session_status?: Database["public"]["Enums"]["session_status"] | null
           updated_at?: string | null
         }
         Relationships: [
@@ -454,6 +622,13 @@ export type Database = {
             columns: ["clinic_id"]
             isOneToOne: false
             referencedRelation: "clinics"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "financial_records_parent_record_id_fkey"
+            columns: ["parent_record_id"]
+            isOneToOne: false
+            referencedRelation: "financial_records"
             referencedColumns: ["id"]
           },
           {
@@ -544,13 +719,17 @@ export type Database = {
           association: string | null
           avatar_url: string | null
           created_at: string
+          digital_signature_url: string | null
+          digital_stamp_url: string | null
           email: string | null
           id: string
           license_number: string | null
           name: string
           phone: string | null
+          qr_link: string | null
           register: string | null
           specialty: string | null
+          stamp_photo_url: string | null
           updated_at: string
           user_id: string | null
         }
@@ -558,13 +737,17 @@ export type Database = {
           association?: string | null
           avatar_url?: string | null
           created_at?: string
+          digital_signature_url?: string | null
+          digital_stamp_url?: string | null
           email?: string | null
           id?: string
           license_number?: string | null
           name: string
           phone?: string | null
+          qr_link?: string | null
           register?: string | null
           specialty?: string | null
+          stamp_photo_url?: string | null
           updated_at?: string
           user_id?: string | null
         }
@@ -572,13 +755,17 @@ export type Database = {
           association?: string | null
           avatar_url?: string | null
           created_at?: string
+          digital_signature_url?: string | null
+          digital_stamp_url?: string | null
           email?: string | null
           id?: string
           license_number?: string | null
           name?: string
           phone?: string | null
+          qr_link?: string | null
           register?: string | null
           specialty?: string | null
+          stamp_photo_url?: string | null
           updated_at?: string
           user_id?: string | null
         }
@@ -588,27 +775,27 @@ export type Database = {
         Row: {
           avatar_url: string | null
           created_at: string
+          expires_at: string | null
           id: string
           name: string | null
-          role: string
           status: string
           updated_at: string
         }
         Insert: {
           avatar_url?: string | null
           created_at?: string
+          expires_at?: string | null
           id: string
           name?: string | null
-          role?: string
           status?: string
           updated_at?: string
         }
         Update: {
           avatar_url?: string | null
           created_at?: string
+          expires_at?: string | null
           id?: string
           name?: string | null
-          role?: string
           status?: string
           updated_at?: string
         }
@@ -734,61 +921,157 @@ export type Database = {
       }
       treatment_plans: {
         Row: {
+          activity_sequence: string | null
           additional_notes: string | null
           approach_type: string | null
+          clinical_diagnosis: string | null
+          clinical_family_history: string | null
+          complementary_materials: Json | null
           created_at: string | null
+          estimated_period_months: number | null
           evaluation_criteria: string | null
+          evaluation_criteria_list: Json | null
+          evolution_recording: string | null
           expected_outcomes: string | null
+          flexibility_adjustments: string | null
+          general_objectives: Json | null
           id: string
+          interaction_communication_level: string | null
           intervention_frequency: string | null
           intervention_strategies: string | null
+          musical_composition: string | null
+          musical_improvisation: string | null
+          musical_instruments: Json | null
+          musical_interests: string | null
           musical_methods: string | null
+          musical_recreation: string | null
           musical_resources: string | null
+          necessary_adjustments: string | null
+          observed_behaviors: string | null
+          patient_age: string | null
+          patient_birth_date: string | null
+          patient_full_name: string | null
           patient_id: string | null
+          physical_cognitive_conditions: string | null
+          plan_start_date: string | null
           professional_id: string | null
+          receptive_listening: string | null
+          reevaluation_frequency: string | null
+          responsible_person: string | null
+          rhythmic_dynamics: string | null
           session_duration: string | null
+          session_duration_minutes: number | null
+          session_structure: string | null
+          specific_objectives: Json | null
           status: string | null
+          technological_resources: Json | null
           therapeutic_focus: string | null
           treatment_model: string | null
           updated_at: string | null
+          voice_body_resources: Json | null
+          weekly_sessions: number | null
         }
         Insert: {
+          activity_sequence?: string | null
           additional_notes?: string | null
           approach_type?: string | null
+          clinical_diagnosis?: string | null
+          clinical_family_history?: string | null
+          complementary_materials?: Json | null
           created_at?: string | null
+          estimated_period_months?: number | null
           evaluation_criteria?: string | null
+          evaluation_criteria_list?: Json | null
+          evolution_recording?: string | null
           expected_outcomes?: string | null
+          flexibility_adjustments?: string | null
+          general_objectives?: Json | null
           id?: string
+          interaction_communication_level?: string | null
           intervention_frequency?: string | null
           intervention_strategies?: string | null
+          musical_composition?: string | null
+          musical_improvisation?: string | null
+          musical_instruments?: Json | null
+          musical_interests?: string | null
           musical_methods?: string | null
+          musical_recreation?: string | null
           musical_resources?: string | null
+          necessary_adjustments?: string | null
+          observed_behaviors?: string | null
+          patient_age?: string | null
+          patient_birth_date?: string | null
+          patient_full_name?: string | null
           patient_id?: string | null
+          physical_cognitive_conditions?: string | null
+          plan_start_date?: string | null
           professional_id?: string | null
+          receptive_listening?: string | null
+          reevaluation_frequency?: string | null
+          responsible_person?: string | null
+          rhythmic_dynamics?: string | null
           session_duration?: string | null
+          session_duration_minutes?: number | null
+          session_structure?: string | null
+          specific_objectives?: Json | null
           status?: string | null
+          technological_resources?: Json | null
           therapeutic_focus?: string | null
           treatment_model?: string | null
           updated_at?: string | null
+          voice_body_resources?: Json | null
+          weekly_sessions?: number | null
         }
         Update: {
+          activity_sequence?: string | null
           additional_notes?: string | null
           approach_type?: string | null
+          clinical_diagnosis?: string | null
+          clinical_family_history?: string | null
+          complementary_materials?: Json | null
           created_at?: string | null
+          estimated_period_months?: number | null
           evaluation_criteria?: string | null
+          evaluation_criteria_list?: Json | null
+          evolution_recording?: string | null
           expected_outcomes?: string | null
+          flexibility_adjustments?: string | null
+          general_objectives?: Json | null
           id?: string
+          interaction_communication_level?: string | null
           intervention_frequency?: string | null
           intervention_strategies?: string | null
+          musical_composition?: string | null
+          musical_improvisation?: string | null
+          musical_instruments?: Json | null
+          musical_interests?: string | null
           musical_methods?: string | null
+          musical_recreation?: string | null
           musical_resources?: string | null
+          necessary_adjustments?: string | null
+          observed_behaviors?: string | null
+          patient_age?: string | null
+          patient_birth_date?: string | null
+          patient_full_name?: string | null
           patient_id?: string | null
+          physical_cognitive_conditions?: string | null
+          plan_start_date?: string | null
           professional_id?: string | null
+          receptive_listening?: string | null
+          reevaluation_frequency?: string | null
+          responsible_person?: string | null
+          rhythmic_dynamics?: string | null
           session_duration?: string | null
+          session_duration_minutes?: number | null
+          session_structure?: string | null
+          specific_objectives?: Json | null
           status?: string | null
+          technological_resources?: Json | null
           therapeutic_focus?: string | null
           treatment_model?: string | null
           updated_at?: string | null
+          voice_body_resources?: Json | null
+          weekly_sessions?: number | null
         }
         Relationships: [
           {
@@ -839,6 +1122,77 @@ export type Database = {
           updatedAt?: string
         }
         Relationships: []
+      }
+      user_activity_logs: {
+        Row: {
+          activity_data: Json | null
+          activity_type: string
+          created_at: string
+          id: string
+          ip_address: string | null
+          user_agent: string | null
+          user_id: string
+        }
+        Insert: {
+          activity_data?: Json | null
+          activity_type: string
+          created_at?: string
+          id?: string
+          ip_address?: string | null
+          user_agent?: string | null
+          user_id: string
+        }
+        Update: {
+          activity_data?: Json | null
+          activity_type?: string
+          created_at?: string
+          id?: string
+          ip_address?: string | null
+          user_agent?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_course_progress: {
+        Row: {
+          completed_at: string | null
+          created_at: string | null
+          id: string
+          is_completed: boolean | null
+          lesson_id: string
+          updated_at: string | null
+          user_id: string
+          watch_time_seconds: number | null
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string | null
+          id?: string
+          is_completed?: boolean | null
+          lesson_id: string
+          updated_at?: string | null
+          user_id: string
+          watch_time_seconds?: number | null
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string | null
+          id?: string
+          is_completed?: boolean | null
+          lesson_id?: string
+          updated_at?: string | null
+          user_id?: string
+          watch_time_seconds?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_course_progress_lesson_id_fkey"
+            columns: ["lesson_id"]
+            isOneToOne: false
+            referencedRelation: "course_lessons"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {
@@ -934,23 +1288,44 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      force_user_logout: {
-        Args: { target_user_id: string }
-        Returns: boolean
-      }
+      force_user_logout:
+        | { Args: { target_user_id: string }; Returns: boolean }
+        | {
+            Args: { bypass_auth_check?: boolean; target_user_id: string }
+            Returns: boolean
+          }
       generate_invite_code: {
         Args: { expiration_days?: number }
         Returns: string
+      }
+      generate_recurring_financial_records: { Args: never; Returns: undefined }
+      get_user_sessions_count: {
+        Args: { target_user_id: string }
+        Returns: number
       }
       has_role: {
         Args: { role: Database["public"]["Enums"]["app_role"] }
         Returns: boolean
       }
+      is_user_access_expired: { Args: { user_id: string }; Returns: boolean }
+      is_valid_uuid: { Args: { input_text: string }; Returns: boolean }
+      set_default_expiration_for_users: {
+        Args: { default_days?: number }
+        Returns: number
+      }
+      update_user_expiration: {
+        Args: { new_expires_at: string; target_user_id: string }
+        Returns: boolean
+      }
       update_user_status: {
-        Args: { target_user_id: string; new_status: string }
+        Args: { new_status: string; target_user_id: string }
         Returns: boolean
       }
       validate_and_use_invite_code: {
+        Args: { invite_code: string; user_id: string }
+        Returns: boolean
+      }
+      validate_invite_code_with_limits: {
         Args: { invite_code: string; user_id: string }
         Returns: boolean
       }
@@ -975,6 +1350,9 @@ export type Database = {
         | "family_report"
         | "team_report"
         | "technical_report"
+        | "musicoterapia"
+        | "evolution_musicoterapia"
+      session_status: "scheduled" | "completed" | "no_show"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -982,21 +1360,25 @@ export type Database = {
   }
 }
 
-type DefaultSchema = Database[Extract<keyof Database, "public">]
+type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">
+
+type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">]
 
 export type Tables<
   DefaultSchemaTableNameOrOptions extends
     | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
-    | { schema: keyof Database },
+    | { schema: keyof DatabaseWithoutInternals },
   TableName extends DefaultSchemaTableNameOrOptions extends {
-    schema: keyof Database
+    schema: keyof DatabaseWithoutInternals
   }
-    ? keyof (Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
-        Database[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
+    ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+        DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
     : never = never,
-> = DefaultSchemaTableNameOrOptions extends { schema: keyof Database }
-  ? (Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
-      Database[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+      DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
       Row: infer R
     }
     ? R
@@ -1014,14 +1396,16 @@ export type Tables<
 export type TablesInsert<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
-    | { schema: keyof Database },
+    | { schema: keyof DatabaseWithoutInternals },
   TableName extends DefaultSchemaTableNameOrOptions extends {
-    schema: keyof Database
+    schema: keyof DatabaseWithoutInternals
   }
-    ? keyof Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
     : never = never,
-> = DefaultSchemaTableNameOrOptions extends { schema: keyof Database }
-  ? Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
       Insert: infer I
     }
     ? I
@@ -1037,14 +1421,16 @@ export type TablesInsert<
 export type TablesUpdate<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
-    | { schema: keyof Database },
+    | { schema: keyof DatabaseWithoutInternals },
   TableName extends DefaultSchemaTableNameOrOptions extends {
-    schema: keyof Database
+    schema: keyof DatabaseWithoutInternals
   }
-    ? keyof Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
     : never = never,
-> = DefaultSchemaTableNameOrOptions extends { schema: keyof Database }
-  ? Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
       Update: infer U
     }
     ? U
@@ -1060,14 +1446,16 @@ export type TablesUpdate<
 export type Enums<
   DefaultSchemaEnumNameOrOptions extends
     | keyof DefaultSchema["Enums"]
-    | { schema: keyof Database },
+    | { schema: keyof DatabaseWithoutInternals },
   EnumName extends DefaultSchemaEnumNameOrOptions extends {
-    schema: keyof Database
+    schema: keyof DatabaseWithoutInternals
   }
-    ? keyof Database[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
+    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
     : never = never,
-> = DefaultSchemaEnumNameOrOptions extends { schema: keyof Database }
-  ? Database[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
+> = DefaultSchemaEnumNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
     ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
     : never
@@ -1075,14 +1463,16 @@ export type Enums<
 export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
     | keyof DefaultSchema["CompositeTypes"]
-    | { schema: keyof Database },
+    | { schema: keyof DatabaseWithoutInternals },
   CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
-    schema: keyof Database
+    schema: keyof DatabaseWithoutInternals
   }
-    ? keyof Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
     : never = never,
-> = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
-  ? Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+> = PublicCompositeTypeNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
   : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
     ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never
@@ -1109,7 +1499,10 @@ export const Constants = {
         "family_report",
         "team_report",
         "technical_report",
+        "musicoterapia",
+        "evolution_musicoterapia",
       ],
+      session_status: ["scheduled", "completed", "no_show"],
     },
   },
 } as const
