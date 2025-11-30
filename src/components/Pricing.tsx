@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { QRCodeSVG } from 'qrcode.react';
 import { useToast } from '@/hooks/use-toast';
 import { useState } from 'react';
+import { generatePixPayload } from '@/utils/pixGenerator';
 
 const Pricing = () => {
   const [pixModalOpen, setPixModalOpen] = useState(false);
@@ -17,6 +18,28 @@ const Pricing = () => {
   const planValue = 'R$ 69,90';
   const planValue6Meses = 'R$ 299,00';
   const planValue12Meses = 'R$ 478,80';
+
+  // Gerar payloads PIX com valores corretos
+  const pixPayloadSemFidelidade = generatePixPayload({
+    pixKey,
+    beneficiaryName: 'MUSETERA',
+    city: 'RECIFE',
+    amount: 69.90
+  });
+
+  const pixPayload6Meses = generatePixPayload({
+    pixKey,
+    beneficiaryName: 'MUSETERA',
+    city: 'RECIFE',
+    amount: 299.00
+  });
+
+  const pixPayload12Meses = generatePixPayload({
+    pixKey,
+    beneficiaryName: 'MUSETERA',
+    city: 'RECIFE',
+    amount: 478.80
+  });
 
   const handleCopyPixKey = () => {
     navigator.clipboard.writeText(pixKey);
@@ -192,7 +215,7 @@ const Pricing = () => {
             <div className="flex flex-col items-center space-y-4 py-4">
               <div className="bg-white p-3 rounded-lg shadow-md">
                 <QRCodeSVG 
-                  value={pixKey}
+                  value={pixPayloadSemFidelidade}
                   size={160}
                   level="H"
                   includeMargin={true}
@@ -247,7 +270,7 @@ const Pricing = () => {
                 <div className="flex flex-col items-center space-y-4 py-4">
                   <div className="bg-white p-3 rounded-lg shadow-md">
                     <QRCodeSVG 
-                      value={pixKey}
+                      value={pixPayload6Meses}
                       size={160}
                       level="H"
                       includeMargin={true}
@@ -357,7 +380,7 @@ const Pricing = () => {
                 <div className="flex flex-col items-center space-y-4 py-4">
                   <div className="bg-white p-3 rounded-lg shadow-md">
                     <QRCodeSVG 
-                      value={pixKey}
+                      value={pixPayload12Meses}
                       size={160}
                       level="H"
                       includeMargin={true}
