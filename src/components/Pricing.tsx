@@ -1,4 +1,4 @@
-import { Check, Star, Shield, Copy, CreditCard, Smartphone, ArrowLeft } from 'lucide-react';
+import { Check, Star, Shield, Copy, CreditCard, Smartphone, ArrowLeft, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
@@ -12,6 +12,7 @@ const Pricing = () => {
   const [pix6MesesModalOpen, setPix6MesesModalOpen] = useState(false);
   const [pix12MesesModalOpen, setPix12MesesModalOpen] = useState(false);
   const [showPixQRCode, setShowPixQRCode] = useState<'6meses' | '12meses' | null>(null);
+  const [paymentSuccessPlan, setPaymentSuccessPlan] = useState<'semFidelidade' | '6meses' | '12meses' | null>(null);
   const { toast } = useToast();
 
   const pixKey = 'pixmusetera@gmail.com';
@@ -52,16 +53,27 @@ const Pricing = () => {
   const handleSendReceipt = () => {
     const message = `Olá! Acabei de fazer o pagamento do plano Sem Fidelidade (${planValue}) via PIX. Segue o comprovante.`;
     window.open(`https://api.whatsapp.com/send?phone=5581986953506&text=${encodeURIComponent(message)}`, '_blank');
+    setPaymentSuccessPlan('semFidelidade');
   };
 
   const handleSendReceipt6Meses = () => {
     const message = `Olá! Acabei de fazer o pagamento do plano FIDELIDADE 6 Meses (${planValue6Meses}) via PIX. Segue o comprovante.`;
     window.open(`https://api.whatsapp.com/send?phone=5581986953506&text=${encodeURIComponent(message)}`, '_blank');
+    setPaymentSuccessPlan('6meses');
   };
 
   const handleSendReceipt12Meses = () => {
     const message = `Olá! Acabei de fazer o pagamento do plano FIDELIDADE 12 Meses (${planValue12Meses}) via PIX. Segue o comprovante.`;
     window.open(`https://api.whatsapp.com/send?phone=5581986953506&text=${encodeURIComponent(message)}`, '_blank');
+    setPaymentSuccessPlan('12meses');
+  };
+
+  const handleCloseSuccessModal = () => {
+    setPaymentSuccessPlan(null);
+    setPixModalOpen(false);
+    setPix6MesesModalOpen(false);
+    setPix12MesesModalOpen(false);
+    setShowPixQRCode(null);
   };
 
   const plans = [
@@ -205,60 +217,123 @@ const Pricing = () => {
 
         <Dialog open={pixModalOpen} onOpenChange={setPixModalOpen}>
           <DialogContent className="max-w-[95vw] sm:max-w-md mx-4">
-            <DialogHeader>
-              <DialogTitle className="text-xl sm:text-2xl font-bold text-center">Pagamento via PIX</DialogTitle>
-              <DialogDescription className="text-center text-base sm:text-lg font-semibold gradient-text">
-                Sem Fidelidade - {planValue}
-              </DialogDescription>
-            </DialogHeader>
-            
-            <div className="flex flex-col items-center space-y-4 py-4">
-              <div className="bg-white p-3 rounded-lg shadow-md">
-                <QRCodeSVG 
-                  value={pixPayloadSemFidelidade}
-                  size={160}
-                  level="H"
-                  includeMargin={true}
-                />
-              </div>
+            {paymentSuccessPlan === 'semFidelidade' ? (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="sr-only">Pagamento Confirmado</DialogTitle>
+                </DialogHeader>
+                
+                <div className="flex flex-col items-center space-y-6 py-8">
+                  <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
+                    <CheckCircle className="h-12 w-12 text-green-600" />
+                  </div>
+                  
+                  <div className="text-center space-y-2">
+                    <h3 className="text-2xl font-bold text-gray-900">
+                      Pagamento efetuado com sucesso!
+                    </h3>
+                    <p className="text-gray-600">
+                      Seu comprovante foi enviado. Aguarde a confirmação do nosso time para ativar seu acesso.
+                    </p>
+                  </div>
 
-              <div className="w-full space-y-2">
-                <p className="text-sm font-medium text-gray-700">Chave PIX (E-mail):</p>
-                <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                  <span className="flex-1 text-xs sm:text-sm break-all">{pixKey}</span>
                   <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={handleCopyPixKey}
-                    className="h-8 w-8 flex-shrink-0"
+                    onClick={handleCloseSuccessModal}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                   >
-                    <Copy className="h-4 w-4" />
+                    Fechar
                   </Button>
                 </div>
-              </div>
+              </>
+            ) : (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="text-xl sm:text-2xl font-bold text-center">Pagamento via PIX</DialogTitle>
+                  <DialogDescription className="text-center text-base sm:text-lg font-semibold gradient-text">
+                    Sem Fidelidade - {planValue}
+                  </DialogDescription>
+                </DialogHeader>
+                
+                <div className="flex flex-col items-center space-y-4 py-4">
+                  <div className="bg-white p-3 rounded-lg shadow-md">
+                    <QRCodeSVG 
+                      value={pixPayloadSemFidelidade}
+                      size={160}
+                      level="H"
+                      includeMargin={true}
+                    />
+                  </div>
 
-              <div className="w-full bg-blue-50 border border-blue-200 rounded-lg p-3">
-                <p className="text-xs sm:text-sm text-blue-800 text-center">
-                  ℹ️ Após realizar o pagamento, envie o comprovante pelo WhatsApp para ativar seu acesso
-                </p>
-              </div>
+                  <div className="w-full space-y-2">
+                    <p className="text-sm font-medium text-gray-700">Chave PIX (E-mail):</p>
+                    <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                      <span className="flex-1 text-xs sm:text-sm break-all">{pixKey}</span>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={handleCopyPixKey}
+                        className="h-8 w-8 flex-shrink-0"
+                      >
+                        <Copy className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
 
-              <Button
-                onClick={handleSendReceipt}
-                className="w-full bg-green-600 hover:bg-green-700 text-white text-sm sm:text-base"
-              >
-                Enviar Comprovante via WhatsApp
-              </Button>
-            </div>
+                  <div className="w-full bg-blue-50 border border-blue-200 rounded-lg p-3">
+                    <p className="text-xs sm:text-sm text-blue-800 text-center">
+                      ℹ️ Após realizar o pagamento, envie o comprovante pelo WhatsApp para ativar seu acesso
+                    </p>
+                  </div>
+
+                  <Button
+                    onClick={handleSendReceipt}
+                    className="w-full bg-green-600 hover:bg-green-700 text-white text-sm sm:text-base"
+                  >
+                    Enviar Comprovante via WhatsApp
+                  </Button>
+                </div>
+              </>
+            )}
           </DialogContent>
         </Dialog>
 
         <Dialog open={pix6MesesModalOpen} onOpenChange={(open) => {
           setPix6MesesModalOpen(open);
-          if (!open) setShowPixQRCode(null);
+          if (!open) {
+            setShowPixQRCode(null);
+            setPaymentSuccessPlan(null);
+          }
         }}>
           <DialogContent className="max-w-[95vw] sm:max-w-lg mx-4">
-            {showPixQRCode === '6meses' ? (
+            {paymentSuccessPlan === '6meses' ? (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="sr-only">Pagamento Confirmado</DialogTitle>
+                </DialogHeader>
+                
+                <div className="flex flex-col items-center space-y-6 py-8">
+                  <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
+                    <CheckCircle className="h-12 w-12 text-green-600" />
+                  </div>
+                  
+                  <div className="text-center space-y-2">
+                    <h3 className="text-2xl font-bold text-gray-900">
+                      Pagamento efetuado com sucesso!
+                    </h3>
+                    <p className="text-gray-600">
+                      Seu comprovante foi enviado. Aguarde a confirmação do nosso time para ativar seu acesso.
+                    </p>
+                  </div>
+
+                  <Button
+                    onClick={handleCloseSuccessModal}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                  >
+                    Fechar
+                  </Button>
+                </div>
+              </>
+            ) : showPixQRCode === '6meses' ? (
               <>
                 <DialogHeader>
                   <DialogTitle className="text-xl sm:text-2xl font-bold text-center">Pagamento via PIX</DialogTitle>
@@ -365,10 +440,41 @@ const Pricing = () => {
 
         <Dialog open={pix12MesesModalOpen} onOpenChange={(open) => {
           setPix12MesesModalOpen(open);
-          if (!open) setShowPixQRCode(null);
+          if (!open) {
+            setShowPixQRCode(null);
+            setPaymentSuccessPlan(null);
+          }
         }}>
           <DialogContent className="max-w-[95vw] sm:max-w-lg mx-4">
-            {showPixQRCode === '12meses' ? (
+            {paymentSuccessPlan === '12meses' ? (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="sr-only">Pagamento Confirmado</DialogTitle>
+                </DialogHeader>
+                
+                <div className="flex flex-col items-center space-y-6 py-8">
+                  <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
+                    <CheckCircle className="h-12 w-12 text-green-600" />
+                  </div>
+                  
+                  <div className="text-center space-y-2">
+                    <h3 className="text-2xl font-bold text-gray-900">
+                      Pagamento efetuado com sucesso!
+                    </h3>
+                    <p className="text-gray-600">
+                      Seu comprovante foi enviado. Aguarde a confirmação do nosso time para ativar seu acesso.
+                    </p>
+                  </div>
+
+                  <Button
+                    onClick={handleCloseSuccessModal}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                  >
+                    Fechar
+                  </Button>
+                </div>
+              </>
+            ) : showPixQRCode === '12meses' ? (
               <>
                 <DialogHeader>
                   <DialogTitle className="text-xl sm:text-2xl font-bold text-center">Pagamento via PIX</DialogTitle>
