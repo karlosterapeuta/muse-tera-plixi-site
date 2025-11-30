@@ -100,7 +100,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="flex items-center space-x-3">
               <Mail className="h-5 w-5 text-blue-400" />
-              <span className="text-gray-400">contato@musetera.com.br</span>
+              <span className="text-gray-400">portal.musetera@gmail.com</span>
             </div>
             <div className="flex items-center space-x-3">
               <Phone className="h-5 w-5 text-blue-400" />
