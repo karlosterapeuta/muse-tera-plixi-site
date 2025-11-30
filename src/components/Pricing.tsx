@@ -20,7 +20,7 @@ const Pricing = () => {
       ],
       cta: 'Assinar Plano',
       popular: false,
-      refundGuarantee: false
+      refundGuarantee: true
     },
     {
       name: 'FIDELIDADE 6 Meses',
