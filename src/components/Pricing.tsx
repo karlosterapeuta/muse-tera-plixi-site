@@ -1,5 +1,5 @@
 
-import { Check, Star } from 'lucide-react';
+import { Check, Star, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
@@ -19,7 +19,8 @@ const Pricing = () => {
         '50GB de armazenamento'
       ],
       cta: 'Assinar Plano',
-      popular: false
+      popular: false,
+      refundGuarantee: false
     },
     {
       name: 'FIDELIDADE 6 Meses',
@@ -35,7 +36,8 @@ const Pricing = () => {
         '50GB de armazenamento'
       ],
       cta: 'Assinar Plano',
-      popular: true
+      popular: true,
+      refundGuarantee: true
     },
     {
       name: 'FIDELIDADE 12 Meses',
@@ -51,7 +53,8 @@ const Pricing = () => {
         '50GB de armazenamento'
       ],
       cta: 'Assinar Plano',
-      popular: false
+      popular: false,
+      refundGuarantee: true
     }
   ];
 
@@ -97,6 +100,15 @@ const Pricing = () => {
               </CardHeader>
 
               <CardContent className="space-y-6">
+                {plan.refundGuarantee && (
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-3 flex items-center gap-2">
+                    <Shield className="h-5 w-5 text-green-600 flex-shrink-0" />
+                    <span className="text-sm font-medium text-green-700">
+                      7 dias de garantia de reembolso
+                    </span>
+                  </div>
+                )}
+
                 <ul className="space-y-3">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center space-x-3">
@@ -106,7 +118,7 @@ const Pricing = () => {
                   ))}
                 </ul>
 
-                <Button 
+                <Button
                   className={`w-full py-3 text-lg font-semibold ${
                     plan.popular 
                       ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white'
