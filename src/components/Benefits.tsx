@@ -84,34 +84,6 @@ const Benefits = () => {
             </div>
           ))}
         </div>
-
-        {/* CTA Section */}
-        <div className="mt-16 text-center">
-          <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-lg max-w-4xl mx-auto">
-            <h3 className="text-2xl lg:text-3xl font-bold font-playfair mb-4">
-              Pronto para transformar sua prática?
-            </h3>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Junte-se a centenas de musicoterapeutas que já descobriram como 
-              o MuseTera pode revolucionar sua forma de trabalhar.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg"
-                onClick={() => window.open('https://portal-musetera.netlify.app/login', '_blank')}
-              >
-                Acessar Sistema
-              </button>
-              <button 
-                className="flex items-center justify-center gap-2 border-2 border-green-500 hover:border-green-600 hover:bg-green-50 text-green-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
-                onClick={() => window.open('https://api.whatsapp.com/send?phone=5581986953506&text=Oi%2C%20tenho%20interesse%20em%20adquirir%20o%20sistema%20para%20Musicoterapeutas.', '_blank')}
-              >
-                <MessageCircle className="h-5 w-5" />
-                WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
