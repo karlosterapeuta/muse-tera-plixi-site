@@ -127,33 +127,6 @@ const FAQ = () => {
             </Card>
           ))}
         </div>
-
-        {/* CTA Section */}
-        <div className="mt-16 text-center">
-          <div className="bg-white rounded-2xl p-8 shadow-lg max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold font-playfair mb-4">
-              Ainda tem dúvidas?
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Nossa equipe especializada está pronta para ajudar você a escolher 
-              o melhor plano e esclarecer todas as suas questões.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
-                onClick={() => window.open('https://api.whatsapp.com/send?phone=5581986953506&text=Olá! Tenho algumas dúvidas sobre o MuseTera e gostaria de conversar com um especialista.', '_blank')}
-              >
-                💬 Falar com Especialista
-              </button>
-              <button 
-                className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-300"
-                onClick={() => window.open('mailto:contato@musetera.com.br?subject=Dúvidas sobre o MuseTera', '_blank')}
-              >
-                📧 Enviar Email
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
