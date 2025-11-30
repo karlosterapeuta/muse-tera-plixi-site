@@ -1,9 +1,31 @@
-
-import { Check, Star, Shield } from 'lucide-react';
+import { Check, Star, Shield, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { QRCodeSVG } from 'qrcode.react';
+import { useToast } from '@/hooks/use-toast';
+import { useState } from 'react';
 
 const Pricing = () => {
+  const [pixModalOpen, setPixModalOpen] = useState(false);
+  const { toast } = useToast();
+
+  const pixKey = 'pixmusetera@gmail.com';
+  const planValue = 'R$ 69,90';
+
+  const handleCopyPixKey = () => {
+    navigator.clipboard.writeText(pixKey);
+    toast({
+      title: "Chave PIX copiada!",
+      description: "Cole no seu app de pagamento",
+    });
+  };
+
+  const handleSendReceipt = () => {
+    const message = `Olá! Acabei de fazer o pagamento do plano Sem Fidelidade (${planValue}) via PIX. Segue o comprovante.`;
+    window.open(`https://api.whatsapp.com/send?phone=5581986953506&text=${encodeURIComponent(message)}`, '_blank');
+  };
+
   const plans = [
     {
       name: 'Sem Fidelidade 30 dias',
@@ -126,7 +148,7 @@ const Pricing = () => {
                   } transition-all duration-300`}
                   onClick={() => {
                     if (plan.name === 'Sem Fidelidade 30 dias') {
-                      window.open('https://api.whatsapp.com/send?phone=5581986953506&text=Oi%2C%20tenho%20interesse%20em%20adquirir%20o%20sistema%20para%20Musicoterapeutas.', '_blank');
+                      setPixModalOpen(true);
                     } else if (plan.name === 'FIDELIDADE 6 Meses') {
                       window.open('https://www.asaas.com/c/6vaoui3drgmdpcex', '_blank');
                     } else if (plan.name === 'FIDELIDADE 12 Meses') {
@@ -140,6 +162,56 @@ const Pricing = () => {
             </Card>
           ))}
         </div>
+
+        <Dialog open={pixModalOpen} onOpenChange={setPixModalOpen}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle className="text-2xl font-bold text-center">Pagamento via PIX</DialogTitle>
+              <DialogDescription className="text-center text-lg font-semibold gradient-text">
+                Sem Fidelidade - {planValue}
+              </DialogDescription>
+            </DialogHeader>
+            
+            <div className="flex flex-col items-center space-y-6 py-4">
+              <div className="bg-white p-4 rounded-lg shadow-md">
+                <QRCodeSVG 
+                  value={pixKey}
+                  size={200}
+                  level="H"
+                  includeMargin={true}
+                />
+              </div>
+
+              <div className="w-full space-y-2">
+                <p className="text-sm font-medium text-gray-700">Chave PIX (E-mail):</p>
+                <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                  <span className="flex-1 text-sm font-mono">{pixKey}</span>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={handleCopyPixKey}
+                    className="h-8 w-8"
+                  >
+                    <Copy className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+
+              <div className="w-full bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <p className="text-sm text-blue-800 text-center">
+                  ℹ️ Após realizar o pagamento, envie o comprovante pelo WhatsApp para ativar seu acesso
+                </p>
+              </div>
+
+              <Button
+                onClick={handleSendReceipt}
+                className="w-full bg-green-600 hover:bg-green-700 text-white"
+              >
+                Enviar Comprovante via WhatsApp
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );
