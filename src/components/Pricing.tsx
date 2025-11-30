@@ -181,19 +181,19 @@ const Pricing = () => {
         </div>
 
         <Dialog open={pixModalOpen} onOpenChange={setPixModalOpen}>
-          <DialogContent className="sm:max-w-md">
+          <DialogContent className="max-w-[95vw] sm:max-w-md mx-4">
             <DialogHeader>
-              <DialogTitle className="text-2xl font-bold text-center">Pagamento via PIX</DialogTitle>
-              <DialogDescription className="text-center text-lg font-semibold gradient-text">
+              <DialogTitle className="text-xl sm:text-2xl font-bold text-center">Pagamento via PIX</DialogTitle>
+              <DialogDescription className="text-center text-base sm:text-lg font-semibold gradient-text">
                 Sem Fidelidade - {planValue}
               </DialogDescription>
             </DialogHeader>
             
-            <div className="flex flex-col items-center space-y-6 py-4">
-              <div className="bg-white p-4 rounded-lg shadow-md">
+            <div className="flex flex-col items-center space-y-4 py-4">
+              <div className="bg-white p-3 rounded-lg shadow-md">
                 <QRCodeSVG 
                   value={pixKey}
-                  size={200}
+                  size={160}
                   level="H"
                   includeMargin={true}
                 />
@@ -202,27 +202,27 @@ const Pricing = () => {
               <div className="w-full space-y-2">
                 <p className="text-sm font-medium text-gray-700">Chave PIX (E-mail):</p>
                 <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                  <span className="flex-1 text-sm font-mono">{pixKey}</span>
+                  <span className="flex-1 text-xs sm:text-sm break-all">{pixKey}</span>
                   <Button
                     variant="ghost"
                     size="icon"
                     onClick={handleCopyPixKey}
-                    className="h-8 w-8"
+                    className="h-8 w-8 flex-shrink-0"
                   >
                     <Copy className="h-4 w-4" />
                   </Button>
                 </div>
               </div>
 
-              <div className="w-full bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <p className="text-sm text-blue-800 text-center">
+              <div className="w-full bg-blue-50 border border-blue-200 rounded-lg p-3">
+                <p className="text-xs sm:text-sm text-blue-800 text-center">
                   ℹ️ Após realizar o pagamento, envie o comprovante pelo WhatsApp para ativar seu acesso
                 </p>
               </div>
 
               <Button
                 onClick={handleSendReceipt}
-                className="w-full bg-green-600 hover:bg-green-700 text-white"
+                className="w-full bg-green-600 hover:bg-green-700 text-white text-sm sm:text-base"
               >
                 Enviar Comprovante via WhatsApp
               </Button>
@@ -234,21 +234,21 @@ const Pricing = () => {
           setPix6MesesModalOpen(open);
           if (!open) setShowPixQRCode(null);
         }}>
-          <DialogContent className="sm:max-w-lg">
+          <DialogContent className="max-w-[95vw] sm:max-w-lg mx-4">
             {showPixQRCode === '6meses' ? (
               <>
                 <DialogHeader>
-                  <DialogTitle className="text-2xl font-bold text-center">Pagamento via PIX</DialogTitle>
-                  <DialogDescription className="text-center text-lg font-semibold gradient-text">
+                  <DialogTitle className="text-xl sm:text-2xl font-bold text-center">Pagamento via PIX</DialogTitle>
+                  <DialogDescription className="text-center text-base sm:text-lg font-semibold gradient-text">
                     FIDELIDADE 6 Meses - {planValue6Meses}
                   </DialogDescription>
                 </DialogHeader>
                 
-                <div className="flex flex-col items-center space-y-6 py-4">
-                  <div className="bg-white p-4 rounded-lg shadow-md">
+                <div className="flex flex-col items-center space-y-4 py-4">
+                  <div className="bg-white p-3 rounded-lg shadow-md">
                     <QRCodeSVG 
                       value={pixKey}
-                      size={200}
+                      size={160}
                       level="H"
                       includeMargin={true}
                     />
@@ -257,25 +257,25 @@ const Pricing = () => {
                   <div className="w-full space-y-2">
                     <p className="text-sm font-medium text-gray-700">Chave PIX (E-mail):</p>
                     <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                      <span className="flex-1 text-sm font-mono">{pixKey}</span>
+                      <span className="flex-1 text-xs sm:text-sm break-all">{pixKey}</span>
                       <Button
                         variant="ghost"
                         size="icon"
                         onClick={handleCopyPixKey}
-                        className="h-8 w-8"
+                        className="h-8 w-8 flex-shrink-0"
                       >
                         <Copy className="h-4 w-4" />
                       </Button>
                     </div>
                   </div>
 
-                  <div className="w-full bg-blue-50 border border-blue-200 rounded-lg p-4">
-                    <p className="text-sm text-blue-800 text-center">
+                  <div className="w-full bg-blue-50 border border-blue-200 rounded-lg p-3">
+                    <p className="text-xs sm:text-sm text-blue-800 text-center">
                       ℹ️ Após realizar o pagamento, envie o comprovante pelo WhatsApp para ativar seu acesso
                     </p>
                   </div>
 
-                  <div className="flex gap-2 w-full">
+                  <div className="flex flex-col sm:flex-row gap-2 w-full">
                     <Button
                       variant="outline"
                       onClick={() => setShowPixQRCode(null)}
@@ -296,13 +296,13 @@ const Pricing = () => {
             ) : (
               <>
                 <DialogHeader>
-                  <DialogTitle className="text-2xl font-bold text-center">Escolha a forma de pagamento</DialogTitle>
-                  <DialogDescription className="text-center text-lg font-semibold gradient-text">
+                  <DialogTitle className="text-xl sm:text-2xl font-bold text-center">Escolha a forma de pagamento</DialogTitle>
+                  <DialogDescription className="text-center text-base sm:text-lg font-semibold gradient-text">
                     FIDELIDADE 6 Meses
                   </DialogDescription>
                 </DialogHeader>
                 
-                <div className="grid grid-cols-2 gap-4 py-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-6">
                   <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => window.open('https://www.asaas.com/c/6vaoui3drgmdpcex', '_blank')}>
                     <CardHeader className="text-center space-y-4 pb-8">
                       <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
@@ -344,21 +344,21 @@ const Pricing = () => {
           setPix12MesesModalOpen(open);
           if (!open) setShowPixQRCode(null);
         }}>
-          <DialogContent className="sm:max-w-lg">
+          <DialogContent className="max-w-[95vw] sm:max-w-lg mx-4">
             {showPixQRCode === '12meses' ? (
               <>
                 <DialogHeader>
-                  <DialogTitle className="text-2xl font-bold text-center">Pagamento via PIX</DialogTitle>
-                  <DialogDescription className="text-center text-lg font-semibold gradient-text">
+                  <DialogTitle className="text-xl sm:text-2xl font-bold text-center">Pagamento via PIX</DialogTitle>
+                  <DialogDescription className="text-center text-base sm:text-lg font-semibold gradient-text">
                     FIDELIDADE 12 Meses - {planValue12Meses}
                   </DialogDescription>
                 </DialogHeader>
                 
-                <div className="flex flex-col items-center space-y-6 py-4">
-                  <div className="bg-white p-4 rounded-lg shadow-md">
+                <div className="flex flex-col items-center space-y-4 py-4">
+                  <div className="bg-white p-3 rounded-lg shadow-md">
                     <QRCodeSVG 
                       value={pixKey}
-                      size={200}
+                      size={160}
                       level="H"
                       includeMargin={true}
                     />
@@ -367,25 +367,25 @@ const Pricing = () => {
                   <div className="w-full space-y-2">
                     <p className="text-sm font-medium text-gray-700">Chave PIX (E-mail):</p>
                     <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                      <span className="flex-1 text-sm font-mono">{pixKey}</span>
+                      <span className="flex-1 text-xs sm:text-sm break-all">{pixKey}</span>
                       <Button
                         variant="ghost"
                         size="icon"
                         onClick={handleCopyPixKey}
-                        className="h-8 w-8"
+                        className="h-8 w-8 flex-shrink-0"
                       >
                         <Copy className="h-4 w-4" />
                       </Button>
                     </div>
                   </div>
 
-                  <div className="w-full bg-blue-50 border border-blue-200 rounded-lg p-4">
-                    <p className="text-sm text-blue-800 text-center">
+                  <div className="w-full bg-blue-50 border border-blue-200 rounded-lg p-3">
+                    <p className="text-xs sm:text-sm text-blue-800 text-center">
                       ℹ️ Após realizar o pagamento, envie o comprovante pelo WhatsApp para ativar seu acesso
                     </p>
                   </div>
 
-                  <div className="flex gap-2 w-full">
+                  <div className="flex flex-col sm:flex-row gap-2 w-full">
                     <Button
                       variant="outline"
                       onClick={() => setShowPixQRCode(null)}
@@ -406,13 +406,13 @@ const Pricing = () => {
             ) : (
               <>
                 <DialogHeader>
-                  <DialogTitle className="text-2xl font-bold text-center">Escolha a forma de pagamento</DialogTitle>
-                  <DialogDescription className="text-center text-lg font-semibold gradient-text">
+                  <DialogTitle className="text-xl sm:text-2xl font-bold text-center">Escolha a forma de pagamento</DialogTitle>
+                  <DialogDescription className="text-center text-base sm:text-lg font-semibold gradient-text">
                     FIDELIDADE 12 Meses
                   </DialogDescription>
                 </DialogHeader>
                 
-                <div className="grid grid-cols-2 gap-4 py-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-6">
                   <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => window.open('https://www.asaas.com/c/gtcimltw64g0odx1', '_blank')}>
                     <CardHeader className="text-center space-y-4 pb-8">
                       <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
