@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 const Pricing = () => {
   const plans = [
     {
-      name: 'Sem Fidelidade',
+      name: 'Sem Fidelidade 30 dias',
       price: 'R$ 69,90',
       period: '/mês',
       description: 'Flexibilidade máxima para seu negócio',
@@ -125,7 +125,7 @@ const Pricing = () => {
                       : 'border-2 border-gray-300 hover:border-blue-500 text-gray-700 hover:text-blue-600 bg-white'
                   } transition-all duration-300`}
                   onClick={() => {
-                    if (plan.name === 'Sem Fidelidade') {
+                    if (plan.name === 'Sem Fidelidade 30 dias') {
                       window.open('https://api.whatsapp.com/send?phone=5581986953506&text=Oi%2C%20tenho%20interesse%20em%20adquirir%20o%20sistema%20para%20Musicoterapeutas.', '_blank');
                     } else if (plan.name === 'FIDELIDADE 6 Meses') {
                       window.open('https://www.asaas.com/c/6vaoui3drgmdpcex', '_blank');
