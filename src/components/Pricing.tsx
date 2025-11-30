@@ -104,7 +104,7 @@ const Pricing = () => {
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Escolha o plano ideal para sua prática. Todos os planos incluem 
-            suporte completo e cancelamento a qualquer momento.
+            suporte completo.
           </p>
         </div>
 
