@@ -15,7 +15,6 @@ const Navigation = () => {
         setLogoUrl(processedLogoUrl);
       } catch (error) {
         console.error('Failed to process logo:', error);
-        // Fallback to original image
         setLogoUrl('/lovable-uploads/e5c74d3f-6536-4807-a17c-69707a8d36e8.png');
       }
     };
@@ -32,7 +31,7 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-200 z-50 shadow-sm">
+    <nav className="fixed top-0 w-full bg-black/80 backdrop-blur-xl border-b border-white/10 z-50">
       <div className="container-padding">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -40,13 +39,13 @@ const Navigation = () => {
             <img 
               src="/lovable-uploads/musetera-logo.jpeg" 
               alt="MuseTera Logo" 
-              className="h-12 w-12 rounded-full object-cover"
+              className="h-12 w-12 rounded-full object-cover ring-2 ring-blue-500/50"
             />
             <div className="flex flex-col">
               <span className="text-2xl font-bold font-playfair gradient-text">
                 MuseTera
               </span>
-              <span className="text-sm text-gray-600 hidden sm:block">
+              <span className="text-sm text-gray-400 hidden sm:block">
                 Sistema de Gestão para Musicoterapeutas
               </span>
             </div>
@@ -58,10 +57,10 @@ const Navigation = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium relative group"
+                className="text-gray-300 hover:text-blue-400 transition-colors duration-200 font-medium relative group"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </div>
@@ -70,13 +69,13 @@ const Navigation = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <Button 
               variant="ghost" 
-              className="text-gray-600 hover:text-blue-600 font-medium"
+              className="text-gray-300 hover:text-blue-400 hover:bg-white/5 font-medium"
               onClick={() => window.open('https://portal-musetera.netlify.app/login', '_blank')}
             >
               Entrar
             </Button>
             <Button 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold shadow-lg hover:shadow-blue-500/25 transition-all duration-300 animate-glow-pulse"
               onClick={() => {
                 const link = document.createElement('a');
                 link.href = 'https://portal-musetera.netlify.app/login';
@@ -97,7 +96,7 @@ const Navigation = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-600"
+              className="text-gray-300 hover:text-white hover:bg-white/10"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -107,22 +106,22 @@ const Navigation = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white border-t shadow-lg">
+        <div className="lg:hidden bg-black/95 backdrop-blur-xl border-t border-white/10">
           <div className="px-4 pt-2 pb-3 space-y-1">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="block px-3 py-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors duration-200 font-medium"
+                className="block px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-white/5 rounded-md transition-colors duration-200 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
               </a>
             ))}
-            <div className="flex flex-col space-y-2 pt-4 border-t">
+            <div className="flex flex-col space-y-2 pt-4 border-t border-white/10">
               <Button 
                 variant="ghost" 
-                className="justify-start text-gray-600 hover:text-blue-600"
+                className="justify-start text-gray-300 hover:text-blue-400 hover:bg-white/5"
                 onClick={() => {
                   window.open('https://portal-musetera.netlify.app/login', '_blank');
                   setIsMenuOpen(false);

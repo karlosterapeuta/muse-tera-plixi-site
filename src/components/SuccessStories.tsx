@@ -25,7 +25,7 @@ const SuccessStories = () => {
       memberSince: 'Membro desde Nov 2018',
       followers: '755',
       growth: '+213',
-      color: 'bg-gradient-to-br from-blue-500 to-purple-600',
+      color: 'bg-gradient-to-br from-blue-600 to-purple-700',
       textColor: 'text-white',
       avatar: '👩‍⚕️'
     },
@@ -49,7 +49,7 @@ const SuccessStories = () => {
       memberSince: 'Membro desde Dezembro de 2022',
       followers: '289',
       growth: '+15K',
-      color: 'bg-gradient-to-br from-orange-400 to-red-500',
+      color: 'bg-gradient-to-br from-orange-500 to-red-600',
       textColor: 'text-white',
       avatar: '🎼'
     },
@@ -61,7 +61,7 @@ const SuccessStories = () => {
       memberSince: 'Membro desde Março de 2020',
       followers: '1.2K',
       growth: '+85K',
-      color: 'bg-gradient-to-br from-pink-400 to-pink-600',
+      color: 'bg-gradient-to-br from-pink-500 to-pink-700',
       textColor: 'text-white',
       avatar: '🏥'
     },
@@ -73,7 +73,7 @@ const SuccessStories = () => {
       memberSince: 'Membro desde Maio 2019',
       followers: '634',
       growth: '+42K',
-      color: 'bg-gradient-to-br from-yellow-400 to-orange-500',
+      color: 'bg-gradient-to-br from-yellow-500 to-orange-600',
       textColor: 'text-black',
       avatar: '🏪'
     }
@@ -90,13 +90,13 @@ const SuccessStories = () => {
   }, [api]);
 
   return (
-    <section className="section-padding bg-gradient-to-br from-purple-50 to-blue-50">
+    <section className="section-padding bg-gradient-to-br from-secondary via-background to-secondary">
       <div className="container-padding">
         <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold font-playfair">
+          <h2 className="text-3xl lg:text-4xl font-bold font-playfair text-foreground">
             <span className="gradient-text">Histórias de sucesso</span> de clientes
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Veja como nossos clientes transformaram suas práticas de musicoterapia 
             e alcançaram resultados extraordinários
           </p>
@@ -114,7 +114,7 @@ const SuccessStories = () => {
             <CarouselContent className="-ml-2 md:-ml-4">
               {stories.map((story) => (
                 <CarouselItem key={story.id} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                  <div className={`${story.color} ${story.textColor} rounded-2xl p-6 h-64 flex flex-col justify-between transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl`}>
+                  <div className={`${story.color} ${story.textColor} rounded-2xl p-6 h-64 flex flex-col justify-between transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl border border-white/10`}>
                     <div>
                       <div className="text-sm opacity-80 mb-2">{story.category}</div>
                       <div className="flex items-center space-x-3 mb-4">
@@ -145,11 +145,11 @@ const SuccessStories = () => {
         </div>
 
         <div className="text-center mt-12">
-          <p className="text-gray-600 mb-6">
+          <p className="text-muted-foreground mb-6">
             Junte-se a centenas de profissionais que já transformaram suas práticas
           </p>
           <button 
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-500 hover:to-purple-500 transition-all duration-300 transform hover:scale-105 glow-blue"
             onClick={() => window.open('https://portal-musetera.netlify.app/login', '_blank')}
           >
             Começar agora
