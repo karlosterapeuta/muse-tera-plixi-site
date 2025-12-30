@@ -586,13 +586,13 @@
     animation: glow-pulse 2s ease-in-out infinite;
   }
 
-  /* Premium Phone Mockup */
+  /* Premium Phone Mockup - Responsive */
   .phone-mockup {
-    @apply relative;
-    width: 280px;
-    padding: 10px;
+    @apply relative w-full;
+    max-width: 260px;
+    padding: 8px;
     background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 50%, #0d0d0d 100%);
-    border-radius: 3rem;
+    border-radius: 2.5rem;
     box-shadow: 
       0 0 0 1px rgba(255, 255, 255, 0.1) inset,
       0 25px 80px -15px rgba(0, 0, 0, 0.9),
@@ -600,11 +600,27 @@
       0 0 60px rgba(99, 102, 241, 0.15);
   }
   
+  @media (min-width: 640px) {
+    .phone-mockup {
+      max-width: 300px;
+      padding: 10px;
+      border-radius: 2.8rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .phone-mockup {
+      max-width: 340px;
+      padding: 12px;
+      border-radius: 3rem;
+    }
+  }
+  
   .phone-mockup::before {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 3rem;
+    border-radius: inherit;
     padding: 1px;
     background: linear-gradient(
       145deg,
@@ -620,30 +636,63 @@
   }
   
   .phone-notch {
-    @apply absolute top-4 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-full z-20;
+    @apply absolute left-1/2 -translate-x-1/2 bg-black rounded-full z-20;
+    top: 12px;
+    width: 80px;
+    height: 22px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) inset;
+  }
+  
+  @media (min-width: 640px) {
+    .phone-notch {
+      top: 14px;
+      width: 90px;
+      height: 24px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .phone-notch {
+      top: 16px;
+      width: 100px;
+      height: 26px;
+    }
   }
   
   .phone-notch::before {
     content: '';
-    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full;
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full;
     background: radial-gradient(circle, #1a1a1a 30%, #0a0a0a 100%);
   }
   
   .phone-screen {
-    @apply relative overflow-hidden;
-    border-radius: 2.2rem;
-    aspect-ratio: 9/19.5;
+    @apply relative overflow-hidden w-full;
+    border-radius: 2rem;
+    aspect-ratio: 9/19;
     background: #000;
   }
   
+  @media (min-width: 640px) {
+    .phone-screen {
+      border-radius: 2.2rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .phone-screen {
+      border-radius: 2.5rem;
+    }
+  }
+  
   .phone-screen-image {
-    @apply w-full h-full object-cover transition-opacity duration-700;
+    @apply w-full h-full transition-opacity duration-700;
+    object-fit: contain;
+    object-position: top center;
   }
   
   .phone-glow {
     @apply absolute pointer-events-none;
-    inset: -30%;
+    inset: -40%;
     background: radial-gradient(
       ellipse at center,
       rgba(139, 92, 246, 0.35) 0%,
@@ -656,7 +705,7 @@
   
   .phone-reflection {
     @apply absolute inset-0 pointer-events-none z-10;
-    border-radius: 2.2rem;
+    border-radius: inherit;
     background: linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.12) 0%,
@@ -667,14 +716,26 @@
   }
   
   .phone-indicator {
-    @apply w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer;
+    @apply w-2 h-2 rounded-full transition-all duration-300 cursor-pointer;
     background: rgba(255, 255, 255, 0.3);
   }
   
+  @media (min-width: 640px) {
+    .phone-indicator {
+      @apply w-2.5 h-2.5;
+    }
+  }
+  
   .phone-indicator.active {
-    @apply w-8;
+    @apply w-6;
     background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
     box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
+  }
+  
+  @media (min-width: 640px) {
+    .phone-indicator.active {
+      @apply w-8;
+    }
   }
   
   .phone-indicator:hover:not(.active) {
@@ -682,10 +743,16 @@
   }
   
   .phone-label {
-    @apply px-4 py-1.5 rounded-full text-sm font-medium;
+    @apply px-3 py-1 rounded-full text-xs font-medium;
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  @media (min-width: 640px) {
+    .phone-label {
+      @apply px-4 py-1.5 text-sm;
+    }
   }
 }
 
