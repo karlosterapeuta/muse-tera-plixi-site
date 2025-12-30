@@ -53,7 +53,7 @@ const Pricing = () => {
     <section id="precos" className="section-padding relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 mesh-gradient" />
-      <div className="aurora" />
+      <div className="aurora-enhanced" />
       
       <div className="container-padding relative z-10">
         <div className="text-center space-y-4 mb-16">
@@ -67,7 +67,7 @@ const Pricing = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
-            <Card key={index} className={`relative glass-card-hover ${plan.popular ? 'pricing-popular lg:scale-105' : ''} transition-all duration-500`}>
+            <Card key={index} className={`relative glass-card-premium hover-glow-enhanced ${plan.popular ? 'pricing-popular lg:scale-105' : ''}`}>
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
                   <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full text-sm font-semibold flex items-center space-x-2 shadow-lg shadow-purple-500/30 animate-glow-pulse">

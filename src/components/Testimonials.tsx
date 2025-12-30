@@ -58,7 +58,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div 
               key={index}
-              className="group relative glass-card-hover p-8 transition-all duration-500"
+              className="group relative glass-card-premium hover-glow-enhanced p-8"
             >
               {/* Quote icon */}
               <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center glow-purple">
@@ -113,7 +113,7 @@ const Testimonials = () => {
         </div>
 
         {/* Enhanced Stats section */}
-        <div className="relative glass-card overflow-hidden p-8 lg:p-12">
+        <div className="relative glass-card-premium glow-deep overflow-hidden p-8 lg:p-12">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20" />
           <div className="relative">
             <div className="text-center mb-8">

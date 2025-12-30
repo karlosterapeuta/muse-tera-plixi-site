@@ -65,7 +65,7 @@ const AboutUs = () => {
           {certifications.map((cert, index) => (
             <div 
               key={index}
-              className="flex items-center gap-2 glass-card px-4 py-2 hover:scale-105 transition-transform duration-300"
+              className="flex items-center gap-2 glass-card-premium px-4 py-2 hover:scale-105 transition-transform duration-300"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <cert.icon className={`h-4 w-4 ${cert.color}`} />

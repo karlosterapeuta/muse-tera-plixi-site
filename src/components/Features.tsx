@@ -125,7 +125,7 @@ const Features = () => {
           {filteredFeatures.map((feature, index) => (
             <Card 
               key={feature.title}
-              className={`glass-card-hover group relative overflow-hidden transition-all duration-500 ${
+              className={`glass-card-premium hover-glow-enhanced group relative overflow-hidden ${
                 feature.featured ? 'md:col-span-2 lg:col-span-2' : ''
               } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: `${(index + 2) * 100}ms` }}

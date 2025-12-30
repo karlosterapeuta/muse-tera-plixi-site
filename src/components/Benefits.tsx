@@ -43,7 +43,7 @@ const Benefits = () => {
           {benefits.map((benefit, index) => (
             <div 
               key={index}
-              className="group glass-card p-8 hover:glow-blue transition-all duration-300 hover:-translate-y-2"
+              className="group glass-card-premium hover-glow-enhanced p-8"
             >
               <div className="space-y-6">
                 {/* Icon and Stat */}
