@@ -1,92 +1,113 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Music } from 'lucide-react';
-import { processLogoImage } from '@/utils/processLogo';
+import { Menu, X, Rocket } from 'lucide-react';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [logoUrl, setLogoUrl] = useState<string>('');
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
-    const loadLogo = async () => {
-      try {
-        const processedLogoUrl = await processLogoImage();
-        setLogoUrl(processedLogoUrl);
-      } catch (error) {
-        console.error('Failed to process logo:', error);
-        setLogoUrl('/lovable-uploads/e5c74d3f-6536-4807-a17c-69707a8d36e8.png');
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+      
+      // Detect active section
+      const sections = ['sobre', 'recursos', 'beneficios', 'depoimentos', 'faq', 'precos'];
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section);
+            break;
+          }
+        }
       }
     };
-    loadLogo();
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navItems = [
-    { name: 'Sobre', href: '#sobre' },
-    { name: 'Recursos', href: '#recursos' },
-    { name: 'Benefícios', href: '#beneficios' },
-    { name: 'Depoimentos', href: '#depoimentos' },
-    { name: 'FAQ', href: '#faq' },
-    { name: 'Preços', href: '#precos' },
+    { name: 'Sobre', href: '#sobre', id: 'sobre' },
+    { name: 'Recursos', href: '#recursos', id: 'recursos' },
+    { name: 'Benefícios', href: '#beneficios', id: 'beneficios' },
+    { name: 'Depoimentos', href: '#depoimentos', id: 'depoimentos' },
+    { name: 'FAQ', href: '#faq', id: 'faq' },
+    { name: 'Preços', href: '#precos', id: 'precos' },
   ];
 
+  const handleAccessSystem = () => {
+    window.open('https://portal-musetera.netlify.app/login', '_blank', 'noopener,noreferrer');
+  };
+
   return (
-    <nav className="fixed top-0 w-full bg-black/80 backdrop-blur-xl border-b border-white/10 z-50">
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+      isScrolled 
+        ? 'bg-black/95 backdrop-blur-xl py-2 shadow-2xl shadow-black/50 border-b border-white/5' 
+        : 'bg-black/60 backdrop-blur-md py-4 border-b border-white/10'
+    }`}>
       <div className="container-padding">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-14">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <img 
-              src="/lovable-uploads/musetera-logo.jpeg" 
-              alt="MuseTera Logo" 
-              className="h-12 w-12 rounded-full object-cover ring-2 ring-blue-500/50"
-            />
+          <a href="#" className="flex items-center space-x-3 group">
+            <div className="relative">
+              <img 
+                src="/lovable-uploads/musetera-logo.jpeg" 
+                alt="MuseTera Logo" 
+                className="h-11 w-11 rounded-full object-cover ring-2 ring-primary/50 group-hover:ring-primary transition-all duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 rounded-full bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
             <div className="flex flex-col">
-              <span className="text-2xl font-bold font-playfair gradient-text">
+              <span className="text-xl font-bold font-playfair gradient-text group-hover:opacity-90 transition-opacity">
                 MuseTera
               </span>
-              <span className="text-sm text-gray-400 hidden sm:block">
-                Sistema de Gestão para Musicoterapeutas
+              <span className="text-xs text-muted-foreground hidden sm:block">
+                Gestão para Musicoterapeutas
               </span>
             </div>
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-300 hover:text-blue-400 transition-colors duration-200 font-medium relative group"
+                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
+                  activeSection === item.id 
+                    ? 'text-primary' 
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
+                <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-primary to-purple-500 transition-all duration-300 rounded-full ${
+                  activeSection === item.id ? 'w-1/2' : 'w-0 group-hover:w-1/3'
+                }`} />
               </a>
             ))}
           </div>
 
           {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-3">
             <Button 
               variant="ghost" 
-              className="text-gray-300 hover:text-blue-400 hover:bg-white/5 font-medium"
-              onClick={() => window.open('https://portal-musetera.netlify.app/login', '_blank')}
+              className="text-muted-foreground hover:text-foreground hover:bg-white/5 font-medium text-sm"
+              onClick={handleAccessSystem}
             >
               Entrar
             </Button>
             <Button 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold shadow-lg hover:shadow-blue-500/25 transition-all duration-300 animate-glow-pulse"
-              onClick={() => {
-                const link = document.createElement('a');
-                link.href = 'https://portal-musetera.netlify.app/login';
-                link.target = '_blank';
-                link.rel = 'noopener noreferrer';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }}
+              className="relative overflow-hidden bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-500 text-primary-foreground font-semibold shadow-lg shadow-primary/25 transition-all duration-300 group"
+              onClick={handleAccessSystem}
             >
-              🚀 Acessar Sistema
+              <span className="relative z-10 flex items-center gap-2">
+                <Rocket className="h-4 w-4 group-hover:animate-bounce" />
+                Acessar Sistema
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/25 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
             </Button>
           </div>
 
@@ -96,7 +117,7 @@ const Navigation = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-300 hover:text-white hover:bg-white/10"
+              className="text-muted-foreground hover:text-foreground hover:bg-white/10"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -105,49 +126,53 @@ const Navigation = () => {
       </div>
 
       {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="lg:hidden bg-black/95 backdrop-blur-xl border-t border-white/10">
-          <div className="px-4 pt-2 pb-3 space-y-1">
-            {navItems.map((item) => (
+      <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-out ${
+        isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+      }`}>
+        <div className="bg-black/98 backdrop-blur-xl border-t border-white/5">
+          <div className="px-4 pt-4 pb-6 space-y-1">
+            {navItems.map((item, index) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="block px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-white/5 rounded-md transition-colors duration-200 font-medium"
+                className={`block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 rounded-lg transition-all duration-300 font-medium animate-fade-in ${
+                  activeSection === item.id ? 'text-primary bg-primary/5' : ''
+                }`}
+                style={{ animationDelay: `${index * 50}ms` }}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
               </a>
             ))}
-            <div className="flex flex-col space-y-2 pt-4 border-t border-white/10">
+            <div className="flex flex-col space-y-3 pt-4 mt-4 border-t border-white/10">
               <Button 
                 variant="ghost" 
-                className="justify-start text-gray-300 hover:text-blue-400 hover:bg-white/5"
+                className="justify-center text-muted-foreground hover:text-foreground hover:bg-white/5 animate-fade-in"
+                style={{ animationDelay: '300ms' }}
                 onClick={() => {
-                  window.open('https://portal-musetera.netlify.app/login', '_blank');
+                  handleAccessSystem();
                   setIsMenuOpen(false);
                 }}
               >
                 Entrar
               </Button>
               <Button 
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white justify-start font-semibold"
+                className="relative overflow-hidden bg-gradient-to-r from-primary to-purple-600 text-primary-foreground justify-center font-semibold animate-fade-in"
+                style={{ animationDelay: '350ms' }}
                 onClick={() => {
-                  const link = document.createElement('a');
-                  link.href = 'https://portal-musetera.netlify.app/login';
-                  link.target = '_blank';
-                  link.rel = 'noopener noreferrer';
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
+                  handleAccessSystem();
                   setIsMenuOpen(false);
                 }}
               >
-                🚀 Acessar Sistema
+                <span className="flex items-center gap-2">
+                  <Rocket className="h-4 w-4" />
+                  Acessar Sistema
+                </span>
               </Button>
             </div>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 };
