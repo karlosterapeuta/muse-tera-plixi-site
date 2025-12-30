@@ -50,10 +50,14 @@ const Pricing = () => {
   ];
 
   return (
-    <section id="precos" className="section-padding bg-gradient-to-br from-background via-secondary to-background">
-      <div className="container-padding">
+    <section id="precos" className="section-padding relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0 mesh-gradient" />
+      <div className="aurora" />
+      
+      <div className="container-padding relative z-10">
         <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold font-playfair text-foreground">
+          <h2 className="text-3xl lg:text-5xl font-bold font-playfair text-foreground">
             Planos que <span className="gradient-text">crescem</span> com você
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -63,11 +67,11 @@ const Pricing = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
-            <Card key={index} className={`relative glass-card border-white/10 ${plan.popular ? 'ring-2 ring-blue-500 glow-blue scale-105' : 'hover:border-white/20'} transition-all duration-300 hover:-translate-y-2`}>
+            <Card key={index} className={`relative glass-card-hover ${plan.popular ? 'pricing-popular lg:scale-105' : ''} transition-all duration-500`}>
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center space-x-1 glow-purple">
-                    <Star className="h-4 w-4" />
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full text-sm font-semibold flex items-center space-x-2 shadow-lg shadow-purple-500/30 animate-glow-pulse">
+                    <Star className="h-4 w-4 fill-white" />
                     <span>Mais Popular</span>
                   </div>
                 </div>

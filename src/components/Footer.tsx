@@ -9,14 +9,21 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-background border-t border-white/10">
+    <footer className="bg-background relative overflow-hidden">
+      {/* Gradient divider */}
+      <div className="h-px w-full" style={{
+        background: 'linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), rgba(168, 85, 247, 0.5), transparent)'
+      }} />
+      
       {/* Inspirational Quote Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 py-8">
-        <div className="container-padding text-center">
-          <p className="text-lg lg:text-xl font-medium text-white italic max-w-4xl mx-auto">
+      <div className="relative py-12 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20" />
+        <div className="absolute inset-0 mesh-gradient opacity-30" />
+        <div className="container-padding text-center relative z-10">
+          <p className="text-lg lg:text-2xl font-medium text-foreground italic max-w-4xl mx-auto">
             "Portanto, quer comais quer bebais, ou façais qualquer outra coisa, fazei tudo para glória de Deus."
           </p>
-          <span className="text-sm text-blue-100 mt-2 block">1 Coríntios 10:31</span>
+          <span className="text-sm text-muted-foreground mt-3 block">1 Coríntios 10:31</span>
         </div>
       </div>
 
@@ -33,9 +40,15 @@ const Footer = () => {
               A plataforma completa para musicoterapeutas organizarem sua prática e proporcionarem o melhor cuidado aos seus pacientes.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="p-2 glass-card hover:glow-blue transition-all"><Facebook className="h-5 w-5 text-foreground" /></a>
-              <a href="https://www.instagram.com/sistema_musetera/" target="_blank" rel="noopener noreferrer" className="p-2 glass-card hover:glow-purple transition-all"><Instagram className="h-5 w-5 text-foreground" /></a>
-              <a href="#" className="p-2 glass-card hover:glow-blue transition-all"><Linkedin className="h-5 w-5 text-foreground" /></a>
+              <a href="#" className="p-3 glass-card-hover hover:text-blue-400 transition-all duration-300 group">
+                <Facebook className="h-5 w-5 text-muted-foreground group-hover:text-blue-400 transition-colors" />
+              </a>
+              <a href="https://www.instagram.com/sistema_musetera/" target="_blank" rel="noopener noreferrer" className="p-3 glass-card-hover hover:text-pink-400 transition-all duration-300 group">
+                <Instagram className="h-5 w-5 text-muted-foreground group-hover:text-pink-400 transition-colors" />
+              </a>
+              <a href="#" className="p-3 glass-card-hover hover:text-blue-500 transition-all duration-300 group">
+                <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-blue-500 transition-colors" />
+              </a>
             </div>
           </div>
 

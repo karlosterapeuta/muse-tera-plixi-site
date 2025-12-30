@@ -31,11 +31,12 @@ const Hero = () => {
       {/* Gradient overlay for depth */}
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
       
-      {/* Animated background blobs */}
+      {/* Animated background blobs - More vibrant */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="blob w-96 h-96 bg-blue-600/30 top-1/4 left-1/4" />
-        <div className="blob blob-delay-2 w-[500px] h-[500px] bg-purple-600/20 bottom-1/4 right-1/4" />
-        <div className="blob blob-delay-4 w-72 h-72 bg-pink-600/20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+        <div className="blob w-[500px] h-[500px] bg-blue-500/40 top-1/4 left-1/4" />
+        <div className="blob blob-delay-2 w-[600px] h-[600px] bg-purple-500/35 bottom-1/4 right-1/4" />
+        <div className="blob blob-delay-4 w-[400px] h-[400px] bg-cyan-500/25 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+        <div className="blob blob-delay-6 w-[350px] h-[350px] bg-emerald-500/20 bottom-1/3 left-1/3" />
       </div>
       
       {/* Content */}
@@ -47,8 +48,8 @@ const Hero = () => {
           <Sparkles className="w-4 h-4 text-yellow-400" />
         </div>
 
-        {/* Main Title */}
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-playfair font-bold tracking-tight mb-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+        {/* Main Title - Heroic */}
+        <h1 className="text-7xl md:text-8xl lg:text-9xl font-playfair font-bold tracking-tighter mb-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
           <span className="text-white text-glow">Muse</span>
           <span className="gradient-text-animated text-glow-purple">Tera</span>
         </h1>
@@ -65,11 +66,11 @@ const Hero = () => {
           <span className="typewriter-cursor" />
         </div>
         
-        {/* CTAs */}
+        {/* CTAs - Enhanced */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in" style={{ animationDelay: '0.4s' }}>
           <a 
             href="https://app.musetera.com.br/login" 
-            className="btn-premium shine-effect group"
+            className="btn-premium cta-pulse group"
           >
             <span className="flex items-center gap-2">
               Começar Gratuitamente
