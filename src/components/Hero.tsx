@@ -1,4 +1,4 @@
-import { ChevronDown, Play, Sparkles, Star } from 'lucide-react';
+import { ChevronDown, Sparkles, Star } from 'lucide-react';
 import { useTypewriter } from '@/hooks/useTypewriter';
 
 const Hero = () => {
@@ -66,25 +66,6 @@ const Hero = () => {
           <span className="typewriter-cursor" />
         </div>
         
-        {/* CTAs - Enhanced */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-          <a 
-            href="https://app.musetera.com.br/login" 
-            className="btn-premium cta-pulse group"
-          >
-            <span className="flex items-center gap-2">
-              Começar Gratuitamente
-              <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </span>
-          </a>
-          
-          <button className="btn-outline-glow flex items-center justify-center gap-2 text-white">
-            <Play className="w-5 h-5" />
-            Ver Demonstração
-          </button>
-        </div>
         
         {/* Social Proof */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in" style={{ animationDelay: '0.5s' }}>
