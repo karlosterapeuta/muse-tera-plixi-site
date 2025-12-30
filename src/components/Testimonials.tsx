@@ -39,13 +39,13 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="depoimentos" className="section-padding bg-white">
+    <section id="depoimentos" className="section-padding bg-background">
       <div className="container-padding">
         <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold font-playfair">
+          <h2 className="text-3xl lg:text-4xl font-bold font-playfair text-foreground">
             O que dizem nossos <span className="gradient-text">profissionais</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Musicoterapeutas de todo o Brasil já estão transformando suas práticas 
             com o MuseTera. Conheça suas experiências reais.
           </p>
@@ -55,10 +55,10 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div 
               key={index}
-              className="group relative bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-blue-100"
+              className="group relative glass-card p-8 hover:glow-purple transition-all duration-300 hover:-translate-y-2"
             >
               {/* Quote icon */}
-              <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+              <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center glow-purple">
                 <Quote className="h-4 w-4 text-white" />
               </div>
 
@@ -70,28 +70,28 @@ const Testimonials = () => {
                       <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <div className="text-sm text-blue-600 font-medium">Verificado ✓</div>
+                  <div className="text-sm text-blue-400 font-medium">Verificado ✓</div>
                 </div>
 
                 {/* Content */}
-                <p className="text-gray-700 leading-relaxed italic text-sm">
+                <p className="text-muted-foreground leading-relaxed italic text-sm">
                   "{testimonial.content}"
                 </p>
 
                 {/* Author */}
-                <div className="space-y-4 pt-4 border-t border-gray-200">
+                <div className="space-y-4 pt-4 border-t border-white/10">
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold glow-blue">
                       {testimonial.avatar}
                     </div>
                     <div className="flex-1">
-                      <div className="font-semibold text-gray-800">{testimonial.name}</div>
-                      <div className="text-sm text-blue-600 font-medium">{testimonial.role}</div>
+                      <div className="font-semibold text-foreground">{testimonial.name}</div>
+                      <div className="text-sm text-blue-400 font-medium">{testimonial.role}</div>
                     </div>
                   </div>
                   
                   {/* Additional Info */}
-                  <div className="grid grid-cols-1 gap-2 text-xs text-gray-600">
+                  <div className="grid grid-cols-1 gap-2 text-xs text-muted-foreground">
                     <div className="flex items-center space-x-2">
                       <Calendar className="h-3 w-3" />
                       <span>{testimonial.experience}</span>
@@ -100,8 +100,8 @@ const Testimonials = () => {
                       <MapPin className="h-3 w-3" />
                       <span>{testimonial.location}</span>
                     </div>
-                    <div className="text-purple-600 font-medium">{testimonial.specialty}</div>
-                    <div className="text-green-600 font-medium">{testimonial.patients}</div>
+                    <div className="text-purple-400 font-medium">{testimonial.specialty}</div>
+                    <div className="text-green-400 font-medium">{testimonial.patients}</div>
                   </div>
                 </div>
               </div>
@@ -110,36 +110,39 @@ const Testimonials = () => {
         </div>
 
         {/* Enhanced Stats section */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 lg:p-12 text-white">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl lg:text-3xl font-bold mb-4">
-              Resultados que Falam por Si
-            </h3>
-            <p className="text-blue-100 max-w-2xl mx-auto">
-              Dados reais coletados de nossos usuários ativos nos últimos 12 meses
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div className="space-y-2">
-              <div className="text-4xl lg:text-5xl font-bold mb-2">500+</div>
-              <div className="text-blue-100">Musicoterapeutas Ativos</div>
-              <div className="text-sm text-blue-200">Em todos os estados</div>
+        <div className="relative glass-card overflow-hidden p-8 lg:p-12">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20" />
+          <div className="relative">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
+                Resultados que Falam por Si
+              </h3>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Dados reais coletados de nossos usuários ativos nos últimos 12 meses
+              </p>
             </div>
-            <div className="space-y-2">
-              <div className="text-4xl lg:text-5xl font-bold mb-2">25k+</div>
-              <div className="text-blue-100">Sessões Mensais</div>
-              <div className="text-sm text-blue-200">Crescimento de 40%</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl lg:text-5xl font-bold mb-2">4.9⭐</div>
-              <div className="text-blue-100">Avaliação Média</div>
-              <div className="text-sm text-blue-200">127 avaliações</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl lg:text-5xl font-bold mb-2">95%</div>
-              <div className="text-blue-100">Taxa de Renovação</div>
-              <div className="text-sm text-blue-200">Satisfação comprovada</div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+              <div className="space-y-2">
+                <div className="text-4xl lg:text-5xl font-bold gradient-text mb-2">500+</div>
+                <div className="text-foreground">Musicoterapeutas Ativos</div>
+                <div className="text-sm text-muted-foreground">Em todos os estados</div>
+              </div>
+              <div className="space-y-2">
+                <div className="text-4xl lg:text-5xl font-bold gradient-text mb-2">25k+</div>
+                <div className="text-foreground">Sessões Mensais</div>
+                <div className="text-sm text-muted-foreground">Crescimento de 40%</div>
+              </div>
+              <div className="space-y-2">
+                <div className="text-4xl lg:text-5xl font-bold gradient-text mb-2">4.9⭐</div>
+                <div className="text-foreground">Avaliação Média</div>
+                <div className="text-sm text-muted-foreground">127 avaliações</div>
+              </div>
+              <div className="space-y-2">
+                <div className="text-4xl lg:text-5xl font-bold gradient-text mb-2">95%</div>
+                <div className="text-foreground">Taxa de Renovação</div>
+                <div className="text-sm text-muted-foreground">Satisfação comprovada</div>
+              </div>
             </div>
           </div>
         </div>

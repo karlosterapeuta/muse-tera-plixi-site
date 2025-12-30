@@ -4,7 +4,7 @@ import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const FAQ = () => {
-  const [openItems, setOpenItems] = useState<number[]>([0]); // Primeiro item aberto por padrão
+  const [openItems, setOpenItems] = useState<number[]>([0]);
 
   const toggleItem = (index: number) => {
     setOpenItems(prev => 
@@ -60,16 +60,16 @@ const FAQ = () => {
   const categories = [...new Set(faqs.map(faq => faq.category))];
 
   return (
-    <section className="section-padding bg-gradient-to-br from-gray-50 to-blue-50">
+    <section id="faq" className="section-padding bg-background">
       <div className="container-padding">
         <div className="text-center space-y-4 mb-16">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-4 glow-purple">
             <HelpCircle className="h-8 w-8 text-white" />
           </div>
-          <h2 className="text-3xl lg:text-4xl font-bold font-playfair">
+          <h2 className="text-3xl lg:text-4xl font-bold font-playfair text-foreground">
             Perguntas <span className="gradient-text">Frequentes</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Esclarecemos as principais dúvidas sobre o MuseTera. 
             Não encontrou sua resposta? Entre em contato conosco!
           </p>
@@ -80,7 +80,7 @@ const FAQ = () => {
           {categories.map((category) => (
             <span 
               key={category}
-              className="px-4 py-2 bg-white text-blue-600 rounded-full text-sm font-medium border border-blue-200 shadow-sm"
+              className="px-4 py-2 glass-card text-blue-400 text-sm font-medium"
             >
               {category}
             </span>
@@ -89,24 +89,24 @@ const FAQ = () => {
 
         <div className="max-w-4xl mx-auto space-y-4">
           {faqs.map((faq, index) => (
-            <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+            <Card key={index} className="glass-card overflow-hidden border-white/10 hover:border-white/20 transition-all">
               <CardContent className="p-0">
                 <button
-                  className="w-full text-left p-6 hover:bg-gray-50 transition-colors focus:outline-none focus:bg-gray-50"
+                  className="w-full text-left p-6 hover:bg-white/5 transition-colors focus:outline-none"
                   onClick={() => toggleItem(index)}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
                       <div className="flex items-center space-x-3 mb-2">
-                        <span className="px-2 py-1 bg-blue-100 text-blue-600 text-xs font-medium rounded">
+                        <span className="px-2 py-1 bg-blue-600/20 text-blue-400 text-xs font-medium rounded">
                           {faq.category}
                         </span>
                       </div>
-                      <h3 className="text-lg font-semibold text-gray-800 pr-4">
+                      <h3 className="text-lg font-semibold text-foreground pr-4">
                         {faq.question}
                       </h3>
                     </div>
-                    <div className="text-blue-600">
+                    <div className="text-blue-400">
                       {openItems.includes(index) ? (
                         <ChevronUp className="h-5 w-5" />
                       ) : (
@@ -117,8 +117,8 @@ const FAQ = () => {
                 </button>
                 
                 {openItems.includes(index) && (
-                  <div className="px-6 pb-6 border-t border-gray-100">
-                    <p className="text-gray-600 leading-relaxed pt-4">
+                  <div className="px-6 pb-6 border-t border-white/10">
+                    <p className="text-muted-foreground leading-relaxed pt-4 whitespace-pre-line">
                       {faq.answer}
                     </p>
                   </div>

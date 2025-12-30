@@ -443,6 +443,114 @@ export type Database = {
         }
         Relationships: []
       }
+      course_access: {
+        Row: {
+          course_id: string
+          expires_at: string | null
+          granted_at: string | null
+          id: string
+          is_active: boolean | null
+          purchase_id: string | null
+          user_id: string
+        }
+        Insert: {
+          course_id: string
+          expires_at?: string | null
+          granted_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          purchase_id?: string | null
+          user_id: string
+        }
+        Update: {
+          course_id?: string
+          expires_at?: string | null
+          granted_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          purchase_id?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "course_access_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "course_access_purchase_id_fkey"
+            columns: ["purchase_id"]
+            isOneToOne: false
+            referencedRelation: "course_purchases"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      course_creators: {
+        Row: {
+          asaas_account_status: string | null
+          asaas_customer_id: string | null
+          asaas_wallet_id: string | null
+          avatar_url: string | null
+          bio: string | null
+          commission_percentage: number | null
+          cpf_cnpj: string | null
+          created_at: string | null
+          email: string
+          id: string
+          is_active: boolean | null
+          name: string
+          password_hash: string
+          phone: string | null
+          pix_key: string
+          pix_key_type: string
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          asaas_account_status?: string | null
+          asaas_customer_id?: string | null
+          asaas_wallet_id?: string | null
+          avatar_url?: string | null
+          bio?: string | null
+          commission_percentage?: number | null
+          cpf_cnpj?: string | null
+          created_at?: string | null
+          email: string
+          id?: string
+          is_active?: boolean | null
+          name: string
+          password_hash: string
+          phone?: string | null
+          pix_key: string
+          pix_key_type: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          asaas_account_status?: string | null
+          asaas_customer_id?: string | null
+          asaas_wallet_id?: string | null
+          avatar_url?: string | null
+          bio?: string | null
+          commission_percentage?: number | null
+          cpf_cnpj?: string | null
+          created_at?: string | null
+          email?: string
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          password_hash?: string
+          phone?: string | null
+          pix_key?: string
+          pix_key_type?: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       course_lessons: {
         Row: {
           created_at: string | null
@@ -528,41 +636,180 @@ export type Database = {
           },
         ]
       }
+      course_purchases: {
+        Row: {
+          amount_cents: number
+          asaas_payment_id: string | null
+          asaas_pix_copy_paste: string | null
+          asaas_pix_qr_code: string | null
+          buyer_email: string | null
+          buyer_name: string | null
+          confirmed_by_creator_at: string | null
+          course_id: string | null
+          created_at: string | null
+          creator_amount_cents: number
+          creator_id: string | null
+          id: string
+          paid_at: string | null
+          payment_method: string | null
+          payment_status: string | null
+          pix_code: string | null
+          pix_expiration: string | null
+          pix_qr_code_url: string | null
+          platform_amount_cents: number
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          amount_cents: number
+          asaas_payment_id?: string | null
+          asaas_pix_copy_paste?: string | null
+          asaas_pix_qr_code?: string | null
+          buyer_email?: string | null
+          buyer_name?: string | null
+          confirmed_by_creator_at?: string | null
+          course_id?: string | null
+          created_at?: string | null
+          creator_amount_cents: number
+          creator_id?: string | null
+          id?: string
+          paid_at?: string | null
+          payment_method?: string | null
+          payment_status?: string | null
+          pix_code?: string | null
+          pix_expiration?: string | null
+          pix_qr_code_url?: string | null
+          platform_amount_cents: number
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          amount_cents?: number
+          asaas_payment_id?: string | null
+          asaas_pix_copy_paste?: string | null
+          asaas_pix_qr_code?: string | null
+          buyer_email?: string | null
+          buyer_name?: string | null
+          confirmed_by_creator_at?: string | null
+          course_id?: string | null
+          created_at?: string | null
+          creator_amount_cents?: number
+          creator_id?: string | null
+          id?: string
+          paid_at?: string | null
+          payment_method?: string | null
+          payment_status?: string | null
+          pix_code?: string | null
+          pix_expiration?: string | null
+          pix_qr_code_url?: string | null
+          platform_amount_cents?: number
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "course_purchases_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "course_purchases_creator_id_fkey"
+            columns: ["creator_id"]
+            isOneToOne: false
+            referencedRelation: "course_creators"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      course_views: {
+        Row: {
+          course_id: string
+          id: string
+          session_id: string | null
+          user_id: string | null
+          viewed_at: string | null
+        }
+        Insert: {
+          course_id: string
+          id?: string
+          session_id?: string | null
+          user_id?: string | null
+          viewed_at?: string | null
+        }
+        Update: {
+          course_id?: string
+          id?: string
+          session_id?: string | null
+          user_id?: string | null
+          viewed_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "course_views_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       courses: {
         Row: {
+          category: string | null
           created_at: string | null
           created_by: string | null
+          creator_id: string | null
           description: string | null
           id: string
           instructor_name: string | null
           is_published: boolean | null
+          price_cents: number | null
           thumbnail_url: string | null
           title: string
+          trailer_url: string | null
           updated_at: string | null
         }
         Insert: {
+          category?: string | null
           created_at?: string | null
           created_by?: string | null
+          creator_id?: string | null
           description?: string | null
           id?: string
           instructor_name?: string | null
           is_published?: boolean | null
+          price_cents?: number | null
           thumbnail_url?: string | null
           title: string
+          trailer_url?: string | null
           updated_at?: string | null
         }
         Update: {
+          category?: string | null
           created_at?: string | null
           created_by?: string | null
+          creator_id?: string | null
           description?: string | null
           id?: string
           instructor_name?: string | null
           is_published?: boolean | null
+          price_cents?: number | null
           thumbnail_url?: string | null
           title?: string
+          trailer_url?: string | null
           updated_at?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "courses_creator_id_fkey"
+            columns: ["creator_id"]
+            isOneToOne: false
+            referencedRelation: "course_creators"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       financial_records: {
         Row: {
@@ -1299,6 +1546,7 @@ export type Database = {
         Returns: string
       }
       generate_recurring_financial_records: { Args: never; Returns: undefined }
+      get_creator_id: { Args: never; Returns: string }
       get_user_sessions_count: {
         Args: { target_user_id: string }
         Returns: number
@@ -1307,6 +1555,8 @@ export type Database = {
         Args: { role: Database["public"]["Enums"]["app_role"] }
         Returns: boolean
       }
+      is_course_creator: { Args: { p_course_id: string }; Returns: boolean }
+      is_module_creator: { Args: { p_module_id: string }; Returns: boolean }
       is_user_access_expired: { Args: { user_id: string }; Returns: boolean }
       is_valid_uuid: { Args: { input_text: string }; Returns: boolean }
       set_default_expiration_for_users: {
@@ -1319,6 +1569,10 @@ export type Database = {
       }
       update_user_status: {
         Args: { new_status: string; target_user_id: string }
+        Returns: boolean
+      }
+      user_has_course_access: {
+        Args: { p_course_id: string; p_user_id: string }
         Returns: boolean
       }
       validate_and_use_invite_code: {
