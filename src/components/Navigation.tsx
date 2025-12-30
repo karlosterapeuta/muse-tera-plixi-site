@@ -45,9 +45,15 @@ const Navigation = () => {
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       isScrolled 
-        ? 'bg-black/95 backdrop-blur-xl py-2 shadow-2xl shadow-black/50 border-b border-white/5' 
-        : 'bg-black/60 backdrop-blur-md py-4 border-b border-white/10'
+        ? 'bg-black/98 backdrop-blur-2xl py-2 shadow-2xl shadow-black/60' 
+        : 'bg-black/40 backdrop-blur-xl py-4'
     }`}>
+      {/* Gradient border at bottom when scrolled */}
+      <div className={`absolute bottom-0 left-0 right-0 h-px transition-opacity duration-500 ${
+        isScrolled ? 'opacity-100' : 'opacity-0'
+      }`} style={{
+        background: 'linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), rgba(168, 85, 247, 0.5), transparent)'
+      }} />
       <div className="container-padding">
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
@@ -129,7 +135,7 @@ const Navigation = () => {
       <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-out ${
         isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
       }`}>
-        <div className="bg-black/98 backdrop-blur-xl border-t border-white/5">
+        <div className="bg-black/98 backdrop-blur-2xl">
           <div className="px-4 pt-4 pb-6 space-y-1">
             {navItems.map((item, index) => (
               <a

@@ -39,10 +39,13 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="depoimentos" className="section-padding bg-background">
-      <div className="container-padding">
+    <section id="depoimentos" className="section-padding relative overflow-hidden">
+      {/* Background mesh */}
+      <div className="absolute inset-0 mesh-gradient opacity-50" />
+      
+      <div className="container-padding relative z-10">
         <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold font-playfair text-foreground">
+          <h2 className="text-3xl lg:text-5xl font-bold font-playfair text-foreground">
             O que dizem nossos <span className="gradient-text">profissionais</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -55,7 +58,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div 
               key={index}
-              className="group relative glass-card p-8 hover:glow-purple transition-all duration-300 hover:-translate-y-2"
+              className="group relative glass-card-hover p-8 transition-all duration-500"
             >
               {/* Quote icon */}
               <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center glow-purple">
