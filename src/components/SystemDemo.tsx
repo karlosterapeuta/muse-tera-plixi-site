@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Play, Users, TrendingUp, Calendar, MessageCircle, Rocket } from 'lucide-react';
+import { Users, TrendingUp, Calendar, MessageCircle, Rocket } from 'lucide-react';
 import { useCountUp } from '@/hooks/useCountUp';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
@@ -50,7 +50,7 @@ const SystemDemo = () => {
       ref={sectionRef as React.RefObject<HTMLElement>}
     >
       <div className="container-padding relative">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="flex flex-col-reverse lg:flex-row lg:grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left side - Content */}
           <div className={`space-y-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div className="space-y-6">
@@ -94,9 +94,8 @@ const SystemDemo = () => {
                 onClick={handleAccessSystem}
                 className="group flex items-center justify-center gap-3 btn-premium px-8 py-4 rounded-xl font-semibold"
               >
-                <Play className="h-5 w-5 group-hover:scale-110 transition-transform" />
                 Acessar sistema
-                <Rocket className="h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                <Rocket className="h-4 w-4 group-hover:translate-x-1 transition-all" />
               </button>
               <button 
                 onClick={handleWhatsApp}
@@ -109,7 +108,7 @@ const SystemDemo = () => {
           </div>
 
           {/* Right side - Phone mockup */}
-          <div className={`relative flex justify-center lg:justify-end transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
+          <div className={`relative flex justify-center items-center w-full transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
             <div 
               className="relative"
               onMouseEnter={() => setIsPaused(true)}
