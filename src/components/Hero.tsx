@@ -25,11 +25,21 @@ const Hero = () => {
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/70" />
       
+      {/* Enhanced Aurora Effect */}
+      <div className="aurora-enhanced" />
+      
       {/* Grid Pattern */}
       <div className="absolute inset-0 grid-pattern opacity-50" />
       
       {/* Gradient overlay for depth */}
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+      
+      {/* Floating Particles */}
+      <div className="particles">
+        {[...Array(15)].map((_, i) => (
+          <div key={i} className="particle" />
+        ))}
+      </div>
       
       {/* Animated background blobs - More vibrant */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -50,8 +60,8 @@ const Hero = () => {
 
         {/* Main Title - Heroic */}
         <h1 className="text-7xl md:text-8xl lg:text-9xl font-playfair font-bold tracking-tighter mb-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-          <span className="text-white text-glow">Muse</span>
-          <span className="gradient-text-animated text-glow-purple">Tera</span>
+          <span className="text-white text-glow text-shimmer">Muse</span>
+          <span className="gradient-text-animated text-glow-purple text-shimmer">Tera</span>
         </h1>
         
         {/* Subtitle with Typewriter */}

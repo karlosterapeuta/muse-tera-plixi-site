@@ -15,7 +15,10 @@ import WhatsAppFloat from '@/components/WhatsAppFloat';
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Global Noise Texture Overlay */}
+      <div className="noise-overlay" />
+      
       <Navigation />
       <Hero />
       <AboutUs />
