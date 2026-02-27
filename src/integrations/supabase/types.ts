@@ -1025,6 +1025,7 @@ export type Database = {
           expires_at: string | null
           id: string
           name: string | null
+          plan_start_date: string | null
           status: string
           updated_at: string
         }
@@ -1034,6 +1035,7 @@ export type Database = {
           expires_at?: string | null
           id: string
           name?: string | null
+          plan_start_date?: string | null
           status?: string
           updated_at?: string
         }
@@ -1043,6 +1045,7 @@ export type Database = {
           expires_at?: string | null
           id?: string
           name?: string | null
+          plan_start_date?: string | null
           status?: string
           updated_at?: string
         }
@@ -1535,6 +1538,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      configure_user_plan: {
+        Args: {
+          new_expires_at: string
+          new_plan_start_date: string
+          target_user_id: string
+        }
+        Returns: boolean
+      }
       force_user_logout:
         | { Args: { target_user_id: string }; Returns: boolean }
         | {
