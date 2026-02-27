@@ -50,10 +50,9 @@ const Pricing = () => {
   ];
 
   return (
-    <section id="precos" className="section-padding relative overflow-hidden">
-      {/* Background effects */}
+    <section id="precos" className="section-padding relative overflow-hidden section-alt">
+      {/* Background effects - subtle */}
       <div className="absolute inset-0 mesh-gradient" />
-      <div className="aurora-enhanced" />
       
       <div className="container-padding relative z-10">
         <div className="text-center space-y-4 mb-16">
@@ -70,7 +69,7 @@ const Pricing = () => {
             <Card key={index} className={`relative glass-card-premium hover-glow-enhanced ${plan.popular ? 'pricing-popular lg:scale-105' : ''}`}>
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full text-sm font-semibold flex items-center space-x-2 shadow-lg shadow-purple-500/30 animate-glow-pulse">
+                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full text-sm font-semibold flex items-center space-x-2 shadow-lg shadow-purple-500/20">
                     <Star className="h-4 w-4 fill-white" />
                     <span>Mais Popular</span>
                   </div>
@@ -88,23 +87,23 @@ const Pricing = () => {
 
               <CardContent className="space-y-6">
                 {plan.refundGuarantee && (
-                  <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-3 flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-green-400 flex-shrink-0" />
-                    <span className="text-sm font-medium text-green-400">7 dias de garantia de reembolso</span>
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-3 flex items-center gap-2">
+                    <Shield className="h-5 w-5 text-green-600 flex-shrink-0" />
+                    <span className="text-sm font-medium text-green-700">7 dias de garantia de reembolso</span>
                   </div>
                 )}
 
                 <ul className="space-y-3">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center space-x-3">
-                      <Check className="h-5 w-5 text-green-400 flex-shrink-0" />
+                      <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
                       <span className="text-muted-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
                 <Button
-                  className={`w-full py-3 text-lg font-semibold ${plan.popular ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white' : 'border-2 border-white/20 hover:border-blue-500 text-foreground hover:text-blue-400 bg-transparent'} transition-all duration-300`}
+                  className={`w-full py-3 text-lg font-semibold ${plan.popular ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white shadow-lg shadow-primary/20' : 'border-2 border-gray-300 hover:border-primary text-foreground hover:text-primary bg-transparent'} transition-all duration-300`}
                   onClick={() => {
                     if (plan.name === 'Sem Fidelidade 30 dias') setPixModalOpen(true);
                     else if (plan.name === 'FIDELIDADE 6 Meses') { setPix6MesesModalOpen(true); setShowPixQRCode(null); }
@@ -120,22 +119,22 @@ const Pricing = () => {
 
         {/* PIX Modal - Sem Fidelidade */}
         <Dialog open={pixModalOpen} onOpenChange={setPixModalOpen}>
-          <DialogContent className="max-w-[95vw] sm:max-w-md mx-4 glass-card border-white/20">
+          <DialogContent className="max-w-[95vw] sm:max-w-md mx-4 bg-white border-gray-200">
             <DialogHeader>
               <DialogTitle className="text-xl sm:text-2xl font-bold text-center text-foreground">Pagamento via PIX</DialogTitle>
               <DialogDescription className="text-center text-base sm:text-lg font-semibold gradient-text">Sem Fidelidade - {planValue}</DialogDescription>
             </DialogHeader>
             <div className="flex flex-col items-center space-y-4 py-4">
-              <div className="bg-white p-3 rounded-lg shadow-md"><QRCodeSVG value={pixPayloadSemFidelidade} size={160} level="H" includeMargin={true} /></div>
+              <div className="bg-white p-3 rounded-lg shadow-md border border-gray-100"><QRCodeSVG value={pixPayloadSemFidelidade} size={160} level="H" includeMargin={true} /></div>
               <div className="w-full space-y-2">
                 <p className="text-sm font-medium text-muted-foreground">Chave PIX (E-mail):</p>
-                <div className="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10">
+                <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg border border-gray-200">
                   <span className="flex-1 text-xs sm:text-sm break-all text-foreground">{pixKey}</span>
-                  <Button variant="ghost" size="icon" onClick={handleCopyPixKey} className="h-8 w-8 flex-shrink-0 text-foreground hover:text-blue-400"><Copy className="h-4 w-4" /></Button>
+                  <Button variant="ghost" size="icon" onClick={handleCopyPixKey} className="h-8 w-8 flex-shrink-0 text-foreground hover:text-blue-600"><Copy className="h-4 w-4" /></Button>
                 </div>
               </div>
-              <div className="w-full bg-blue-500/10 border border-blue-500/30 rounded-lg p-3">
-                <p className="text-xs sm:text-sm text-blue-400 text-center">ℹ️ Após realizar o pagamento, envie o comprovante pelo WhatsApp para ativar seu acesso</p>
+              <div className="w-full bg-blue-50 border border-blue-200 rounded-lg p-3">
+                <p className="text-xs sm:text-sm text-blue-600 text-center">ℹ️ Após realizar o pagamento, envie o comprovante pelo WhatsApp para ativar seu acesso</p>
               </div>
               <Button onClick={handleSendReceipt} className="w-full bg-green-600 hover:bg-green-700 text-white">Enviar Comprovante via WhatsApp</Button>
             </div>
@@ -144,7 +143,7 @@ const Pricing = () => {
 
         {/* PIX Modal - 6 Meses */}
         <Dialog open={pix6MesesModalOpen} onOpenChange={(open) => { setPix6MesesModalOpen(open); if (!open) setShowPixQRCode(null); }}>
-          <DialogContent className="max-w-[95vw] sm:max-w-lg mx-4 glass-card border-white/20">
+          <DialogContent className="max-w-[95vw] sm:max-w-lg mx-4 bg-white border-gray-200">
             {showPixQRCode === '6meses' ? (
               <>
                 <DialogHeader>
@@ -152,19 +151,19 @@ const Pricing = () => {
                   <DialogDescription className="text-center text-base sm:text-lg font-semibold gradient-text">FIDELIDADE 6 Meses - {planValue6Meses}</DialogDescription>
                 </DialogHeader>
                 <div className="flex flex-col items-center space-y-4 py-4">
-                  <div className="bg-white p-3 rounded-lg shadow-md"><QRCodeSVG value={pixPayload6Meses} size={160} level="H" includeMargin={true} /></div>
+                  <div className="bg-white p-3 rounded-lg shadow-md border border-gray-100"><QRCodeSVG value={pixPayload6Meses} size={160} level="H" includeMargin={true} /></div>
                   <div className="w-full space-y-2">
                     <p className="text-sm font-medium text-muted-foreground">Chave PIX (E-mail):</p>
-                    <div className="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10">
+                    <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg border border-gray-200">
                       <span className="flex-1 text-xs sm:text-sm break-all text-foreground">{pixKey}</span>
-                      <Button variant="ghost" size="icon" onClick={handleCopyPixKey} className="h-8 w-8 flex-shrink-0 text-foreground hover:text-blue-400"><Copy className="h-4 w-4" /></Button>
+                      <Button variant="ghost" size="icon" onClick={handleCopyPixKey} className="h-8 w-8 flex-shrink-0 text-foreground hover:text-blue-600"><Copy className="h-4 w-4" /></Button>
                     </div>
                   </div>
-                  <div className="w-full bg-blue-500/10 border border-blue-500/30 rounded-lg p-3">
-                    <p className="text-xs sm:text-sm text-blue-400 text-center">ℹ️ Após realizar o pagamento, envie o comprovante pelo WhatsApp para ativar seu acesso</p>
+                  <div className="w-full bg-blue-50 border border-blue-200 rounded-lg p-3">
+                    <p className="text-xs sm:text-sm text-blue-600 text-center">ℹ️ Após realizar o pagamento, envie o comprovante pelo WhatsApp para ativar seu acesso</p>
                   </div>
                   <div className="flex flex-col sm:flex-row gap-2 w-full">
-                    <Button variant="outline" onClick={() => setShowPixQRCode(null)} className="flex-1 border-white/20 text-foreground hover:bg-white/5"><ArrowLeft className="h-4 w-4 mr-2" />Voltar</Button>
+                    <Button variant="outline" onClick={() => setShowPixQRCode(null)} className="flex-1 border-gray-300 text-foreground hover:bg-gray-50"><ArrowLeft className="h-4 w-4 mr-2" />Voltar</Button>
                     <Button onClick={handleSendReceipt6Meses} className="flex-1 bg-green-600 hover:bg-green-700 text-white">Enviar Comprovante</Button>
                   </div>
                 </div>
@@ -176,25 +175,25 @@ const Pricing = () => {
                   <DialogDescription className="text-center text-base sm:text-lg font-semibold gradient-text">FIDELIDADE 6 Meses</DialogDescription>
                 </DialogHeader>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-6">
-                  <Card className="cursor-pointer glass-card border-white/10 hover:border-blue-500/50 transition-all" onClick={() => window.open('https://www.asaas.com/c/6vaoui3drgmdpcex', '_blank')}>
+                  <Card className="cursor-pointer bg-white border-gray-200 hover:border-blue-400 transition-all shadow-sm hover:shadow-md" onClick={() => window.open('https://www.asaas.com/c/6vaoui3drgmdpcex', '_blank')}>
                     <CardHeader className="text-center space-y-4 pb-8">
-                      <div className="mx-auto w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center"><CreditCard className="h-8 w-8 text-blue-400" /></div>
+                      <div className="mx-auto w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center"><CreditCard className="h-8 w-8 text-blue-600" /></div>
                       <CardContent className="space-y-2 p-0">
                         <h3 className="text-xl font-bold text-foreground">Cartão</h3>
                         <p className="text-sm text-muted-foreground">6x de R$ 49,90</p>
                         <p className="text-xs text-muted-foreground">(parcelado)</p>
-                        <Button className="w-full mt-4 bg-gradient-to-r from-blue-600 to-purple-600">Pagar com Cartão</Button>
+                        <Button className="w-full mt-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white">Pagar com Cartão</Button>
                       </CardContent>
                     </CardHeader>
                   </Card>
-                  <Card className="cursor-pointer glass-card border-white/10 hover:border-green-500/50 transition-all" onClick={() => setShowPixQRCode('6meses')}>
+                  <Card className="cursor-pointer bg-white border-gray-200 hover:border-green-400 transition-all shadow-sm hover:shadow-md" onClick={() => setShowPixQRCode('6meses')}>
                     <CardHeader className="text-center space-y-4 pb-8">
-                      <div className="mx-auto w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center"><Smartphone className="h-8 w-8 text-green-400" /></div>
+                      <div className="mx-auto w-16 h-16 bg-green-50 rounded-full flex items-center justify-center"><Smartphone className="h-8 w-8 text-green-600" /></div>
                       <CardContent className="space-y-2 p-0">
                         <h3 className="text-xl font-bold text-foreground">PIX</h3>
                         <p className="text-sm text-muted-foreground">{planValue6Meses}</p>
                         <p className="text-xs text-muted-foreground">(à vista)</p>
-                        <Button className="w-full mt-4 bg-green-600 hover:bg-green-700">Pagar com PIX</Button>
+                        <Button className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white">Pagar com PIX</Button>
                       </CardContent>
                     </CardHeader>
                   </Card>
@@ -206,7 +205,7 @@ const Pricing = () => {
 
         {/* PIX Modal - 12 Meses */}
         <Dialog open={pix12MesesModalOpen} onOpenChange={(open) => { setPix12MesesModalOpen(open); if (!open) setShowPixQRCode(null); }}>
-          <DialogContent className="max-w-[95vw] sm:max-w-lg mx-4 glass-card border-white/20">
+          <DialogContent className="max-w-[95vw] sm:max-w-lg mx-4 bg-white border-gray-200">
             {showPixQRCode === '12meses' ? (
               <>
                 <DialogHeader>
@@ -214,19 +213,19 @@ const Pricing = () => {
                   <DialogDescription className="text-center text-base sm:text-lg font-semibold gradient-text">FIDELIDADE 12 Meses - {planValue12Meses}</DialogDescription>
                 </DialogHeader>
                 <div className="flex flex-col items-center space-y-4 py-4">
-                  <div className="bg-white p-3 rounded-lg shadow-md"><QRCodeSVG value={pixPayload12Meses} size={160} level="H" includeMargin={true} /></div>
+                  <div className="bg-white p-3 rounded-lg shadow-md border border-gray-100"><QRCodeSVG value={pixPayload12Meses} size={160} level="H" includeMargin={true} /></div>
                   <div className="w-full space-y-2">
                     <p className="text-sm font-medium text-muted-foreground">Chave PIX (E-mail):</p>
-                    <div className="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10">
+                    <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg border border-gray-200">
                       <span className="flex-1 text-xs sm:text-sm break-all text-foreground">{pixKey}</span>
-                      <Button variant="ghost" size="icon" onClick={handleCopyPixKey} className="h-8 w-8 flex-shrink-0 text-foreground hover:text-blue-400"><Copy className="h-4 w-4" /></Button>
+                      <Button variant="ghost" size="icon" onClick={handleCopyPixKey} className="h-8 w-8 flex-shrink-0 text-foreground hover:text-blue-600"><Copy className="h-4 w-4" /></Button>
                     </div>
                   </div>
-                  <div className="w-full bg-blue-500/10 border border-blue-500/30 rounded-lg p-3">
-                    <p className="text-xs sm:text-sm text-blue-400 text-center">ℹ️ Após realizar o pagamento, envie o comprovante pelo WhatsApp para ativar seu acesso</p>
+                  <div className="w-full bg-blue-50 border border-blue-200 rounded-lg p-3">
+                    <p className="text-xs sm:text-sm text-blue-600 text-center">ℹ️ Após realizar o pagamento, envie o comprovante pelo WhatsApp para ativar seu acesso</p>
                   </div>
                   <div className="flex flex-col sm:flex-row gap-2 w-full">
-                    <Button variant="outline" onClick={() => setShowPixQRCode(null)} className="flex-1 border-white/20 text-foreground hover:bg-white/5"><ArrowLeft className="h-4 w-4 mr-2" />Voltar</Button>
+                    <Button variant="outline" onClick={() => setShowPixQRCode(null)} className="flex-1 border-gray-300 text-foreground hover:bg-gray-50"><ArrowLeft className="h-4 w-4 mr-2" />Voltar</Button>
                     <Button onClick={handleSendReceipt12Meses} className="flex-1 bg-green-600 hover:bg-green-700 text-white">Enviar Comprovante</Button>
                   </div>
                 </div>
@@ -238,25 +237,25 @@ const Pricing = () => {
                   <DialogDescription className="text-center text-base sm:text-lg font-semibold gradient-text">FIDELIDADE 12 Meses</DialogDescription>
                 </DialogHeader>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-6">
-                  <Card className="cursor-pointer glass-card border-white/10 hover:border-blue-500/50 transition-all" onClick={() => window.open('https://www.asaas.com/c/gtcimltw64g0odx1', '_blank')}>
+                  <Card className="cursor-pointer bg-white border-gray-200 hover:border-blue-400 transition-all shadow-sm hover:shadow-md" onClick={() => window.open('https://www.asaas.com/c/gtcimltw64g0odx1', '_blank')}>
                     <CardHeader className="text-center space-y-4 pb-8">
-                      <div className="mx-auto w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center"><CreditCard className="h-8 w-8 text-blue-400" /></div>
+                      <div className="mx-auto w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center"><CreditCard className="h-8 w-8 text-blue-600" /></div>
                       <CardContent className="space-y-2 p-0">
                         <h3 className="text-xl font-bold text-foreground">Cartão</h3>
                         <p className="text-sm text-muted-foreground">12x de R$ 39,90</p>
                         <p className="text-xs text-muted-foreground">(parcelado)</p>
-                        <Button className="w-full mt-4 bg-gradient-to-r from-blue-600 to-purple-600">Pagar com Cartão</Button>
+                        <Button className="w-full mt-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white">Pagar com Cartão</Button>
                       </CardContent>
                     </CardHeader>
                   </Card>
-                  <Card className="cursor-pointer glass-card border-white/10 hover:border-green-500/50 transition-all" onClick={() => setShowPixQRCode('12meses')}>
+                  <Card className="cursor-pointer bg-white border-gray-200 hover:border-green-400 transition-all shadow-sm hover:shadow-md" onClick={() => setShowPixQRCode('12meses')}>
                     <CardHeader className="text-center space-y-4 pb-8">
-                      <div className="mx-auto w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center"><Smartphone className="h-8 w-8 text-green-400" /></div>
+                      <div className="mx-auto w-16 h-16 bg-green-50 rounded-full flex items-center justify-center"><Smartphone className="h-8 w-8 text-green-600" /></div>
                       <CardContent className="space-y-2 p-0">
                         <h3 className="text-xl font-bold text-foreground">PIX</h3>
                         <p className="text-sm text-muted-foreground">{planValue12Meses}</p>
                         <p className="text-xs text-muted-foreground">(à vista)</p>
-                        <Button className="w-full mt-4 bg-green-600 hover:bg-green-700">Pagar com PIX</Button>
+                        <Button className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white">Pagar com PIX</Button>
                       </CardContent>
                     </CardHeader>
                   </Card>

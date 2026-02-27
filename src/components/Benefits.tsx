@@ -1,5 +1,4 @@
-
-import { CheckCircle, Clock, TrendingUp, Users, MessageCircle } from 'lucide-react';
+import { CheckCircle, Clock, TrendingUp, Users } from 'lucide-react';
 
 const Benefits = () => {
   const benefits = [
@@ -27,7 +26,7 @@ const Benefits = () => {
   ];
 
   return (
-    <section id="beneficios" className="section-padding bg-gradient-to-br from-secondary via-background to-secondary">
+    <section id="beneficios" className="section-padding section-alt">
       <div className="container-padding">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold font-playfair text-foreground">
@@ -48,7 +47,7 @@ const Benefits = () => {
               <div className="space-y-6">
                 {/* Icon and Stat */}
                 <div className="flex items-start justify-between">
-                  <div className="p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl group-hover:scale-110 transition-transform duration-300 glow-purple">
+                  <div className="p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-primary/15">
                     <benefit.icon className="h-6 w-6 text-white" />
                   </div>
                   <div className="text-right">
@@ -59,7 +58,7 @@ const Benefits = () => {
 
                 {/* Content */}
                 <div className="space-y-3">
-                  <h3 className="text-xl font-semibold text-foreground group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
                     {benefit.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -68,14 +67,14 @@ const Benefits = () => {
                 </div>
 
                 {/* Features list */}
-                <div className="space-y-2 pt-4 border-t border-white/10">
+                <div className="space-y-2 pt-4 border-t border-gray-200">
                   {[
                     'Interface intuitiva',
                     'Suporte especializado',
                     'Atualizações constantes'
                   ].map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-center space-x-2">
-                      <CheckCircle className="h-4 w-4 text-green-400 glow-green" />
+                      <CheckCircle className="h-4 w-4 text-green-500" />
                       <span className="text-sm text-muted-foreground">{feature}</span>
                     </div>
                   ))}
