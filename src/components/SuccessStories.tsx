@@ -5,92 +5,22 @@ const SuccessStories = () => {
   const [api, setApi] = useState<any>();
 
   const stories = [
-    {
-      id: 1,
-      category: 'Clínica de imóveis',
-      name: 'Dr. Carroll Santos',
-      profession: 'Musicoterapeuta',
-      memberSince: 'Membro desde Janeiro de 2019',
-      followers: '512',
-      growth: '+63K',
-      color: 'bg-gradient-to-br from-gray-800 to-gray-900',
-      textColor: 'text-white',
-      avatar: '👨‍⚕️'
-    },
-    {
-      id: 2,
-      category: 'Retalho',
-      name: 'Dra. Topman Silva',
-      profession: 'Especialista em Autismo',
-      memberSince: 'Membro desde Nov 2018',
-      followers: '755',
-      growth: '+213',
-      color: 'bg-gradient-to-br from-blue-600 to-purple-700',
-      textColor: 'text-white',
-      avatar: '👩‍⚕️'
-    },
-    {
-      id: 3,
-      category: 'Influencer',
-      name: 'Nicolette Mason',
-      profession: 'Terapeuta Musical',
-      memberSince: 'Membro desde Janeiro de 2021',
-      followers: '191',
-      growth: '+7K',
-      color: 'bg-gradient-to-br from-gray-700 to-black',
-      textColor: 'text-white',
-      avatar: '🎵'
-    },
-    {
-      id: 4,
-      category: 'Corretor',
-      name: 'Chad Morrison',
-      profession: 'Musicoterapeuta Infantil',
-      memberSince: 'Membro desde Dezembro de 2022',
-      followers: '289',
-      growth: '+15K',
-      color: 'bg-gradient-to-br from-orange-500 to-red-600',
-      textColor: 'text-white',
-      avatar: '🎼'
-    },
-    {
-      id: 5,
-      category: 'Empresário',
-      name: 'Grant Cardone',
-      profession: 'Diretor Clínico',
-      memberSince: 'Membro desde Março de 2020',
-      followers: '1.2K',
-      growth: '+85K',
-      color: 'bg-gradient-to-br from-pink-500 to-pink-700',
-      textColor: 'text-white',
-      avatar: '🏥'
-    },
-    {
-      id: 6,
-      category: 'Comércio eletrônico',
-      name: 'AWAY Store',
-      profession: 'Rede de Clínicas',
-      memberSince: 'Membro desde Maio 2019',
-      followers: '634',
-      growth: '+42K',
-      color: 'bg-gradient-to-br from-yellow-500 to-orange-600',
-      textColor: 'text-black',
-      avatar: '🏪'
-    }
+    { id: 1, category: 'Clínica de imóveis', name: 'Dr. Carroll Santos', profession: 'Musicoterapeuta', memberSince: 'Membro desde Janeiro de 2019', followers: '512', growth: '+63K', color: 'bg-gradient-to-br from-gray-800 to-gray-900', textColor: 'text-white', avatar: '👨‍⚕️' },
+    { id: 2, category: 'Retalho', name: 'Dra. Topman Silva', profession: 'Especialista em Autismo', memberSince: 'Membro desde Nov 2018', followers: '755', growth: '+213', color: 'bg-gradient-to-br from-blue-600 to-purple-700', textColor: 'text-white', avatar: '👩‍⚕️' },
+    { id: 3, category: 'Influencer', name: 'Nicolette Mason', profession: 'Terapeuta Musical', memberSince: 'Membro desde Janeiro de 2021', followers: '191', growth: '+7K', color: 'bg-gradient-to-br from-gray-700 to-black', textColor: 'text-white', avatar: '🎵' },
+    { id: 4, category: 'Corretor', name: 'Chad Morrison', profession: 'Musicoterapeuta Infantil', memberSince: 'Membro desde Dezembro de 2022', followers: '289', growth: '+15K', color: 'bg-gradient-to-br from-orange-500 to-red-600', textColor: 'text-white', avatar: '🎼' },
+    { id: 5, category: 'Empresário', name: 'Grant Cardone', profession: 'Diretor Clínico', memberSince: 'Membro desde Março de 2020', followers: '1.2K', growth: '+85K', color: 'bg-gradient-to-br from-pink-500 to-pink-700', textColor: 'text-white', avatar: '🏥' },
+    { id: 6, category: 'Comércio eletrônico', name: 'AWAY Store', profession: 'Rede de Clínicas', memberSince: 'Membro desde Maio 2019', followers: '634', growth: '+42K', color: 'bg-gradient-to-br from-yellow-500 to-orange-600', textColor: 'text-black', avatar: '🏪' }
   ];
 
   useEffect(() => {
     if (!api) return;
-
-    const interval = setInterval(() => {
-      api.scrollNext();
-    }, 3000);
-
+    const interval = setInterval(() => { api.scrollNext(); }, 3000);
     return () => clearInterval(interval);
   }, [api]);
 
   return (
-    <section className="section-padding bg-gradient-to-br from-secondary via-background to-secondary">
+    <section className="section-padding section-alt">
       <div className="container-padding">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold font-playfair text-foreground">
@@ -103,18 +33,11 @@ const SuccessStories = () => {
         </div>
 
         <div className="relative max-w-6xl mx-auto">
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            setApi={setApi}
-            className="w-full"
-          >
+          <Carousel opts={{ align: "start", loop: true }} setApi={setApi} className="w-full">
             <CarouselContent className="-ml-2 md:-ml-4">
               {stories.map((story) => (
                 <CarouselItem key={story.id} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                  <div className={`${story.color} ${story.textColor} rounded-2xl p-6 h-64 flex flex-col justify-between transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl border border-white/10`}>
+                  <div className={`${story.color} ${story.textColor} rounded-2xl p-6 h-64 flex flex-col justify-between transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl`}>
                     <div>
                       <div className="text-sm opacity-80 mb-2">{story.category}</div>
                       <div className="flex items-center space-x-3 mb-4">
@@ -126,7 +49,6 @@ const SuccessStories = () => {
                       </div>
                       <div className="text-sm opacity-80 mb-4">{story.memberSince}</div>
                     </div>
-                    
                     <div className="flex justify-between items-end">
                       <div className="text-center">
                         <div className="text-sm opacity-80">Pacientes</div>
@@ -149,7 +71,7 @@ const SuccessStories = () => {
             Junte-se a centenas de profissionais que já transformaram suas práticas
           </p>
           <button 
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-500 hover:to-purple-500 transition-all duration-300 transform hover:scale-105 glow-blue"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-500 hover:to-purple-500 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-primary/20"
             onClick={() => window.open('https://portal-musetera.netlify.app/login', '_blank')}
           >
             Começar agora

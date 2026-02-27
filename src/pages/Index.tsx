@@ -1,4 +1,3 @@
-
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import AboutUs from '@/components/AboutUs';
@@ -15,7 +14,7 @@ import WhatsAppFloat from '@/components/WhatsAppFloat';
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative bg-gradient-to-b from-[#FAFBFD] to-[#F0F2F5]">
       {/* Global Noise Texture Overlay */}
       <div className="noise-overlay" />
       

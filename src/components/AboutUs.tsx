@@ -19,42 +19,27 @@ const AboutUs = () => {
   ];
 
   const values = [
-    {
-      icon: Heart,
-      title: 'Cuidado Centrado no Paciente',
-      description: 'Acreditamos que cada paciente é único e merece um cuidado personalizado e humanizado.',
-      gradient: 'from-pink-500 to-rose-500'
-    },
-    {
-      icon: Shield,
-      title: 'Segurança e Privacidade',
-      description: 'Seus dados e dos pacientes são protegidos com os mais altos padrões de segurança.',
-      gradient: 'from-green-500 to-emerald-500'
-    },
-    {
-      icon: Target,
-      title: 'Foco em Resultados',
-      description: 'Desenvolvemos ferramentas que realmente fazem diferença na prática clínica.',
-      gradient: 'from-blue-500 to-cyan-500'
-    }
+    { icon: Heart, title: 'Cuidado Centrado no Paciente', description: 'Acreditamos que cada paciente é único e merece um cuidado personalizado e humanizado.', gradient: 'from-pink-500 to-rose-500' },
+    { icon: Shield, title: 'Segurança e Privacidade', description: 'Seus dados e dos pacientes são protegidos com os mais altos padrões de segurança.', gradient: 'from-green-500 to-emerald-500' },
+    { icon: Target, title: 'Foco em Resultados', description: 'Desenvolvemos ferramentas que realmente fazem diferença na prática clínica.', gradient: 'from-blue-500 to-cyan-500' }
   ];
 
   const certifications = [
-    { icon: Shield, label: 'LGPD Compliance', color: 'text-green-400' },
-    { icon: Award, label: 'ISO 27001', color: 'text-blue-400' },
-    { icon: Users, label: 'Associação Brasileira de Musicoterapia', color: 'text-purple-400' }
+    { icon: Shield, label: 'LGPD Compliance', color: 'text-green-600' },
+    { icon: Award, label: 'ISO 27001', color: 'text-blue-600' },
+    { icon: Users, label: 'Associação Brasileira de Musicoterapia', color: 'text-purple-600' }
   ];
 
   return (
     <section 
       id="sobre" 
-      className="section-padding bg-gradient-to-br from-background via-secondary/30 to-background relative overflow-hidden"
+      className="section-padding section-alt relative overflow-hidden"
       ref={sectionRef as React.RefObject<HTMLElement>}
     >
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)',
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(0,0,0,0.03) 1px, transparent 0)',
           backgroundSize: '40px 40px'
         }} />
       </div>
@@ -77,7 +62,7 @@ const AboutUs = () => {
 
         {/* Header */}
         <div className={`text-center space-y-4 mb-16 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 mb-4">
             <span className="text-sm text-primary font-medium">Quem Somos</span>
           </div>
           <h2 className="text-3xl lg:text-5xl font-bold font-playfair text-foreground">
@@ -96,9 +81,9 @@ const AboutUs = () => {
               <div className="w-1 h-8 bg-gradient-to-b from-primary to-purple-500 rounded-full" />
               Nossa História
             </h3>
-            <div className="space-y-6 pl-6 border-l-2 border-white/10">
+            <div className="space-y-6 pl-6 border-l-2 border-gray-200">
               <div className="relative">
-                <div className="absolute -left-[25px] w-3 h-3 rounded-full bg-primary shadow-lg shadow-primary/50" />
+                <div className="absolute -left-[25px] w-3 h-3 rounded-full bg-primary shadow-lg shadow-primary/30" />
                 <div className="space-y-2">
                   <span className="text-sm text-primary font-semibold">2019</span>
                   <p className="text-muted-foreground">
@@ -108,9 +93,9 @@ const AboutUs = () => {
                 </div>
               </div>
               <div className="relative">
-                <div className="absolute -left-[25px] w-3 h-3 rounded-full bg-purple-500 shadow-lg shadow-purple-500/50" />
+                <div className="absolute -left-[25px] w-3 h-3 rounded-full bg-purple-500 shadow-lg shadow-purple-500/30" />
                 <div className="space-y-2">
-                  <span className="text-sm text-purple-400 font-semibold">2021</span>
+                  <span className="text-sm text-purple-600 font-semibold">2021</span>
                   <p className="text-muted-foreground">
                     Após anos de pesquisa em parceria com profissionais 
                     da musicoterapia, lançamos a plataforma completa.
@@ -118,9 +103,9 @@ const AboutUs = () => {
                 </div>
               </div>
               <div className="relative">
-                <div className="absolute -left-[25px] w-3 h-3 rounded-full bg-green-500 shadow-lg shadow-green-500/50" />
+                <div className="absolute -left-[25px] w-3 h-3 rounded-full bg-green-500 shadow-lg shadow-green-500/30" />
                 <div className="space-y-2">
-                  <span className="text-sm text-green-400 font-semibold">Hoje</span>
+                  <span className="text-sm text-green-600 font-semibold">Hoje</span>
                   <p className="text-muted-foreground">
                     Somos a referência nacional em sistemas de gestão para 
                     musicoterapeutas, com presença em todos os estados brasileiros.
@@ -156,12 +141,12 @@ const AboutUs = () => {
 
         {/* Nossa Missão */}
         <div className={`glass-card p-8 lg:p-12 mb-20 relative overflow-hidden transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-purple-500/5 to-pink-500/5" />
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl" />
           
           <div className="relative text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-200 bg-white/80">
               <Target className="h-4 w-4 text-primary" />
               <span className="text-sm text-muted-foreground">Nossa Missão</span>
             </div>

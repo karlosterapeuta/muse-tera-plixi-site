@@ -10,62 +10,46 @@ const Hero = () => {
   });
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Video Background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/music-therapy-video.mp4" type="video/mp4" />
-      </video>
-      
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/70" />
-      
-      {/* Enhanced Aurora Effect */}
-      <div className="aurora-enhanced" />
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-background via-background to-muted">
+      {/* Subtle radial gradient for hero differentiation */}
+      <div className="absolute inset-0" style={{
+        background: 'radial-gradient(ellipse at 50% 30%, rgba(99, 102, 241, 0.06) 0%, transparent 60%)'
+      }} />
       
       {/* Grid Pattern */}
-      <div className="absolute inset-0 grid-pattern opacity-50" />
+      <div className="absolute inset-0 grid-pattern opacity-40" />
       
-      {/* Gradient overlay for depth */}
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-      
-      {/* Floating Particles */}
+      {/* Floating Particles - subtle */}
       <div className="particles">
-        {[...Array(15)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <div key={i} className="particle" />
         ))}
       </div>
       
-      {/* Animated background blobs - More vibrant */}
+      {/* Animated background blobs - very subtle */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="blob w-[500px] h-[500px] bg-blue-500/40 top-1/4 left-1/4" />
-        <div className="blob blob-delay-2 w-[600px] h-[600px] bg-purple-500/35 bottom-1/4 right-1/4" />
-        <div className="blob blob-delay-4 w-[400px] h-[400px] bg-cyan-500/25 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-        <div className="blob blob-delay-6 w-[350px] h-[350px] bg-emerald-500/20 bottom-1/3 left-1/3" />
+        <div className="blob w-[500px] h-[500px] bg-blue-400/30 top-1/4 left-1/4" />
+        <div className="blob blob-delay-2 w-[600px] h-[600px] bg-purple-400/25 bottom-1/4 right-1/4" />
+        <div className="blob blob-delay-4 w-[400px] h-[400px] bg-cyan-400/15 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
       </div>
       
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 badge-glow mb-8 animate-fade-in">
-          <Sparkles className="w-4 h-4 text-yellow-400" />
-          <span className="text-sm text-white/90">Sistema #1 para Musicoterapeutas no Brasil</span>
-          <Sparkles className="w-4 h-4 text-yellow-400" />
+          <Sparkles className="w-4 h-4 text-yellow-500" />
+          <span className="text-sm text-foreground/80">Sistema #1 para Musicoterapeutas no Brasil</span>
+          <Sparkles className="w-4 h-4 text-yellow-500" />
         </div>
 
-        {/* Main Title - Heroic */}
+        {/* Main Title */}
         <h1 className="text-7xl md:text-8xl lg:text-9xl font-playfair font-bold tracking-tighter mb-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-          <span className="text-white text-glow text-shimmer">Muse</span>
-          <span className="gradient-text-animated text-glow-purple text-shimmer">Tera</span>
+          <span className="text-foreground">Muse</span>
+          <span className="gradient-text-animated">Tera</span>
         </h1>
         
         {/* Subtitle with Typewriter */}
-        <p className="text-xl md:text-2xl text-white/80 mb-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+        <p className="text-xl md:text-2xl text-muted-foreground mb-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
           Transforme sua prática de musicoterapia com
         </p>
         
@@ -75,7 +59,6 @@ const Hero = () => {
           </span>
           <span className="typewriter-cursor" />
         </div>
-        
         
         {/* Social Proof */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in" style={{ animationDelay: '0.5s' }}>
@@ -91,24 +74,24 @@ const Hero = () => {
                 </div>
               ))}
             </div>
-            <span className="text-white/70 text-sm">+500 profissionais</span>
+            <span className="text-muted-foreground text-sm">+500 profissionais</span>
           </div>
           
           {/* Rating */}
           <div className="flex items-center gap-2">
             <div className="flex">
               {[1, 2, 3, 4, 5].map((i) => (
-                <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                <Star key={i} className="w-5 h-5 text-yellow-500 fill-yellow-500" />
               ))}
             </div>
-            <span className="text-white/70 text-sm">4.9/5 avaliação</span>
+            <span className="text-muted-foreground text-sm">4.9/5 avaliação</span>
           </div>
         </div>
       </div>
       
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator animate-fade-in" style={{ animationDelay: '0.8s' }}>
-        <span className="text-white/50 text-xs uppercase tracking-widest mb-2">Descubra mais</span>
+        <span className="text-muted-foreground text-xs uppercase tracking-widest mb-2">Descubra mais</span>
         <div className="scroll-indicator-arrow" />
       </div>
     </section>

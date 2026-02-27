@@ -1,4 +1,3 @@
-
 import { Star, Quote, MapPin, Calendar } from 'lucide-react';
 
 const Testimonials = () => {
@@ -40,7 +39,7 @@ const Testimonials = () => {
 
   return (
     <section id="depoimentos" className="section-padding relative overflow-hidden">
-      {/* Background mesh */}
+      {/* Background mesh - subtle */}
       <div className="absolute inset-0 mesh-gradient opacity-50" />
       
       <div className="container-padding relative z-10">
@@ -61,7 +60,7 @@ const Testimonials = () => {
               className="group relative glass-card-premium hover-glow-enhanced p-8"
             >
               {/* Quote icon */}
-              <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center glow-purple">
+              <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-primary/15">
                 <Quote className="h-4 w-4 text-white" />
               </div>
 
@@ -70,10 +69,10 @@ const Testimonials = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex space-x-1">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                      <Star key={i} className="h-5 w-5 fill-yellow-500 text-yellow-500" />
                     ))}
                   </div>
-                  <div className="text-sm text-blue-400 font-medium">Verificado ✓</div>
+                  <div className="text-sm text-blue-600 font-medium">Verificado ✓</div>
                 </div>
 
                 {/* Content */}
@@ -82,14 +81,14 @@ const Testimonials = () => {
                 </p>
 
                 {/* Author */}
-                <div className="space-y-4 pt-4 border-t border-white/10">
+                <div className="space-y-4 pt-4 border-t border-gray-200">
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold glow-blue">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold shadow-lg shadow-primary/15">
                       {testimonial.avatar}
                     </div>
                     <div className="flex-1">
                       <div className="font-semibold text-foreground">{testimonial.name}</div>
-                      <div className="text-sm text-blue-400 font-medium">{testimonial.role}</div>
+                      <div className="text-sm text-blue-600 font-medium">{testimonial.role}</div>
                     </div>
                   </div>
                   
@@ -103,8 +102,8 @@ const Testimonials = () => {
                       <MapPin className="h-3 w-3" />
                       <span>{testimonial.location}</span>
                     </div>
-                    <div className="text-purple-400 font-medium">{testimonial.specialty}</div>
-                    <div className="text-green-400 font-medium">{testimonial.patients}</div>
+                    <div className="text-purple-600 font-medium">{testimonial.specialty}</div>
+                    <div className="text-green-600 font-medium">{testimonial.patients}</div>
                   </div>
                 </div>
               </div>
@@ -113,8 +112,8 @@ const Testimonials = () => {
         </div>
 
         {/* Enhanced Stats section */}
-        <div className="relative glass-card-premium glow-deep overflow-hidden p-8 lg:p-12">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20" />
+        <div className="relative glass-card-premium overflow-hidden p-8 lg:p-12 border border-primary/10">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50" />
           <div className="relative">
             <div className="text-center mb-8">
               <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
@@ -128,22 +127,22 @@ const Testimonials = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
               <div className="space-y-2">
                 <div className="text-4xl lg:text-5xl font-bold gradient-text mb-2">500+</div>
-                <div className="text-foreground">Musicoterapeutas Ativos</div>
+                <div className="text-foreground font-medium">Musicoterapeutas Ativos</div>
                 <div className="text-sm text-muted-foreground">Em todos os estados</div>
               </div>
               <div className="space-y-2">
                 <div className="text-4xl lg:text-5xl font-bold gradient-text mb-2">25k+</div>
-                <div className="text-foreground">Sessões Mensais</div>
+                <div className="text-foreground font-medium">Sessões Mensais</div>
                 <div className="text-sm text-muted-foreground">Crescimento de 40%</div>
               </div>
               <div className="space-y-2">
                 <div className="text-4xl lg:text-5xl font-bold gradient-text mb-2">4.9⭐</div>
-                <div className="text-foreground">Avaliação Média</div>
+                <div className="text-foreground font-medium">Avaliação Média</div>
                 <div className="text-sm text-muted-foreground">127 avaliações</div>
               </div>
               <div className="space-y-2">
                 <div className="text-4xl lg:text-5xl font-bold gradient-text mb-2">95%</div>
-                <div className="text-foreground">Taxa de Renovação</div>
+                <div className="text-foreground font-medium">Taxa de Renovação</div>
                 <div className="text-sm text-muted-foreground">Satisfação comprovada</div>
               </div>
             </div>

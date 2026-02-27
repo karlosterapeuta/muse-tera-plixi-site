@@ -20,19 +20,16 @@ const SystemDemo = () => {
   const improvementCount = useCountUp({ end: 98, suffix: '%', startOnView: isVisible });
 
   const stats = [
-    { countUp: patientsCount, label: 'Pacientes ativos', icon: Users, color: 'text-blue-400' },
-    { countUp: sessionsCount, label: 'Sessões realizadas', icon: Calendar, color: 'text-purple-400' },
-    { countUp: improvementCount, label: 'Melhoria relatada', icon: TrendingUp, color: 'text-green-400' }
+    { countUp: patientsCount, label: 'Pacientes ativos', icon: Users, color: 'text-blue-600' },
+    { countUp: sessionsCount, label: 'Sessões realizadas', icon: Calendar, color: 'text-purple-600' },
+    { countUp: improvementCount, label: 'Melhoria relatada', icon: TrendingUp, color: 'text-green-600' }
   ];
 
-  // Auto-rotate slides
   useEffect(() => {
     if (isPaused) return;
-    
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % screenshots.length);
     }, 4000);
-    
     return () => clearInterval(interval);
   }, [isPaused]);
 
@@ -46,7 +43,7 @@ const SystemDemo = () => {
 
   return (
     <section 
-      className="section-padding bg-gradient-to-br from-background via-secondary/30 to-background relative overflow-hidden"
+      className="section-padding bg-background relative overflow-hidden"
       ref={sectionRef as React.RefObject<HTMLElement>}
     >
       <div className="container-padding relative">
@@ -54,9 +51,9 @@ const SystemDemo = () => {
           {/* Left side - Content */}
           <div className={`space-y-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-green-200 bg-green-50">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                <span className="text-sm text-primary font-medium">Sistema ao vivo</span>
+                <span className="text-sm text-green-700 font-medium">Sistema ao vivo</span>
               </div>
               
               <h2 className="text-4xl lg:text-5xl font-bold font-playfair leading-tight text-foreground">
@@ -99,7 +96,7 @@ const SystemDemo = () => {
               </button>
               <button 
                 onClick={handleWhatsApp}
-                className="flex items-center justify-center gap-2 border-2 border-green-500/50 hover:border-green-400 hover:bg-green-500/10 text-green-400 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20"
+                className="flex items-center justify-center gap-2 border-2 border-green-500/50 hover:border-green-500 hover:bg-green-50 text-green-600 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10"
               >
                 <MessageCircle className="h-5 w-5" />
                 WhatsApp
@@ -118,19 +115,15 @@ const SystemDemo = () => {
               <div className="phone-glow" />
               
               {/* Floating decorative elements */}
-              <div className="absolute -top-8 -left-8 w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl opacity-80 animate-float shadow-xl shadow-pink-500/30 rotate-12 z-0" />
-              <div className="absolute -bottom-10 -right-10 w-20 h-20 bg-gradient-to-br from-primary to-purple-600 rounded-2xl opacity-70 animate-float shadow-xl shadow-primary/30 -rotate-12 z-0" style={{ animationDelay: '1s' }} />
-              <div className="absolute top-1/3 -right-6 w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl opacity-80 animate-float shadow-lg shadow-green-500/30 z-0" style={{ animationDelay: '2s' }} />
-              <div className="absolute bottom-1/4 -left-6 w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg opacity-70 animate-float shadow-lg shadow-cyan-500/30 z-0" style={{ animationDelay: '1.5s' }} />
+              <div className="absolute -top-8 -left-8 w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl opacity-80 animate-float shadow-xl shadow-pink-500/20 rotate-12 z-0" />
+              <div className="absolute -bottom-10 -right-10 w-20 h-20 bg-gradient-to-br from-primary to-purple-600 rounded-2xl opacity-70 animate-float shadow-xl shadow-primary/20 -rotate-12 z-0" style={{ animationDelay: '1s' }} />
+              <div className="absolute top-1/3 -right-6 w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl opacity-80 animate-float shadow-lg shadow-green-500/20 z-0" style={{ animationDelay: '2s' }} />
+              <div className="absolute bottom-1/4 -left-6 w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg opacity-70 animate-float shadow-lg shadow-cyan-500/15 z-0" style={{ animationDelay: '1.5s' }} />
               
               {/* Phone Frame */}
               <div className="phone-mockup relative z-10" style={{ perspective: '1000px' }}>
-                {/* Dynamic Island / Notch */}
                 <div className="phone-notch" />
-                
-                {/* Screen */}
                 <div className="phone-screen">
-                  {/* Screenshots */}
                   {screenshots.map((screenshot, index) => (
                     <img
                       key={index}
@@ -141,8 +134,6 @@ const SystemDemo = () => {
                       }`}
                     />
                   ))}
-                  
-                  {/* Glass reflection overlay */}
                   <div className="phone-reflection" />
                 </div>
               </div>
@@ -161,7 +152,7 @@ const SystemDemo = () => {
               
               {/* Current screen label */}
               <div className="flex justify-center mt-4">
-                <span className="phone-label text-white/90">
+                <span className="phone-label">
                   {screenshots[currentSlide].label}
                 </span>
               </div>
@@ -172,8 +163,8 @@ const SystemDemo = () => {
 
       {/* Background decorative elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl" />
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-purple-600/5 rounded-full blur-3xl" />
       </div>
     </section>
   );

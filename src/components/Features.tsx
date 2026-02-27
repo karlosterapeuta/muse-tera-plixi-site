@@ -15,60 +15,12 @@ const Features = () => {
   ];
 
   const features = [
-    {
-      icon: Users,
-      title: 'Gestão de Pacientes',
-      description: 'Organize todos os dados dos seus pacientes em um só lugar, com histórico completo e informações importantes.',
-      gradient: 'from-blue-500 to-blue-600',
-      category: 'gestao',
-      featured: true,
-      badge: null
-    },
-    {
-      icon: Calendar,
-      title: 'Agendamento Inteligente',
-      description: 'Sistema de agendamento automático com lembretes por email e WhatsApp para pacientes.',
-      gradient: 'from-purple-500 to-purple-600',
-      category: 'produtividade',
-      featured: false,
-      badge: 'Popular'
-    },
-    {
-      icon: FileText,
-      title: 'Planos de Tratamento',
-      description: 'Crie e personalize planos terapêuticos individualizados com objetivos e atividades específicas.',
-      gradient: 'from-green-500 to-green-600',
-      category: 'gestao',
-      featured: false,
-      badge: null
-    },
-    {
-      icon: BarChart3,
-      title: 'Relatórios e Análises',
-      description: 'Acompanhe o progresso dos pacientes com gráficos detalhados e relatórios profissionais.',
-      gradient: 'from-orange-500 to-orange-600',
-      category: 'produtividade',
-      featured: false,
-      badge: null
-    },
-    {
-      icon: Heart,
-      title: 'Avaliação Terapêutica',
-      description: 'Ferramentas especializadas para avaliar o progresso emocional e cognitivo dos pacientes.',
-      gradient: 'from-pink-500 to-pink-600',
-      category: 'gestao',
-      featured: false,
-      badge: null
-    },
-    {
-      icon: Shield,
-      title: 'Segurança e Privacidade',
-      description: 'Seus dados e dos pacientes protegidos com criptografia de ponta e conformidade com LGPD.',
-      gradient: 'from-indigo-500 to-indigo-600',
-      category: 'seguranca',
-      featured: false,
-      badge: 'LGPD'
-    }
+    { icon: Users, title: 'Gestão de Pacientes', description: 'Organize todos os dados dos seus pacientes em um só lugar, com histórico completo e informações importantes.', gradient: 'from-blue-500 to-blue-600', category: 'gestao', featured: true, badge: null },
+    { icon: Calendar, title: 'Agendamento Inteligente', description: 'Sistema de agendamento automático com lembretes por email e WhatsApp para pacientes.', gradient: 'from-purple-500 to-purple-600', category: 'produtividade', featured: false, badge: 'Popular' },
+    { icon: FileText, title: 'Planos de Tratamento', description: 'Crie e personalize planos terapêuticos individualizados com objetivos e atividades específicas.', gradient: 'from-green-500 to-green-600', category: 'gestao', featured: false, badge: null },
+    { icon: BarChart3, title: 'Relatórios e Análises', description: 'Acompanhe o progresso dos pacientes com gráficos detalhados e relatórios profissionais.', gradient: 'from-orange-500 to-orange-600', category: 'produtividade', featured: false, badge: null },
+    { icon: Heart, title: 'Avaliação Terapêutica', description: 'Ferramentas especializadas para avaliar o progresso emocional e cognitivo dos pacientes.', gradient: 'from-pink-500 to-pink-600', category: 'gestao', featured: false, badge: null },
+    { icon: Shield, title: 'Segurança e Privacidade', description: 'Seus dados e dos pacientes protegidos com criptografia de ponta e conformidade com LGPD.', gradient: 'from-indigo-500 to-indigo-600', category: 'seguranca', featured: false, badge: 'LGPD' }
   ];
 
   const filteredFeatures = activeCategory === 'all' 
@@ -90,7 +42,7 @@ const Features = () => {
       <div className="container-padding relative">
         {/* Header */}
         <div className={`text-center space-y-4 mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5">
             <Sparkles className="h-4 w-4 text-primary" />
             <span className="text-sm text-primary font-medium">Recursos Poderosos</span>
           </div>
@@ -111,8 +63,8 @@ const Features = () => {
               onClick={() => setActiveCategory(category.id)}
               className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeCategory === category.id
-                  ? 'bg-gradient-to-r from-primary to-purple-600 text-primary-foreground shadow-lg shadow-primary/25'
-                  : 'bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground'
+                  ? 'bg-gradient-to-r from-primary to-purple-600 text-white shadow-lg shadow-primary/20'
+                  : 'bg-gray-100 text-muted-foreground hover:bg-gray-200 hover:text-foreground'
               }`}
             >
               {category.name}
@@ -133,7 +85,7 @@ const Features = () => {
               {/* Badge */}
               {feature.badge && (
                 <div className="absolute top-4 right-4 z-10">
-                  <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-primary to-purple-600 text-primary-foreground shadow-lg">
+                  <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-primary to-purple-600 text-white shadow-lg">
                     {feature.badge}
                   </span>
                 </div>
@@ -157,13 +109,13 @@ const Features = () => {
                     </p>
                     {feature.featured && (
                       <div className="pt-4 flex flex-wrap gap-3">
-                        <span className="px-3 py-1 text-xs bg-white/5 rounded-full text-muted-foreground border border-white/10">
+                        <span className="px-3 py-1 text-xs bg-gray-100 rounded-full text-muted-foreground border border-gray-200">
                           Histórico completo
                         </span>
-                        <span className="px-3 py-1 text-xs bg-white/5 rounded-full text-muted-foreground border border-white/10">
+                        <span className="px-3 py-1 text-xs bg-gray-100 rounded-full text-muted-foreground border border-gray-200">
                           Anexos ilimitados
                         </span>
-                        <span className="px-3 py-1 text-xs bg-white/5 rounded-full text-muted-foreground border border-white/10">
+                        <span className="px-3 py-1 text-xs bg-gray-100 rounded-full text-muted-foreground border border-gray-200">
                           Busca avançada
                         </span>
                       </div>
