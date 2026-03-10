@@ -651,14 +651,14 @@
     transform: scale(1.1) rotate(5deg);
   }
 
-  /* Pricing popular card */
+  /* Pricing popular card - Space theme */
   .pricing-popular {
     @apply relative;
-    background: white !important;
+    background: hsl(var(--card)) !important;
   }
   
   .pricing-popular:hover {
-    background: white !important;
+    background: hsl(var(--card)) !important;
   }
   
   .pricing-popular::before {
