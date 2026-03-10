@@ -44,8 +44,8 @@ const Navigation = () => {
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       isScrolled 
-        ? 'bg-white/95 backdrop-blur-2xl py-2 shadow-lg shadow-gray-200/50' 
-        : 'bg-white/60 backdrop-blur-xl py-4'
+        ? 'bg-card/95 backdrop-blur-2xl py-2 shadow-lg shadow-black/20' 
+        : 'bg-card/40 backdrop-blur-xl py-4'
     }`}>
       {/* Gradient border at bottom when scrolled */}
       <div className={`absolute bottom-0 left-0 right-0 h-px transition-opacity duration-500 ${
