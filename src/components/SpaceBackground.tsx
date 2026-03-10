@@ -37,7 +37,7 @@ const SpaceBackground = () => {
     };
 
     const spawnShootingStar = () => {
-      if (shootingStars.length < 2 && Math.random() < 0.003) {
+      if (shootingStars.length < 3 && Math.random() < 0.008) {
         shootingStars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height * 0.5,
