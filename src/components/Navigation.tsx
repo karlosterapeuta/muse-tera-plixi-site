@@ -139,7 +139,7 @@ const Navigation = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className={`block px-4 py-3 text-gray-600 hover:text-foreground hover:bg-gray-50 rounded-lg transition-all duration-300 font-medium animate-fade-in ${
+                className={`block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-all duration-300 font-medium animate-fade-in ${
                   activeSection === item.id ? 'text-primary bg-primary/5' : ''
                 }`}
                 style={{ animationDelay: `${index * 50}ms` }}
