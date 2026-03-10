@@ -83,7 +83,7 @@ const Navigation = () => {
                 className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
                   activeSection === item.id 
                     ? 'text-primary' 
-                    : 'text-gray-600 hover:text-foreground'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 {item.name}
