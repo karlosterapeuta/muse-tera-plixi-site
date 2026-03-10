@@ -140,12 +140,12 @@ const AboutUs = () => {
 
         {/* Nossa Missão */}
         <div className={`glass-card p-8 lg:p-12 mb-20 relative overflow-hidden transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-accent/5 to-pink-500/5" />
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl" />
           
           <div className="relative text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-200 bg-white/80">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-card/80">
               <Target className="h-4 w-4 text-primary" />
               <span className="text-sm text-muted-foreground">Nossa Missão</span>
             </div>

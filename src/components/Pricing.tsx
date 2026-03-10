@@ -103,7 +103,7 @@ const Pricing = () => {
                 </ul>
 
                 <Button
-                  className={`w-full py-3 text-lg font-semibold ${plan.popular ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white shadow-lg shadow-primary/20' : 'border-2 border-gray-300 hover:border-primary text-foreground hover:text-primary bg-transparent'} transition-all duration-300`}
+                  className={`w-full py-3 text-lg font-semibold ${plan.popular ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white shadow-lg shadow-primary/20' : 'border-2 border-border hover:border-primary text-foreground hover:text-primary bg-transparent'} transition-all duration-300`}
                   onClick={() => {
                     if (plan.name === 'Sem Fidelidade 30 dias') setPixModalOpen(true);
                     else if (plan.name === 'FIDELIDADE 6 Meses') { setPix6MesesModalOpen(true); setShowPixQRCode(null); }
