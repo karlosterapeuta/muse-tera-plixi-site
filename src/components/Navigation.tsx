@@ -148,10 +148,10 @@ const Navigation = () => {
                 {item.name}
               </a>
             ))}
-            <div className="flex flex-col space-y-3 pt-4 mt-4 border-t border-gray-200">
+            <div className="flex flex-col space-y-3 pt-4 mt-4 border-t border-border">
               <Button 
                 variant="ghost" 
-                className="justify-center text-gray-600 hover:text-foreground hover:bg-gray-50 animate-fade-in"
+                className="justify-center text-muted-foreground hover:text-foreground hover:bg-secondary animate-fade-in"
                 style={{ animationDelay: '300ms' }}
                 onClick={() => {
                   handleAccessSystem();
