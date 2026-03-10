@@ -44,8 +44,8 @@ const Navigation = () => {
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
       isScrolled 
-        ? 'bg-white/95 backdrop-blur-2xl py-2 shadow-lg shadow-gray-200/50' 
-        : 'bg-white/60 backdrop-blur-xl py-4'
+        ? 'bg-card/95 backdrop-blur-2xl py-2 shadow-lg shadow-black/20' 
+        : 'bg-card/40 backdrop-blur-xl py-4'
     }`}>
       {/* Gradient border at bottom when scrolled */}
       <div className={`absolute bottom-0 left-0 right-0 h-px transition-opacity duration-500 ${
@@ -83,7 +83,7 @@ const Navigation = () => {
                 className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
                   activeSection === item.id 
                     ? 'text-primary' 
-                    : 'text-gray-600 hover:text-foreground'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 {item.name}
@@ -98,7 +98,7 @@ const Navigation = () => {
           <div className="hidden lg:flex items-center space-x-3">
             <Button 
               variant="ghost" 
-              className="text-gray-600 hover:text-foreground hover:bg-gray-100 font-medium text-sm"
+              className="text-muted-foreground hover:text-foreground hover:bg-secondary font-medium text-sm"
               onClick={handleAccessSystem}
             >
               Entrar
@@ -121,7 +121,7 @@ const Navigation = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-600 hover:text-foreground hover:bg-gray-100"
+              className="text-muted-foreground hover:text-foreground hover:bg-secondary"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -133,13 +133,13 @@ const Navigation = () => {
       <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-out ${
         isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
       }`}>
-        <div className="bg-white/98 backdrop-blur-2xl border-t border-gray-100">
+        <div className="bg-card/98 backdrop-blur-2xl border-t border-border">
           <div className="px-4 pt-4 pb-6 space-y-1">
             {navItems.map((item, index) => (
               <a
                 key={item.name}
                 href={item.href}
-                className={`block px-4 py-3 text-gray-600 hover:text-foreground hover:bg-gray-50 rounded-lg transition-all duration-300 font-medium animate-fade-in ${
+                className={`block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-all duration-300 font-medium animate-fade-in ${
                   activeSection === item.id ? 'text-primary bg-primary/5' : ''
                 }`}
                 style={{ animationDelay: `${index * 50}ms` }}
@@ -148,10 +148,10 @@ const Navigation = () => {
                 {item.name}
               </a>
             ))}
-            <div className="flex flex-col space-y-3 pt-4 mt-4 border-t border-gray-200">
+            <div className="flex flex-col space-y-3 pt-4 mt-4 border-t border-border">
               <Button 
                 variant="ghost" 
-                className="justify-center text-gray-600 hover:text-foreground hover:bg-gray-50 animate-fade-in"
+                className="justify-center text-muted-foreground hover:text-foreground hover:bg-secondary animate-fade-in"
                 style={{ animationDelay: '300ms' }}
                 onClick={() => {
                   handleAccessSystem();

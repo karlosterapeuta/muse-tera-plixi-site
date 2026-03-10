@@ -11,6 +11,7 @@ import Pricing from '@/components/Pricing';
 import Footer from '@/components/Footer';
 import ChatSupport from '@/components/ChatSupport';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
+import SpaceBackground from '@/components/SpaceBackground';
 
 const WaveDivider = ({ flip = false, color = 'hsl(var(--background))' }: { flip?: boolean; color?: string }) => (
   <div className={`relative w-full overflow-hidden leading-[0] ${flip ? 'rotate-180' : ''}`} style={{ marginTop: flip ? 0 : -1, marginBottom: flip ? -1 : 0 }}>
@@ -32,7 +33,10 @@ const CurveDivider = ({ flip = false, color = 'hsl(var(--background))' }: { flip
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative bg-background">
+    <div className="min-h-screen relative">
+      {/* Space Background */}
+      <SpaceBackground />
+      
       {/* Global Noise Texture Overlay */}
       <div className="noise-overlay" />
       

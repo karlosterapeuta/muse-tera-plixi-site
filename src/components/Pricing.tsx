@@ -66,7 +66,7 @@ const Pricing = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
-            <Card key={index} className={`relative hover-glow-enhanced ${plan.popular ? 'pricing-popular lg:scale-105 bg-white shadow-xl border-primary/20' : 'glass-card-premium'}`}>
+            <Card key={index} className={`relative hover-glow-enhanced ${plan.popular ? 'pricing-popular lg:scale-105 shadow-xl border-primary/20' : 'glass-card-premium'}`}>
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
                   <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full text-sm font-semibold flex items-center space-x-2 shadow-lg shadow-purple-500/20">
@@ -87,9 +87,9 @@ const Pricing = () => {
 
               <CardContent className="space-y-6">
                 {plan.refundGuarantee && (
-                  <div className="bg-green-50 border border-green-200 rounded-lg p-3 flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-sm font-medium text-green-700">7 dias de garantia de reembolso</span>
+                  <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-3 flex items-center gap-2">
+                    <Shield className="h-5 w-5 text-green-400 flex-shrink-0" />
+                    <span className="text-sm font-medium text-green-400">7 dias de garantia de reembolso</span>
                   </div>
                 )}
 
@@ -103,7 +103,7 @@ const Pricing = () => {
                 </ul>
 
                 <Button
-                  className={`w-full py-3 text-lg font-semibold ${plan.popular ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white shadow-lg shadow-primary/20' : 'border-2 border-gray-300 hover:border-primary text-foreground hover:text-primary bg-transparent'} transition-all duration-300`}
+                  className={`w-full py-3 text-lg font-semibold ${plan.popular ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white shadow-lg shadow-primary/20' : 'border-2 border-border hover:border-primary text-foreground hover:text-primary bg-transparent'} transition-all duration-300`}
                   onClick={() => {
                     if (plan.name === 'Sem Fidelidade 30 dias') setPixModalOpen(true);
                     else if (plan.name === 'FIDELIDADE 6 Meses') { setPix6MesesModalOpen(true); setShowPixQRCode(null); }
