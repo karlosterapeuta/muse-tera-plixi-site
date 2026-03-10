@@ -499,7 +499,7 @@
     position: absolute;
     width: 2px;
     height: 2px;
-    background: rgba(99, 102, 241, 0.25);
+    background: rgba(180, 190, 255, 0.4);
     border-radius: 50%;
     animation: particle-float 15s infinite ease-in-out;
   }
