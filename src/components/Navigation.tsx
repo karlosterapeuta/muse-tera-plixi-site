@@ -133,7 +133,7 @@ const Navigation = () => {
       <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-out ${
         isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
       }`}>
-        <div className="bg-white/98 backdrop-blur-2xl border-t border-gray-100">
+        <div className="bg-card/98 backdrop-blur-2xl border-t border-border">
           <div className="px-4 pt-4 pb-6 space-y-1">
             {navItems.map((item, index) => (
               <a
