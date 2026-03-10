@@ -133,24 +133,26 @@
     animation: gradient-shift 3s ease infinite;
   }
 
-  /* Glassmorphism cards - Light theme */
+  /* Glassmorphism cards - Space theme */
   .glass-card {
-    @apply bg-white/90 backdrop-blur-xl border border-gray-200/60 rounded-2xl;
+    @apply backdrop-blur-xl rounded-2xl;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 
-      0 1px 3px rgba(0, 0, 0, 0.04),
-      0 10px 30px -10px rgba(0, 0, 0, 0.08);
+      0 1px 3px rgba(0, 0, 0, 0.2),
+      0 10px 30px -10px rgba(0, 0, 0, 0.3);
   }
   
-  /* Premium Glassmorphism - Light theme with depth */
+  /* Premium Glassmorphism - Space theme with depth */
   .glass-card-premium {
     @apply rounded-2xl transition-all duration-500;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(24px) saturate(150%);
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.04),
-      0 4px 12px rgba(0, 0, 0, 0.04),
-      0 16px 40px -8px rgba(0, 0, 0, 0.06);
+      0 1px 2px rgba(0, 0, 0, 0.2),
+      0 4px 12px rgba(0, 0, 0, 0.15),
+      0 16px 40px -8px rgba(0, 0, 0, 0.2);
   }
   
   .glass-card-hover {
