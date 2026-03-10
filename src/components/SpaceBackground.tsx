@@ -21,16 +21,19 @@ const SpaceBackground = () => {
     };
 
     const initStars = () => {
-      const count = Math.floor((canvas.width * canvas.height) / 8000);
-      stars = Array.from({ length: count }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 0.3,
-        opacity: Math.random() * 0.6 + 0.2,
-        speed: Math.random() * 0.02 + 0.005,
-        twinkleSpeed: Math.random() * 0.03 + 0.01,
-        twinkleOffset: Math.random() * Math.PI * 2,
-      }));
+      const count = Math.floor((canvas.width * canvas.height) / 3000);
+      stars = Array.from({ length: count }, () => {
+        const isBright = Math.random() < 0.15;
+        return {
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: isBright ? Math.random() * 3 + 1.5 : Math.random() * 1.8 + 0.3,
+          opacity: isBright ? Math.random() * 0.4 + 0.6 : Math.random() * 0.5 + 0.3,
+          speed: Math.random() * 0.02 + 0.005,
+          twinkleSpeed: isBright ? Math.random() * 0.05 + 0.02 : Math.random() * 0.03 + 0.01,
+          twinkleOffset: Math.random() * Math.PI * 2,
+        };
+      });
     };
 
     const spawnShootingStar = () => {
