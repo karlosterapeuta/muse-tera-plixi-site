@@ -33,7 +33,7 @@ const Benefits = () => {
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/[0.03] rounded-full blur-[120px]" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-green-500/[0.03] rounded-full blur-[100px]" />
       </div>
-      <div className="container-padding">
+      <div className="container-padding relative z-10">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold font-playfair text-foreground">
             Transforme sua <span className="gradient-text">prática profissional</span>
