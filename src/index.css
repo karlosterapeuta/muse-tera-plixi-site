@@ -645,6 +645,11 @@
   /* Pricing popular card */
   .pricing-popular {
     @apply relative;
+    background: white !important;
+  }
+  
+  .pricing-popular:hover {
+    background: white !important;
   }
   
   .pricing-popular::before {
