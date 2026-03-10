@@ -66,7 +66,7 @@ const Pricing = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
-            <Card key={index} className={`relative hover-glow-enhanced ${plan.popular ? 'pricing-popular lg:scale-105 bg-white shadow-xl border-primary/20' : 'glass-card-premium'}`}>
+            <Card key={index} className={`relative hover-glow-enhanced ${plan.popular ? 'pricing-popular lg:scale-105 shadow-xl border-primary/20' : 'glass-card-premium'}`}>
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
                   <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full text-sm font-semibold flex items-center space-x-2 shadow-lg shadow-purple-500/20">
