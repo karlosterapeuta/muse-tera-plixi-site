@@ -98,7 +98,7 @@ const Navigation = () => {
           <div className="hidden lg:flex items-center space-x-3">
             <Button 
               variant="ghost" 
-              className="text-gray-600 hover:text-foreground hover:bg-gray-100 font-medium text-sm"
+              className="text-muted-foreground hover:text-foreground hover:bg-secondary font-medium text-sm"
               onClick={handleAccessSystem}
             >
               Entrar
