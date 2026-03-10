@@ -58,22 +58,38 @@ const SpaceBackground = () => {
 
       // Draw stars with twinkle
       stars.forEach((star) => {
-        const twinkle = Math.sin(time * star.twinkleSpeed + star.twinkleOffset) * 0.3 + 0.7;
+        const twinkle = Math.sin(time * star.twinkleSpeed + star.twinkleOffset) * 0.4 + 0.6;
         const alpha = star.opacity * twinkle;
         
-        // Star glow
-        if (star.size > 1.2) {
-          const gradient = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, star.size * 3);
-          gradient.addColorStop(0, `rgba(180, 190, 255, ${alpha * 0.3})`);
-          gradient.addColorStop(1, 'rgba(180, 190, 255, 0)');
+        // Star glow for larger stars
+        if (star.size > 1.0) {
+          const glowRadius = star.size * 4;
+          const gradient = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, glowRadius);
+          gradient.addColorStop(0, `rgba(200, 210, 255, ${alpha * 0.5})`);
+          gradient.addColorStop(0.4, `rgba(160, 180, 255, ${alpha * 0.15})`);
+          gradient.addColorStop(1, 'rgba(160, 180, 255, 0)');
           ctx.fillStyle = gradient;
           ctx.beginPath();
-          ctx.arc(star.x, star.y, star.size * 3, 0, Math.PI * 2);
+          ctx.arc(star.x, star.y, glowRadius, 0, Math.PI * 2);
           ctx.fill();
         }
 
+        // Cross sparkle for bright stars
+        if (star.size > 2) {
+          const sparkleAlpha = alpha * 0.4;
+          const len = star.size * 6;
+          ctx.strokeStyle = `rgba(220, 230, 255, ${sparkleAlpha})`;
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(star.x - len, star.y);
+          ctx.lineTo(star.x + len, star.y);
+          ctx.moveTo(star.x, star.y - len);
+          ctx.lineTo(star.x, star.y + len);
+          ctx.stroke();
+        }
+
         // Star core
-        ctx.fillStyle = `rgba(220, 225, 255, ${alpha})`;
+        ctx.fillStyle = `rgba(235, 240, 255, ${alpha})`;
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
         ctx.fill();
