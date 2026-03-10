@@ -111,13 +111,13 @@ const Features = () => {
                     </p>
                     {feature.featured && (
                       <div className="pt-4 flex flex-wrap gap-3">
-                        <span className="px-3 py-1 text-xs bg-gray-100 rounded-full text-muted-foreground border border-gray-200">
+                        <span className="px-3 py-1 text-xs bg-secondary rounded-full text-muted-foreground border border-border">
                           Histórico completo
                         </span>
-                        <span className="px-3 py-1 text-xs bg-gray-100 rounded-full text-muted-foreground border border-gray-200">
+                        <span className="px-3 py-1 text-xs bg-secondary rounded-full text-muted-foreground border border-border">
                           Anexos ilimitados
                         </span>
-                        <span className="px-3 py-1 text-xs bg-gray-100 rounded-full text-muted-foreground border border-gray-200">
+                        <span className="px-3 py-1 text-xs bg-secondary rounded-full text-muted-foreground border border-border">
                           Busca avançada
                         </span>
                       </div>
