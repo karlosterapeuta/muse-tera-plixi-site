@@ -33,7 +33,10 @@ const CurveDivider = ({ flip = false, color = 'hsl(var(--background))' }: { flip
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative bg-background">
+    <div className="min-h-screen relative">
+      {/* Space Background */}
+      <SpaceBackground />
+      
       {/* Global Noise Texture Overlay */}
       <div className="noise-overlay" />
       
