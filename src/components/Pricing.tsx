@@ -87,9 +87,9 @@ const Pricing = () => {
 
               <CardContent className="space-y-6">
                 {plan.refundGuarantee && (
-                  <div className="bg-green-50 border border-green-200 rounded-lg p-3 flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-sm font-medium text-green-700">7 dias de garantia de reembolso</span>
+                  <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-3 flex items-center gap-2">
+                    <Shield className="h-5 w-5 text-green-400 flex-shrink-0" />
+                    <span className="text-sm font-medium text-green-400">7 dias de garantia de reembolso</span>
                   </div>
                 )}
 
