@@ -66,7 +66,7 @@ const Features = () => {
               className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeCategory === category.id
                   ? 'bg-gradient-to-r from-primary to-purple-600 text-white shadow-lg shadow-primary/20'
-                  : 'bg-gray-100 text-muted-foreground hover:bg-gray-200 hover:text-foreground'
+                  : 'bg-secondary text-muted-foreground hover:bg-secondary/80 hover:text-foreground'
               }`}
             >
               {category.name}
