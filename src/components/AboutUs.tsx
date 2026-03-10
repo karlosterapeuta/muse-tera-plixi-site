@@ -36,12 +36,11 @@ const AboutUs = () => {
       className="section-padding section-alt relative overflow-hidden"
       ref={sectionRef as React.RefObject<HTMLElement>}
     >
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(0,0,0,0.03) 1px, transparent 0)',
-          backgroundSize: '40px 40px'
-        }} />
+      {/* Rich background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 dot-pattern opacity-40" />
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/[0.03] rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-accent/[0.03] rounded-full blur-[100px]" />
       </div>
 
       <div className="container-padding relative">

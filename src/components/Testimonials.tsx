@@ -38,9 +38,13 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="depoimentos" className="section-padding relative overflow-hidden">
-      {/* Background mesh - subtle */}
-      <div className="absolute inset-0 mesh-gradient opacity-50" />
+    <section id="depoimentos" className="section-padding bg-background relative overflow-hidden">
+      {/* Rich background */}
+      <div className="absolute inset-0 mesh-gradient" />
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-purple-500/[0.04] rounded-full blur-[130px]" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-blue-500/[0.03] rounded-full blur-[100px]" />
+      </div>
       
       <div className="container-padding relative z-10">
         <div className="text-center space-y-4 mb-16">

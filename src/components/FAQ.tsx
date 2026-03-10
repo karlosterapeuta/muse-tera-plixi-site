@@ -27,7 +27,13 @@ const FAQ = () => {
   const categories = [...new Set(faqs.map(faq => faq.category))];
 
   return (
-    <section id="faq" className="section-padding bg-background">
+    <section id="faq" className="section-padding bg-background relative overflow-hidden">
+      {/* Background depth */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 grid-pattern opacity-20" />
+        <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-primary/[0.03] rounded-full blur-[130px]" />
+        <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-accent/[0.03] rounded-full blur-[120px]" />
+      </div>
       <div className="container-padding">
         <div className="text-center space-y-4 mb-16">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-4 shadow-lg shadow-primary/15">

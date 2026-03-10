@@ -33,10 +33,12 @@ const Features = () => {
       className="section-padding bg-background relative overflow-hidden"
       ref={sectionRef as React.RefObject<HTMLElement>}
     >
-      {/* Background elements */}
+      {/* Rich background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+        <div className="absolute inset-0 grid-pattern opacity-30" />
+        <div className="absolute top-20 left-10 w-[400px] h-[400px] bg-primary/[0.04] rounded-full blur-[120px]" />
+        <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-accent/[0.04] rounded-full blur-[120px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-400/[0.02] rounded-full blur-[150px]" />
       </div>
 
       <div className="container-padding relative">

@@ -26,7 +26,13 @@ const Benefits = () => {
   ];
 
   return (
-    <section id="beneficios" className="section-padding section-alt">
+    <section id="beneficios" className="section-padding section-alt relative overflow-hidden">
+      {/* Background depth */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 dot-pattern opacity-30" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/[0.03] rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-green-500/[0.03] rounded-full blur-[100px]" />
+      </div>
       <div className="container-padding">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold font-playfair text-foreground">
